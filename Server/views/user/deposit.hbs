@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>simplinestle.org | User Deposit </title>
+    <meta name="theme-color" content="#181818">
+    <!-- GetButton.io widget -->
+    <script type="text/javascript">
+        (function () {
+            var options = {
+                whatsapp: "+61485972443", // WhatsApp number
+                call_to_action: "Message us", // Call to action
+                button_color: "#FF6550", // Color of button
+                position: "left", // Position may be 'right' or 'left'
+                pre_filled_message: "How do I get started with your company?", // WhatsApp pre-filled message
+            };
+            var proto = 'https:', host = "getbutton.io", url = proto + '//static.' + host;
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        })();
+    </script>
+    <!-- Smartsupp Live Chat script -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '95a6f6427d672cd97d461c55da6d0661c3492b99';
+        window.smartsupp || (function (d) {
+            var s, c, o = smartsupp = function () { o._.push(arguments) }; o._ = [];
+            s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
+            c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?'; s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
+    <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
+    <!--forawesome-->
+    <script src="/https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/loggedInStyle.css">
+    <!-- Google Translate script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+
+<body>
+    <section>
+        <div class="signing">
+            <div class="sign-up-header">
+                <div class="have-accont">
+                    <a href="/user/Dashboard"> Access Your Dashboard</a>
+                    <p class="header">DEPOSIT</p>
+                </div>
+            </div>
+
+            <form id="deposit-form" class="deposit-form gap-and-padding dark-color margin-bottom"
+                action="/user/confirmDeposit" method="get">
+                <input type="hidden" class="white-color select-input" id="plan-id" name="planId">
+                <p class="">Select Plans, Cryptocurrency and Amount to Deposit</p>
+
+                <span class="no-deposit-twice-prompt"></span>
+                <div class="form-group">
+                    <label for="name" class="form-control-label">Choose Plan To Invest In:</label>
+                    <select name="planId" class="white-color select-input" id="plan-type" required>
+                        <option value="" id="select-coin-option" disabled {{#unless selectedPlan}}selected{{/unless}}>
+                            Select a Plan</option>
+                        {{#each plans}}
+                        <option value="{{this._id}}" {{#if ../selectedPlan}}{{#if (eq this._id
+                            ../selectedPlan._id)}}selected{{/if}}{{/if}}>{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                    <a href="/user/investmentPlans" class="submit-button">View Invesment Plans</a>
+                    <span class="error-message-for-coin text-warning">{{#if
+                        planErrorMessage}}{{planErrorMessage}}{{else}}&nbsp;{{/if}}</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="coinType" class="form-control-label">Investment Payment Method: </label>
+                    <select name="coinType" class="white-color select-input" id="coins">
+                        <option value="">Select Coin Type</option>
+                        {{#each wallets}}
+                        <option value="{{this.name}}">{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                    <span class="error-message-for-coin text-warning">{{#if
+                        walletErrorMessage}}{{walletErrorMessage}}{{else}}&nbsp;{{/if}}</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="dailyProfit" class="form-control-label">Daily Profit: (%) </label>
+                    <input type="number" class="white-color select-input" id="percentage-earning" disabled
+                        value="{{#if selectedPlan}}{{selectedPlan.dailyProfit}}{{/if}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="amount" class="">Amount to Spend ($) </label>
+                    <input type="number" class="white-color select-input" name="amount" id="plan-amount"
+                        value="{{#if selectedPlan}}{{selectedPlan.minDeposit}}{{/if}}">
+                    <span class="error-message-for-amount text-warning"></span>
+                </div>
+                <div class="form-group">
+                    <label for="duration" class="">Investement Duration <span class="tx-danger"> </span></label>
+                    <input type="number" class="white-color select-input" id="investment-duration" disabled
+                        value="{{#if selectedPlan}}{{selectedPlan.duration}}{{/if}}">
+                </div>
+                <div class="form-group">
+                    <label for="referralBonus" class="">Referal Bonus ($) <span class="tx-danger">*</span></label>
+                    <input type="number" class="white-color select-input" id="referal-bonus" disabled
+                        value="{{#if selectedPlan}}{{selectedPlan.referralBonus}}{{/if}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="totalProfit" class="">Total Profit ($) <span class="tx-danger">*</span></label>
+                    <input type="number" class="white-color select-input" id="total-profit" disabled>
+                </div>
+
+                <input type="hidden" name="name" id="nameHidden"
+                    value="{{#if selectedPlan}}{{selectedPlan.name}}{{/if}}">
+                <input type="hidden" name="dailyProfit" id="dailyProfitHidden"
+                    value="{{#if selectedPlan}}{{selectedPlan.dailyProfit}}{{/if}}">
+                <input type="hidden" name="duration" id="durationHidden"
+                    value="{{#if selectedPlan}}{{selectedPlan.duration}}{{/if}}">
+                <input type="hidden" name="referralBonus" id="referralBonusHidden"
+                    value="{{#if selectedPlan}}{{selectedPlan.referralBonus}}{{/if}}">
+                <input type="hidden" name="totalProfit" id="totalProfitHidden"
+                    value="{{#if selectedPlan}}{{selectedPlan.totalProfit}}{{/if}}">
+
+
+                <div class="form-group">
+                    <button type="submit" class="submit-button"> PROCEED <i class="fa fa-sign-in"></i></button>
+                </div>
+            </form>
+        </div>
+
+        {{#if deposits.length}}
+        <h3>Your deposits</h3>
+        <div class="withdrawal-request">
+            {{#each deposits}}
+            <!-- ...your deposit cards... -->
+            <div class="withdrawal-table deposit-cards"  data-status="{{status}}" data-index="{{@index}}">
+                <p>
+                    <span class="deem-white-color">Plan name:</span>
+                    <span class="text-warning">{{capitalize name}}</span>
+                </p>
+                <p>
+                    <span class="deem-white-color">Coin Deposited:</span>
+                    <span class="text-warning">{{capitalize coinType}}</span>
+                </p>
+                <p>
+                    <span class="deem-white-color">Amount:</span>
+                    <span class="text-warning">${{amount}}</span>
+                </p>
+
+                <p>
+                    <span class="deem-white-color">Date:</span>
+                    <span class="text-warning mainDate" data-date="{{date}}"></span>
+                </p>
+                <p>
+                    <span class="deem-white-color">Status:</span>
+                    {{#if (eq status "completed")}}
+                    <span class="status-completed">{{capitalize status}}</span>
+                    {{else if (eq status "confirmed")}}
+                    <span class="status-confirmed">{{capitalize status}}</span>
+                    {{else}}
+                    <span class="status-unconfirmed">Unconfirmed</span>
+                    {{/if}}
+                </p>
+            </div>
+            {{/each}}
+        </div>
+        {{else}}
+        <p class="no-withdrawal-request">No deposits found.</p>
+        {{/if}}
+
+        <a href="/user/history" class="submit-button"> View History</a>
+
+
+        <div class="detail-deposit-table " id="deposit-details">
+            <div class="detail-deposit-table-header">
+                <h3>Deposit</h3>
+                <i class="fa-solid fa-xmark text-danger button-one-five-size-no-padding" id="close-deposit-details"></i>
+            </div>
+            <div class="for-image">
+                <span class="deem-white-color">Transaction Receipt:</span>
+                <img src="" class="image" id="detail-deposit-receipt" alt="" width="100%" height="100px">
+            </div>
+            <p>
+                <span class="deem-white-color">Plan name:</span>
+                <span class="text-warning" id="detail-plan-name"></span>
+            </p>
+
+            <p>
+                <span class="deem-white-color">Coin Deposited:</span>
+                <span class="text-warning" id="detail-coin-type"></span>
+            </p>
+
+            <p>
+                <span class="deem-white-color">Amount:</span>
+                <span class="text-warning" id="detail-amount"></span>
+            </p>
+
+            <p>
+                <span class="deem-white-color">Daily Profit:</span>
+                <span class="text-warning" id="detail-daily-profit"></span>
+            </p>
+
+            <p>
+                <span class="deem-white-color">Duration:</span>
+                <span class="text-warning" id="detail-duration"></span>
+            </p>
+
+            <p>
+                <span class="deem-white-color">Status:</span>
+                <span  id="detail-status"></span>
+            </p>
+
+            <p>
+                <span class="deem-white-color">Date:</span>
+                <span class="text-warning mainDate" id="detail-date"></span>
+            </p>
+
+            <p>
+                <span class="deem-white-color">Total Profit:</span>
+                <span class="text-warning" id="detail-total-profit"></span>
+            </p>
+
+            <p>
+                <span class="deem-white-color">End Date</span>
+                <span class="text-warning" id="detail-end-date"></span>
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- Image Zoom Modal -->
+    <!-- Image Zoom Modal -->
+    <div id="image-zoom-modal" class="image-zoom-modal" style="display:none;">
+        <span id="close-zoom" class="close-zoom">&times;</span>
+        <img id="zoomed-image" class="zoomed-image" src="" alt="Zoomed Receipt" />
+    </div>
+
+    <!-- JavaScript to handle image zoom -->
+    <script>
+        const receiptImg = document.querySelectorAll('.image');
+        const zoomModal = document.getElementById('image-zoom-modal');
+        const zoomedImage = document.getElementById('zoomed-image');
+        const closeZoom = document.getElementById('close-zoom');
+        if (receiptImg && zoomModal && zoomedImage && closeZoom) {
+            receiptImg.forEach(img => {
+                img.addEventListener('click', () => {
+                    console.log('Image clicked:', img.src);
+                    zoomedImage.src = img.src;
+                    zoomModal.style.display = 'flex';
+                });
+            });
+            closeZoom.addEventListener('click', () => {
+                zoomModal.style.display = 'none';
+                zoomedImage.src = '';
+            });
+            zoomModal.addEventListener('click', (e) => {
+                if (e.target === zoomModal) {
+                    zoomModal.style.display = 'none';
+                    zoomedImage.src = '';
+                }
+                zoomModal.style.display = 'none';
+                zoomedImage.src = '';
+            });
+        }
+    </script>
+
+    <!-- Format for dates -->
+    <script>
+        document.querySelectorAll('.mainDate').forEach(function (el) {
+            const raw = el.getAttribute('data-date');
+            if (!raw || raw === "null") {
+                el.textContent = "";
+            } else {
+                const date = new Date(raw);
+                el.textContent = isNaN(date.getTime()) ? "" : date.toString().split(' GMT')[0];
+            }
+        });
+
+        document.querySelectorAll('.endDate').forEach(function (el) {
+            const raw = el.getAttribute('data-date');
+            if (!raw || raw === "null") {
+                el.textContent = "completed";
+            } else {
+                const date = new Date(raw);
+                el.textContent = isNaN(date.getTime()) ? "completed" : date.toString().split(' GMT')[0];
+            }
+        });
+    </script>
+
+
+    <script src="/script.js"></script>
+    <script id="plans-data" type="application/json">{{{json plans}}}</script>
+    <script id="deposits-data" type="application/json">{{{json deposits}}}</script>
+</body>
+
+</html>

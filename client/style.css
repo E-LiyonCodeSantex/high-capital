@@ -1,0 +1,2551 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*style rules for loading indicator started here*/
+.in-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #181818;
+    height: 100vh;
+    /* Full viewport height */
+}
+
+.in-loader div {
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    background-color: #fff;
+    border-radius: 50%;
+    animation: in-loader-animation 1.2s infinite ease-in-out;
+}
+
+@keyframes in-loader-animation {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+
+    40% {
+        transform: scale(1);
+    }
+}
+
+/*style rules for all similar divs are here*/
+.in-highlight {
+    border-bottom: 3px solid rgb(61, 61, 252);
+}
+
+.fa-blue-purple {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #4f21f5;
+    color: #fff;
+}
+
+.for-all-pink {
+    background-color: rgb(233, 38, 158);
+}
+
+.join-us-button {
+    list-style: none;
+    text-decoration: none;
+    transition: 0.5s ease-in-out;
+}
+
+.join-us-button:hover {
+    border-bottom: 1px solid rgb(233, 38, 158);
+}
+
+.bgc {
+    background-color: #e7eeed;
+    margin: 0;
+}
+
+.email-massage {
+    color: #181818;
+    text-decoration: none;
+}
+
+.border-white {
+    padding: 5px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+}
+
+.counter-container {
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 25px;
+    margin: 0;
+    border-radius: 20px;
+}
+
+.widget-container-bgc {
+    background: linear-gradient(to bottom, #181818, #333)
+}
+
+.counter {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.counter-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+}
+
+.font-weight {
+    font-weight: 700;
+
+}
+
+h1 {
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+.blue-icon {
+    padding: 10px;
+    margin: 10px;
+    color: #fff;
+    background-color: blue;
+    border-radius: 10px;
+}
+
+/*style rules for all a link buttons are here*/
+.linking {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
+    font-weight: 600;
+    padding: 10px;
+    background-color: rgb(233, 38, 158);
+    border-radius: 10px;
+    color: #333;
+    transition: transform 0.3s ease;
+}
+
+.linking:hover {
+    text-decoration: none;
+    background-color: rgb(216, 187, 20);
+    color: #e7eeed;
+}
+
+.linking i {
+    transition: transform 0.3s ease;
+    transform: rotate(-45deg);
+}
+
+.linking:hover i {
+    transform: rotate(0deg);
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    color: #333;
+}
+
+.login:hover {
+    transition: transform 0.3s ease;
+    text-decoration: none;
+    color: #333;
+    background-color: #e2dede;
+}
+
+.login i {
+    transition: transform 0.3s ease;
+    transform: rotate(-45deg);
+}
+
+.login:hover i {
+    transform: rotate(0deg);
+}
+
+.signin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    background-color: #5A4FCF;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.signin:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.signin i {
+    transition: transform 0.3s ease;
+    transform: rotate(-45deg);
+}
+
+.signin:hover i {
+    transform: rotate(0deg);
+}
+
+.purple--button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: #6608FE;
+    padding: 10px;
+    text-decoration: none;
+    color: #adabab;
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.purple--button:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.header-white {
+    color: #fff;
+    font-size: 1.5rem;
+    font-size: 500;
+}
+
+/*nav style rules are here*/
+.burger {
+    display: none;
+    cursor: pointer;
+    z-index: 11;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    background-color: #181818;
+    color: #d1cdcd;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+nav .nav-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    list-style: none;
+}
+
+nav .nav-bar li a {
+    color: #b6b6b6;
+    text-decoration: none;
+}
+
+nav .nav-bar li a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.company-header a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    transition: transform 0.5s ease;
+}
+
+nav .company-drop_down {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: start;
+    background-color: #fff;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 10px 25px;
+    color: #181818;
+    list-style: none;
+    position: absolute;
+    cursor: pointer;
+    z-index: 10;
+}
+
+nav .company-drop_down.show {
+    display: flex;
+}
+
+.company-header i {
+    transition: transform 0.5s ease;
+}
+
+.navArowActive {
+    transform: rotate(180deg);
+}
+
+nav .company-drop_down li a:hover {
+    color: #000;
+}
+
+/*landing page video style is here*/
+.bg-video {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.bg-video-content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*Description and trade view style rules are here*/
+.description-and-trade_view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    height: fit-content;
+    padding: 20px;
+    background-color: #181818;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    height: fit-content;
+    width: 100%;
+    overflow: hidden;
+}
+
+.slide-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: fit-content;
+    width: 400%;
+}
+
+.slider {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    align-items: start;
+    height: fit-content;
+    width: 90%;
+    padding: 20px;
+    animation: slide 24s linear infinite;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(100%);
+    }
+
+    5% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(0);
+    }
+
+    30% {
+        transform: translateX(-100%);
+    }
+
+    50% {
+        transform: translateX(-100%);
+    }
+
+    55% {
+        transform: translateX(-200%);
+    }
+
+    75% {
+        transform: translateX(-200%);
+    }
+
+    80% {
+        transform: translateX(-300%);
+    }
+
+    100% {
+        transform: translateX(-300%);
+    }
+}
+
+
+.slider p {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    list-style: none;
+}
+
+.learn-more p:first-child a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: #333;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.learn-more p:first-child a span {
+    background-color: rgb(61, 61, 252);
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+
+.learn-more h1 {
+    color: #fff;
+}
+
+.learn-more h1 span {
+    border-bottom: 2px solid rgb(61, 61, 252);
+}
+
+.learn-more p:last-child {
+    color: #d4d2d2;
+}
+
+.in-price_card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: fit-content;
+    margin-top: 20px;
+    gap: 10px;
+    width: 100%;
+    height: fit-content;
+
+}
+
+.in-price {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px 25px;
+    border-radius: 15px;
+    background-color: #111010;
+    color: #fff;
+
+}
+
+.in-price p {
+    width: fit-content;
+    height: fit-content;
+    margin: 0;
+    padding: 0;
+}
+
+.in-price p span {
+    animation: rotating 3s linear infinite;
+}
+
+@keyframes rotating {
+    0% {
+        transform: rotate(odeg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.crypto-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: fit-content;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #111010;
+    color: #fff;
+}
+
+.crypto-details .uk-margin-remove {
+    font-size: medium;
+    color: #fff;
+}
+
+.crypto-details .uk-margin-remove span {
+    font-size: small;
+    color: #8f8e8e;
+}
+
+.crypto-details .uk-margin-remove p {
+    font-size: small;
+    color: rgb(199, 53, 77);
+}
+
+.our-service-p {
+    font-size: larger;
+    font-weight: 600;
+    color: #8f8e8e;
+}
+
+
+.flip-box {
+    background-color: transparent;
+    width: 200px;
+    height: 200px;
+    perspective: 1000px;
+}
+
+.flip-box-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform-style: preserve-3d;
+    animation: rotate 4s linear infinite;
+}
+
+.flip-box-back {
+    color: white;
+    transform: rotateY(180deg);
+}
+
+/*flip box for bit coin  3d rotation style rules are here*/
+@keyframes rotate {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+/* about and iframe sections style rules are here*/
+.bg-color {
+    background-color: #f5f7f9;
+}
+
+.section-head {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: large;
+    font-weight: 600;
+}
+
+.section-head h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.span {
+    border-bottom: 2px solid rgb(61, 61, 252);
+}
+
+.section-head h3 {
+    color: rgb(61, 61, 252);
+    font-size: 500;
+}
+
+.section-head ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
+
+.section-head ul li {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+}
+
+.section-head ul li i {
+    color: rgb(61, 61, 252);
+}
+
+.center-nav {
+    width: 100%;
+    height: fit-content;
+}
+
+.center-nav-div a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #adabab;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0;
+    position: relative;
+    transition: 0.5s;
+}
+
+.center-nav-div a:hover {
+    text-decoration: none;
+    border: 1.5px solid rgb(61, 61, 252);
+}
+
+.center-nav-div a i {
+    width: fit-content;
+    background-color: #fff;
+    font-size: 30px;
+    color: rgb(61, 61, 252);
+    padding: 5px 20px;
+    position: absolute;
+    top: -25px;
+}
+
+.center-nav a h5 {
+    margin: 0;
+    padding-top: 10px;
+    font-weight: 600;
+}
+
+.center-nav a p {
+    margin: 0;
+}
+
+/*iframe section style rules are here*/
+.inframe-speech h2 {
+    font-weight: 600;
+}
+
+.iframe-learn-more i {
+    transition: transform 0.3s ease;
+    transform: rotate(-45deg);
+}
+
+.iframe-learn-more:hover i {
+    transform: rotate(0deg);
+}
+
+/*Choose plan section style rules are here*/
+.uk-card-body {
+    height: fit-content;
+}
+
+.data-base {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
+}
+
+.data-base span {
+    background-color: #e54a41;
+    color: #fff;
+    padding: 5px 7px;
+    font-size: smaller;
+    border-radius: 100%;
+}
+
+.button-i i {
+    transition: transform 0.3s ease;
+    transform: rotate(-45deg);
+}
+
+.button-i:hover i {
+    transform: rotate(0deg);
+}
+
+/*style rules for Invest on most popular Market*/
+.black-color {
+    background-color: #181818;
+}
+
+/*style rules for Trade with confidence*/
+.in-symbol-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.in-symbol img {
+    animation: breath 5s linear infinite;
+}
+
+@keyframes breath {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(5%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.Mcdonald {
+    left: 30%;
+    top: 70%;
+}
+
+.Intel {
+    left: 68%;
+    top: 42%;
+
+}
+
+.Amazon {
+    left: 30%;
+    top: 35%;
+    width: 120px;
+    height: 120px;
+}
+
+.yahoo {
+    left: 70%;
+    top: 65%;
+    width: 120px;
+    height: 120px;
+}
+
+.in-symbol-5 {
+    left: 10%;
+    top: 38%;
+    background-color: #61c4e6;
+    width: 65px;
+    height: 65px;
+    border-radius: 100%;
+}
+
+.in-symbol-6 {
+    left: 47%;
+    top: 20%;
+    background-color: #6dec6d;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+}
+
+.in-symbol-7 {
+    left: 63%;
+    top: 81%;
+    background-color: #f8b82c;
+    width: 65px;
+    height: 65px;
+    border-radius: 100%;
+}
+
+.in-symbol-8 {
+    left: 28%;
+    top: 90%;
+    background-color: #3c9fc0;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+
+.explore-all {
+    width: fit-content;
+    padding: 10px;
+    background-color: #8f8e8e;
+    border-radius: 10px;
+}
+
+.in-symbol-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 0 10px 0;
+    background-color: #111010;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.in-symbol-card img {
+    width: 80%;
+    height: 100px;
+    border: 1px solid #181818;
+    border-radius: 20px;
+}
+
+/*Security of Client's Funds style rules are here*/
+.security-container {
+    padding: 20px 0 20px 0;
+    display: flex;
+    width: 95%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #6608FE;
+}
+
+.security-container-content {
+    width: 99%;
+    justify-content: center;
+    align-items: center;
+}
+
+.security-container-content-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.security-container-content-div img {
+    width: 300px;
+    height: 250px;
+    border: 2px solid #181818;
+    border-radius: 15px;
+}
+
+.get-started {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+/*FAQs style rules are here*/
+
+.f-a-q-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 20px 0 30px 0;
+}
+
+.drawer-container {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    height: fit-content;
+    gap: 20px;
+    padding: 10px;
+}
+
+.f-a-q-drawer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: fit-content;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.drawer-head {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #525151;
+    font-weight: 600;
+}
+
+.drawer {
+    width: 100%;
+    display: none;
+    max-height: 0;
+    transition: max-height 0.5s ease-out;
+}
+
+.drawer.open {
+    max-height: 600px;
+    /* Adjust this value based on the content height */
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 0 10px 10px;
+    background-color: #fff;
+    color: #181818;
+}
+
+.drawer-head.headerActive {
+    background-color: #5A4FCF;
+    border-radius: 10px 10px 0 0;
+    text-decoration: none;
+    color: #181818;
+}
+
+.drawer-head i {
+    transform: rotate(0);
+    transition: 0.5s ease-in-out;
+}
+
+.drawer-head:hover i {
+    transform: rotate(90deg);
+}
+
+.see-more-faq {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.see-more-faq p {
+    width: fit-content;
+    padding: 10px;
+    background-color: #fff;
+    color: #525151;
+    border-radius: 10px;
+}
+
+.see-more-faq p:hover {
+    color: #181818;
+    font-weight: 400;
+}
+
+/*Trade in one step*/
+.trade-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+}
+
+.trade-container-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #181818;
+    padding: 20px 0 20px 0;
+    width: 100%;
+}
+
+.trade-container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    flex-wrap: wrap;
+}
+
+.trade-container-details-and-img {
+    margin-top: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.trade-container-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.trade-container-content-card {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    gap: 15px;
+    padding: 15px;
+    width: 100%;
+    border: 1.5px solid #adabab;
+    border-radius: 10px;
+    color: #fff;
+    transition: all 0.5s ease-in;
+}
+
+.trade-container-content-card span {
+    width: fit-content;
+    height: fit-content;
+    padding: 10px 15px;
+    border-radius: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #757575;
+    font-size: 1.5rem;
+    font-weight: 400;
+    transition: all 0.5s ease-in;
+}
+
+.trade-container-content-card:hover {
+    border: 1.5px solid #6608FE;
+    transition: all 0.5s ease-in;
+    text-decoration: none;
+}
+
+.trade-container-content-card:hover span {
+    background-color: #6608FE;
+    color: #181818;
+    transition: all 0.5s ease-in;
+}
+
+.trade-container-content-card h5 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.trade-container-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    border-radius: 20px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.trade-container-img img {
+    width: 80%;
+    height: 200px;
+}
+
+/*About us shot with learnMore button*/
+.about-us-contianer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    background-color: #b6b6b6;
+    border-radius: 10px;
+    width: 100%;
+    color: #000;
+    padding: 15px;
+}
+
+.about-us-contianer p {
+    color: #000;
+    font-weight: 400;
+}
+
+/*style rules for any question*/
+.any-question-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #181818;
+}
+
+.any-question {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 10px 25px 10px;
+}
+
+/*style rules for Trade the world’s most popular markets container are here*/
+.most-popular-market-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.most-popular-market-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    background-color: #aaa6a6;
+    border-radius: 10px;
+    width: 300px;
+    height: 120px;
+}
+
+/*style rules for investors  choice container are here*/
+.investor-choice-container {
+    background-color: rgb(233, 38, 158);
+    background-image: url(Photos/Logos/stock.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 800px;
+    background-position-y: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+}
+
+.investor-choice {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+}
+
+.investor-choice-speech {
+    background: rgba(192, 192, 192, 0.5);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    background-blend-mode: color-burn;
+    padding: 10px 30px;
+    border: 1px solid #fff;
+    border-radius: 15px;
+}
+
+.investor-choice-speech h4 {
+    margin: 0;
+    padding: 0;
+}
+
+.investor-choice-speech h3 {
+    margin: 0;
+    padding-top: 5px;
+}
+
+.invest-button {
+    color: #fff;
+    background-color: #181818;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 10px;
+}
+
+.invest-button:hover {
+    color: #fff;
+    background-color: #000;
+    text-decoration: none;
+}
+
+/*Fast and reliable withdrawal/deposit method container style rules are here*/
+.Fast-and-reliable-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e7d4d4;
+    padding: 20px 0;
+    width: 100%;
+    height: fit-content;
+}
+
+.Fast-and-reliable-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: fit-content;
+    background-color: #fff;
+    padding: 20px 10px;
+    border-radius: 15px;
+}
+
+.Fast-and-reliable-content h4 {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.Fast-and-reliable-content-img {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.Fast-and-reliable-content-img img {
+    width: 60px;
+    height: 60px;
+}
+
+/*investemtn ste rules are here*/
+.investment-plans-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    padding: 20px 0;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.investment-plans-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height:fit-content;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 10px;
+    border-radius: 10px;
+    background-color: #222;
+    color: rgba(255, 255, 255, .7);
+    margin: 0;
+}
+.investment-plans-card img{
+    width: 90%;
+    height: 200px;
+    border-radius: 15px;
+}
+.text-white{
+    color: rgba(255, 255, 255, .7);
+}
+
+/*Footer style rules are here*/
+.simpli_nestle {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 40px 0 40px 40px;
+    width: 100%;
+    background-color: #e7d4d4;
+}
+
+.simpli_nestle img {
+    background-color: rgb(18, 3, 83);
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+.all-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding: 0 0 40px 40px;
+    width: 100%;
+    height: fit-content;
+    background-color: #e7d4d4;
+}
+
+.footer-contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+}
+
+.footer-ul-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 20%;
+    height: fit-content;
+    width: 100%;
+    padding: 0;
+}
+
+.ul-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 5px;
+}
+
+.ul-details h5 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.ul-details ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ul-details ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.ul-details ul li a:hover {
+    color: rgb(238, 148, 12);
+}
+
+.social-handles {
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.social-handles ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 10%;
+}
+
+.social-handles ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.social-handles ul li a:hover {
+    color: #000;
+}
+
+.line {
+    display: flex;
+    align-self: center;
+    width: 100%;
+    height: 2px;
+    overflow: hidden;
+    background-color: #726f6f;
+}
+
+.terms-ul {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.terms-ul ul {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 5%;
+    padding: 0;
+}
+
+.li-line {
+    height: 15px;
+    width: 2px;
+    background-color: #726f6f;
+}
+
+.terms-ul ul li a {
+    text-decoration: none;
+    color: #706e6e;
+}
+
+.terms-ul ul li a:hover {
+    color: #000;
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 90%;
+    gap: 10px;
+}
+
+/*page under development sty6le rules are here*/
+.all-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(50%);
+    padding: 10px;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+}
+
+/*About-us.html style rules are here*/
+.about-us-nav-container {
+    width: 100%;
+    height: fit-content;
+    padding: 20px;
+    background-color: #333;
+}
+
+.about-us-nav-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-top: 60px;
+}
+
+.about-us-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 50%;
+    padding: 10px;
+    height: fit-content;
+}
+
+.about-us-header h1 {
+    color: #fff;
+    font-weight: 600;
+}
+
+.about-us-header p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    color: #928f8f;
+    font-size: larger;
+    font-weight: 500;
+}
+
+.about-us-nav-content ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    list-style: none;
+    padding: 0;
+}
+
+.about-us-nav-content ul li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 20px;
+}
+
+.about-transaction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: fit-content;
+    padding: 10px;
+}
+
+.about-transaction h2 {
+    margin: 0;
+    color: #b3b0b0;
+    font-weight: 600;
+}
+
+.about-transaction h2 span {
+    color: #6608FE;
+    font-size: large;
+}
+
+.about-transaction p {
+    background-color: #88d6e0;
+    color: #4f67cf;
+    margin: 0;
+    margin-top: 5px;
+    padding: 0 5px;
+    border-radius: 5px;
+}
+
+.trust-container {
+    padding: 30px 10px;
+    background-color: #f0f1f1;
+    display: flex;
+    flex-direction: column;
+}
+
+.trust-container h1 {
+    font-weight: 600;
+}
+
+.trust-container-para h3 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.trust-container ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    list-style: none;
+}
+
+.choose-us-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
+    padding: 20px 0 20px 60px;
+
+}
+
+.choose-us-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.choose-us-card-para {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+
+/*contact-us.html style rules are here*/
+.button-blue {
+    background-color: #6608FE;
+}
+
+.leave-massage {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.Massage-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    position: relative;
+}
+
+.Massage-input input {
+    padding-left: 30px;
+}
+
+.Massage-input span {
+    position: absolute;
+    left: 10px;
+}
+
+/*market and buy-and-sell.html style rules are here*/
+.tradingview-widget-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.buy-and-sell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 30px 0;
+    width: 100%;
+}
+
+/*our service style rules are here*/
+.knowledge-investors {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    padding: 30px 20px;
+    background-color: #e7eeed;
+}
+
+.knowledge {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 900px;
+    width: 45%;
+}
+
+.investors-choice {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    background-color: #fff;
+    gap: 5px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.our-service-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 40px 0;
+    background-color: #e7eeed;
+}
+
+.our-services-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: fit-content;
+    gap: 30px;
+    flex-wrap: wrap;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.our-services-container-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+    width: 40%;
+}
+
+.our-services-container-card h3 {
+    padding: 0;
+    margin: 0;
+}
+
+.our-services-container-card img {
+    width: 400px;
+    height: 350px;
+    border-radius: 10px;
+    padding: 0;
+}
+
+.market-counter-container {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.trading-CFD-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3eded;
+    padding: 20px;
+    border-radius: 10px;
+    width: 40%;
+}
+
+.service-imge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.service-imge img {
+    width: 80%;
+}
+
+.trading-CFD-card-ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    list-style: none;
+}
+
+.trading-CFD-card-ul li {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.trading-CFD-card-ul li i {
+    background-color: #f3eded;
+    color: blue;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 5px;
+}
+
+/*style rules for legal.html file are here*/
+.lagal-information {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    color: #000;
+    font-weight: 600;
+    flex-wrap: wrap;
+    padding: 30px 10px;
+}
+
+.lagal-infor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 80%;
+}
+
+.license {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    padding: 10px 20px;
+    gap: 20px;
+    background-color: #fff;
+    flex-wrap: wrap;
+    border: 1.5px solid #6608FE;
+    border-radius: 20px;
+}
+
+.license-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+
+}
+
+.license p {
+    width: 50%;
+}
+
+.ask-question {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
+    width: 90%;
+    padding: 10px;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    position: relative;
+    background: linear-gradient(to top left, white, rgb(5, 47, 87));
+    overflow: hidden;
+}
+
+.ask-question h1,
+p,
+a {
+    z-index: 10;
+}
+
+.ask-question img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 90%;
+}
+
+.trade-the-world {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.choose-investment-for-lagal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 90%;
+    height: fit-content;
+}
+
+.choose {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    flex-wrap: wrap;
+    width: 25%;
+    position: relative;
+}
+
+.yellow-and-widget {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    flex-wrap: wrap;
+    width: 70%;
+    position: relative;
+    padding: 40px 10px;
+}
+
+.yellow-absolute-bg {
+    width: 555px;
+    height: 405px;
+    background-color: rgb(221, 180, 142);
+    border-radius: 10px;
+    transform: rotate(-8deg);
+}
+
+.yellow-absolute-widget {
+    position: absolute;
+    width: 550px;
+    height: 400px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+/*sign-up and sign in style rules are here*/
+.signing {
+    background-color: #181818;
+    padding: 60px 10px 20px 10px;
+    min-height: 100vh;
+}
+
+.sign-up-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 20px;
+    padding: 20px;
+    background-color: #181818;
+    color: #adabab;
+    position: fixed;
+    z-index: 100;
+}
+
+.signing-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+
+}
+
+.have-accont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.have-accont a {
+    color: #adabab;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 2px solid #adabab;
+    border-radius: 10px;
+}
+
+.have-accont a:hover {
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #fff;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    gap: 15px;
+    width: 100%;
+    padding: 10px;
+    color: #adabab !important;
+
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    gap: 10px;
+    color: #adabab !important;
+}
+
+.formDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    flex-wrap: nowrap;
+}
+
+.input-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    min-width: 200px;
+    gap: 0;
+    position: relative;
+    margin-top: 10px;
+}
+
+.sign-up-icon {
+    background-color: #6608FE;
+    padding: 13px 15px;
+    font-size: 1rem;
+    color: #fff;
+    border-radius: 5px 0 0 5px;
+}
+
+.input-icon input {
+    padding: 14px;
+    width: 90%;
+    background-color: #000;
+    color: #adabab;
+    border: 1.5px solid #adabab;
+    border-radius: 0 10px 10px 0;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #e2dede !important;
+    font-size: 1.2rem;
+    background-color: none !important;
+}
+
+.weak {
+    color: red;
+}
+
+.moderate {
+    color: orange;
+}
+
+.strong {
+    color: green;
+}
+
+.strengthMessage {
+    font-size: 1em;
+    font-weight: 600;
+    padding: 0 10px;
+}
+
+.error-message {
+    color: #e54a41;
+    font-size: 1em;
+    font-weight: 600;
+    padding: 0 10px;
+}
+
+.footer-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-text a {
+    text-decoration: none;
+    color: #adabab;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
+
+/*terms of use style rules are here*/
+.speach {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 80%;
+    gap: 20px;
+    color: #181818;
+    font-weight: 600;
+
+}
+
+.Eligibility {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 80%;
+
+}
+
+/*team.html style rules are here*/
+.our-leaders {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.leaders-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+
+.leaders-profile {
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 90%;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile img {
+    width: 250px;
+    height: 200px;
+}
+
+.profile span {
+    background-color: rgb(184, 199, 221);
+    color: #181818;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.contact-infor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 80%;
+    padding: 30px 10px;
+    background-color: #e0dede;
+    border: 1px solid rgb(80, 150, 241);
+    border-radius: 10px;
+}
+
+/*style rules for process-deposit.html is here*/
+.process-deposit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    gap: 20px;
+    padding: 20px 10px;
+    font-weight: 600;
+}
+
+.process-deposit-speech {
+    padding: 10px 0 20px 0;
+    border-bottom: 1.5px solid #333;
+    color: #333;
+    width: 90%;
+}
+
+.coin-address {
+    padding: 10px;
+    border: 1.5px solid #adabab;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    white-space: normal;
+    display: inline-block;
+    width: 100%;
+    color: #181818;
+}
+
+@media (max-width: 960px) {
+    nav .nav-bar {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        gap: 10px;
+        position: absolute;
+        left: -100%;
+        top: -15px;
+        width: 100%;
+        height: 90vh;
+        padding-bottom: 40px;
+        text-align: center;
+        padding-top: 48px;
+        padding-bottom: 10px;
+        border-radius: 0 0 30px 30px;
+        background-color: #000;
+        transition: transform 0.5s ease-in-out;
+        z-index: 10;
+        letter-spacing: 2px;
+    }
+
+    .nav-bar.nav-active {
+        transform: translateX(100%);
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .burger.toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+        background-color: #ECFC07;
+    }
+
+    .burger.toggle .line2 {
+        background-color: #ECFC07;
+        opacity: 0;
+    }
+
+    .burger.toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+        background-color: #ECFC07;
+    }
+
+    nav .company-drop_down {
+        position: relative;
+        top: 5px;
+        background-color: none;
+    }
+
+    /*style rules for Trade with confidence*/
+    .in-symbol-container {
+        flex-direction: column;
+    }
+
+    .in-symbol {
+        width: 100%;
+        height: 400px;
+    }
+
+    .Mcdonald {
+        width: 150px;
+        height: 150px;
+    }
+
+    .Intel {
+        width: 120px;
+        height: 120px;
+    }
+
+    .Amazon {
+        width: 100px;
+        height: 100px;
+    }
+
+    .yahoo {
+        width: 70px;
+        height: 70px;
+    }
+
+    .in-symbol-5 {
+        width: 60px;
+        height: 60px;
+    }
+
+    .in-symbol-6 {
+        width: 55px;
+        height: 55px;
+    }
+
+    .in-symbol-7 {
+        width: 60px;
+        height: 60px;
+    }
+
+    .in-symbol-8 {
+        left: 28%;
+        top: 86%;
+        width: 20px;
+        height: 20px;
+    }
+
+    .get-started {
+        margin: 0;
+        padding: 0;
+    }
+
+    /*style rules for FAQs*/
+    .drawer-container {
+        flex-direction: column;
+    }
+
+    .f-a-q-drawer {
+        width: 100%;
+    }
+
+    .drawer-head {
+        gap: 10px;
+        padding: 5px;
+    }
+
+    /* style rules for begin trade in three steps*/
+    .trade-container-details-and-img {
+        flex-direction: column;
+    }
+
+    .trade-container-content-card {
+        width: 100%;
+    }
+
+    /*style rules for Trade the world’s most popular markets container are here*/
+    .most-popular-market-card {
+        width: 350px;
+        height: 120px;
+    }
+
+    /*style rules for investors  choice container are here*/
+    .investor-choice-container {
+        background-size: 700px;
+    }
+
+    /*our service style rules are here*/
+    .knowledge-investors {
+        flex-direction: column;
+    }
+
+    .knowledge {
+        width: 90%;
+    }
+
+    .investors-choice {
+        width: 100%;
+    }
+
+    .our-services-container {
+        flex-direction: column;
+    }
+
+    .our-services-container-card {
+        width: 80%;
+    }
+
+    .our-services-container-card img {
+        width: 100%;
+        height: 500px;
+        border-radius: 10px;
+    }
+
+    /*style rules for lagal.html file are here*/
+    .lagal-information {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        color: #000;
+        font-weight: 600;
+        flex-wrap: wrap;
+        padding: 30px 10px;
+    }
+
+    .lagal-infor {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+    }
+
+    .license {
+        justify-content: center;
+        padding: 15px;
+    }
+
+    .license-btn {
+        justify-content: space-around;
+        width: 80%;
+
+    }
+
+    .license p {
+        width: 80%;
+    }
+
+    .choose-investment-for-lagal {
+        flex-direction: column;
+    }
+
+    .choose {
+        width: 80%;
+    }
+
+    .yellow-and-widget {
+        width: 100%;
+    }
+
+    .yellow-absolute-bg {
+        width: 95%;
+        height: 405px;
+    }
+
+    .yellow-absolute-widget {
+        width: 95%;
+        height: 400px;
+    }
+}
+
+@media (max-width: 700px) {
+
+    /*our service style rules are here*/
+    .trade-container-header {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /*style rules for investors  choice container are here*/
+    .investor-choice-container {
+        background-size: 100%;
+    }
+
+    /*style rules for laagl.html file are here*/
+    .ask-question img {
+        right: -30px;
+        height: 80%;
+    }
+
+    .investor-choice {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+    }
+
+    .leave-massage {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .Massage-input {
+        width: 100%;
+    }
+
+    .about-us-header {
+        width: 100%;
+    }
+
+    /*our service style rules are here*/
+    .our-services-container-card img {
+        height: 300px;
+    }
+
+    .trading-CFD-card {
+        width: 90%;
+    }
+
+    .service-imge img {
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 450px) {
+    .counter {
+        flex-direction: column;
+    }
+
+    .counter-wrap {
+        flex-direction: column;
+
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav .nav-bar {
+        top: 0;
+        justify-content: center;
+        gap: 5%;
+    }
+
+    /*this tyle is for the purple background security details*/
+    .get-started {
+        flex-direction: column;
+    }
+
+    /*style rules for Trade the world’s most popular markets container are here*/
+    .most-popular-market-card {
+        width: 95%;
+        height: fit-content;
+    }
+
+    /*style rules for investors  choice container are here*/
+    .investor-choice-container {
+        background-size: 120%;
+    }
+
+    /*Footer style rules are here*/
+    .simpli_nestle {
+        justify-content: center;
+        align-items: center;
+        background-color: #ccc0c0;
+        padding: 10px;
+    }
+
+    .all-footer {
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .footer-ul-content {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .footer-contents {
+        gap: 10px;
+    }
+
+    .social-handles ul {
+        gap: 20px;
+        padding: 20px;
+    }
+
+    /*About-us.html style rules are here*/
+    .about-us-nav-content {
+        margin-top: 50px;
+        padding-top: 100px;
+    }
+
+    /*our service style rules are here*/
+    .our-services-container-card img {
+        height: 200px;
+    }
+
+    /*style rules for laagl.html file are here*/
+    .ask-question img {
+        position: absolute;
+        bottom: 0;
+        right: -25%;
+        height: 70%;
+    }
+
+}

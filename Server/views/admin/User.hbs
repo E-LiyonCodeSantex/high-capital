@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .goog-logo-link {
+        display: none !important;
+    }
+
+    .goog-te-gadget {
+        color: transparent !important;
+    }
+
+    .goog-te-gadget .goog-te-combo {
+        color: black !important;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!--forawesome-->
+    <script src="https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/adminStyle.css">
+</head>
+
+<body>
+    <section>
+        <h2>User Management</h2>
+        <div class="user-container">
+            <script>
+                const users = {{{ usersJSON }}}; // Initialize the users array for JavaScript
+            </script>
+            {{#each users}}
+            <div class="users-card">
+                <div class="active-inactive green">
+                    {{#if (isOnline lastActiveAt)}}
+                    <span class="active-indicator" title="Active"></span>
+                    {{/if}}
+                    <img src="{{profilePhoto}}" alt="User" width="50px" class="user-img image" />
+                </div>
+                <div class="user-name">
+                    <span class=" user-name-email">{{name}}</span>
+                    <span class="user-name-email">{{email}}</span>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+        <div class=" detailed-card">
+            <div class="detailed-card-content">
+                <div class="detailed-card-header">
+                    <img src="{{profilePhoto}}" alt="User" width="50px" class="user-img image" id="user-imgs" />
+                    <i class="fa-solid fa-xmark close-button"></i>
+                </div>
+                <div class="user-name">
+                    <p>Name: <span class="normal-size" id="user-name"></span></p>
+                    <p>Email: <span class="normal-size" id="user-email"></span></p>
+                    <p>Bitcoin Wallet: <span class="normal-size" id="user-bitcoin"></span></p>
+                    <p>USDT Wallet: <span class="normal-size" id="user-usdt"></span></p>
+                    <p>Ethereum Wallet: <span class="normal-size" id="user-ethereum"></span></p>
+                    <p>Last Login: <span class="normal-size" id="user-last-login"></span></p>
+                    <p>Status: <span class="normal-size" id="user-is-active"></span></p>
+                    <a href="#" href="/admin/user/{{_id}}/transactions" id="check-transactions-btn"
+                        data-user-id="">Check User Transactions</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <div id="transactions-modal" class="transactions-modal">
+        <div class="transactions-content">
+            <div class="transactions-content-head">
+                <h3>User Transactions</h3>
+                <span id="close-transactions" class="large-size">&times;</span>
+            </div>
+            <div class="transaction-head-divider"></div>
+            <div class="transactions-content-head">
+                <h3 class="green cp" id="transaction-deposit">Deposits</h3>
+                <h3 class="green cp" id="transaction-withdrawal">Withdrawals</h3>
+            </div>
+        </div>
+        <div id="transactions-list" class="transactions-list">
+
+            <!-- Deposit and trasaction view from user management will be rendered here-->
+
+        </div>
+    </div>
+
+    <!-- Image Zoom Modal -->
+    <div id="image-zoom-modal" class="image-zoom-modal" style="display:none;">
+        <span id="close-zoom" class="close-zoom">&times;</span>
+        <img id="zoomed-image" class="zoomed-image" src="" alt="Zoomed Receipt" />
+    </div>
+
+    <!--<script>
+        const users = {{{ users }}}; // Pass the users array to the frontend
+    </script>-->
+
+    <script src="/adminScript.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .goog-logo-link {
+        display: none !important;
+    }
+
+    .goog-te-gadget {
+        color: transparent !important;
+    }
+
+    .goog-te-gadget .goog-te-combo {
+        color: black !important;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Investment Plans</title>
+    <!--forawesome-->
+    <script src="https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/adminStyle.css">
+</head>
+
+<body>
+    <main>
+        <section>
+            <h2>Investment Plans</h2>
+            <div class="total-plan-container">
+                {{#each plans}}
+                <div class="my-plan">
+                    <div class="my-plan-header">
+                        <span><i class="fas fa-database close-button"></i></span>
+                        <h4>{{this.name}}</h4>
+                    </div>
+                    <ul>
+                        <li>Minimum: <b>${{this.minDeposit}}</b></li>
+                        <li>Maximum: <b>${{this.maxDeposit}}</b></li>
+                        <li>Daily Profit: <b>{{this.dailyProfit}}%</b></li>
+                        <li>Duration: <b>{{this.duration}} Day(s)</b></li>
+                        <li>Referral Bonus: <b>{{this.referralBonus}}%</b></li>
+                    </ul>
+                    <div class="my-plan-buttons">
+                        <b class="edit-plan plan-button" data-id="{{this._id}}">Edit Plan</b>
+                        <b class="delete-plan plan-button" data-id="{{this._id}}">Delete Plan</b>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+
+            <button class="add-plan plan-button">Add Plans</button>
+        </section>
+    </main>
+
+
+    {{!-- Modal for creating/Editing Plans --}}
+    <div id="plan-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Add New Plans</h3>
+                <i class="fa-solid fa-xmark close-modal"></i>
+            </div>
+
+            <form id="plan-form">
+                <input type="hidden" id="plan-id" name="planId">
+                <div>
+                    <label for="plan-name">Plan Name:</label>
+                    <input type="text" id="plan-name" name="name" required>
+                </div>
+                <div>
+                    <label for="min-deposit">Minimum Deposit:</label>
+                    <input type="number" id="min-deposit" name="minDeposit" required>
+                </div>
+                <div>
+                    <label for="max-deposit">Maximum Deposit:</label>
+                    <input type="number" id="max-deposit" name="maxDeposit" required>
+                </div>
+                <div>
+                    <label for="daily-profit">Daily Profit (%):</label>
+                    <input type="number" id="daily-profit" name="dailyProfit" required>
+                </div>
+                <div>
+                    <label for="duration">Duration (Days):</label>
+                    <input type="number" id="duration" name="duration" required>
+                </div>
+                <div>
+                    <label for="referral-bonus">Referral Bonus (%):</label>
+                    <input type="number" id="referral-bonus" name="referralBonus" required>
+                </div>
+                <button type="submit" class="plan-button">Save Plan</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    <script src="/adminScript.js"></script>
+</body>
+
+</html>

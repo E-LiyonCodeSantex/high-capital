@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zxx" dir="ltr">
+<style>
+    .goog-logo-link {
+        display: none !important;
+    }
+
+    .goog-te-gadget {
+        color: transparent !important;
+    }
+
+    .goog-te-gadget .goog-te-combo {
+        color: black !important;
+    }
+</style>
+
+<head>
+    <!-- GetButton.io widget -->
+    <script type="text/javascript">
+        (function () {
+            var options = {
+                whatsapp: "+61485972443", // WhatsApp number
+                call_to_action: "Message us", // Call to action
+                button_color: "#FF6550", // Color of button
+                position: "left", // Position may be 'right' or 'left'
+                pre_filled_message: "How do I get started with your company?", // WhatsApp pre-filled message
+            };
+            var proto = 'https:', host = "getbutton.io", url = proto + '//static.' + host;
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        })();
+    </script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/66c7afbeea492f34bc092681/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+    <!-- Standard Meta -->
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#181818">
+    <!-- Site Properties -->
+    <title>simplinestle.org | reset password </title>
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="/message.js">
+    <!-- UIkit JavaScript -->
+    <script src="Uikit/js/uikit.min.js"></script>
+    <script src="Uikit/js/uikit-icons.min.js"></script>
+    <!--forawesome-->
+    <script src="https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
+
+    <!-- Favicon and apple icon -->
+    <link rel="shortcut icon" href="/static/app/images/favicon.54f7c0a8907c.png" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" href="/static/app/images/favicon.54f7c0a8907c.png">
+    <!-- css -->
+
+    <!--for google translator-->
+    <script src="https://www.gstatic.com/translate/translate_tts.js"></script>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <nav>
+        <div id="google_translate_element"></div>
+        <img src="https://res.cloudinary.com/dmlxkewu7/image/upload/v1737962980/simpli_nestle-logo_rulund.png"
+            data-src="https://res.cloudinary.com/dmlxkewu7/image/upload/v1737962980/simpli_nestle-logo_rulund.png"
+            alt="LOGO" width="146" data-uk-img>
+    </nav>
+    <div class="signing">
+        <div class="sign-up-header">
+            <div class="signing-header">
+                <b>Welcome</b>
+            </div>
+            <div class="have-accont">
+                <span>Access Account?</span>
+                <a href="sign-up.html">ACCOUNT</a>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h2>Enter the code sent to your email</h2>
+            <form class="signup-form" action="/user/verifyResetCode" method="POST">
+                <input type="hidden" name="email" value="{{email}}">
+                <div class="input-icon">
+                    <i class="fa-solid fa-key sign-up-icon"></i>
+                    <input type="text" name="resetCode" placeholder="Enter code" class="input-field" required>
+                </div>
+                <div class="input-icon">
+                    <i class="fa-solid fa-key sign-up-icon"></i>
+                    <input type="password" name="newPassword" placeholder="New password" class="input-field" required>
+                    <i class="fa-solid fa-eye toggle-password"></i>
+                </div>
+                <div class="input-icon">
+                    <i class="fa-solid fa-key sign-up-icon"></i>
+                    <input type="password" name="confirmPassword" placeholder="Confirm new password" class="input-field"
+                        required>
+                    <i class="fa-solid fa-eye toggle-password"></i>
+                </div>
+                <p class="error-message">{{#if error}}{{error}}{{else}}&nbsp;{{/if}}</p>
+                <button type="submit" class="purple--button">Reset Password
+                    <i class="fa fa-sign-in"></i>
+                </button>
+            </form>
+
+            <p class="footer-text">
+                <a href="about-us.html">About Us</a>
+                <a href="term-of-use.html">Terms And Conditions</a>
+            </p>
+        </div>
+
+    </div>
+
+
+
+    <script src="/script.js"></script>
+    
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                { pageLanguage: 'en' },
+                'google_translate_element'
+            );
+        } 
+    </script>
+    <!-- Google tranlator -->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .goog-logo-link {
+        display: none !important;
+    }
+
+    .goog-te-gadget {
+        color: transparent !important;
+    }
+
+    .goog-te-gadget .goog-te-combo {
+        color: black !important;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Withdrawal</title>
+    <!--forawesome-->
+    <script src="https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/loggedInStyle.css">
+</head>
+
+<body>
+    <section>
+        <div class="have-accont">
+            <a href="/user/Dashboard"> Access Your Dashboard</a>
+            <p class="header">Withdrawal</p>
+        </div>
+
+        <form action="/user/withdrawal" class="deposit-form gap-and-padding dark-color margin-bottom" method="POST">
+            <div class="form-group">
+                <label>Amount:</label>
+                <input type="number" name="amount" class="darker-color select-input" required min="1" step="any">
+            </div>
+
+            <div class="form-group">
+                <label>Method:</label>
+                <select name="method" class="darker-color select-input" required>
+                    <option value="select">Select withdrawal method</option>
+                    <option value="bank">Bank</option>
+                    <option value="crypto" id="wallet-to-withdarw">Crypto</option>
+                </select>
+            </div>
+
+            <div id="crypto-fields" class="darker-color select-input withdrawal-adress-field" style="display:none;">
+                <div class="form-group">
+                    <label>Select wallet to withdrawal into:</label>
+                    <select name="walletName" class="darker-color select-input" required>
+                        <option value="selectWallet">Select Wallet</option>
+                        {{#each wallets}}
+                        <option value="{{this.name}}">{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Wallet Adress:</label>
+                    <input type="text" name="walletAddress" value="" placeholder="Enter your wallet address">
+                </div>
+            </div>
+            <div id="bank-fields" class="darker-color select-input withdrawal-adress-field" style="display:none;">
+                <div class="form-group">
+                    <label>Bank Name:</label>
+                    <input type="text" name="bankName">
+                </div>
+                <div class="form-group">
+                    <label>Acount number:</label>
+                    <input type="number" name="acountNumber" placeholder="Enter your account number">
+                </div>
+                <div class="form-group">
+                    <label>Acount Name:</label>
+                    <input type="text" name="acountName">
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button"> Request Withdrawal <i class="fa fa-sign-in"></i></button>
+        </form>
+
+        {{#if withdrawals.length}}
+        <h3>Your Withdrawal Requests</h3>
+        <div class="withdrawal-request">
+            {{#each withdrawals}}
+            <!-- ...your withdrawal card... -->
+            <div class="withdrawal-table">
+                <p>
+                    <span class="deem-white-color">Amount:</span>
+                    <span class="text-warning">${{amount}}</span>
+                </p>
+
+                <p>
+                    <span class="deem-white-color">Method:</span>
+                    <span class="text-warning">{{capitalize method}}</span>
+                </p>
+
+                <p>
+                    <span class="deem-white-color">Wallet/Bank:</span>
+                    <span class="text-warning">
+                        {{#if walletName}}{{capitalize walletName}}{{/if}}
+                        {{#if bankName}}{{capitalize bankName}}{{/if}}
+                    </span>
+                </p>
+
+                <p>
+                    <span class="deem-white-color">Adress/Ac Number:</span>
+                    <span class="text-warning">
+                        {{#if acountNumber}}{{acountNumber}}{{/if}}
+                        {{#if walletAddress}}{{walletAddress}}{{/if}}
+                    </span>
+                </p>
+
+                <p>
+                    <span class="deem-white-color">Status:</span>
+                    {{#if (eq status "pending")}}
+                    <span class="text-danger">Pending</span>
+                    {{else}}
+                    <span class="text-warning">{{status}}</span>
+                    {{/if}}
+                </p>
+
+                <p>
+                    <span class="deem-white-color">Requested At:</span>
+                    <span class="text-warning requested-at" data-date="{{requestedAt}}"></span>
+                </p>
+
+                <p>
+                    <span class="deem-white-color">Approved At:</span>
+                    <span class="text-warning requested-at" data-date="{{processedAt}}"></span>
+                </p>
+
+            </div>
+            {{/each}}
+        </div>
+        {{else}}
+        <p class="no-withdrawal-request">No withdrawal requests found.</p>
+        {{/if}}
+
+        <a href="/user/history" class="submit-button"> View History</a>
+
+        <!-- JavaScript to handle image zoom -->
+        <script>
+            // Show/hide fields based on method
+            document.querySelector('select[name="method"]').addEventListener('change', function () {
+                document.getElementById('crypto-fields').style.display = this.value === 'crypto' ? '' : 'none';
+                document.getElementById('bank-fields').style.display = this.value === 'bank' ? '' : 'none';
+            });
+        </script>
+
+        <!-- Format requestedAt and processedAt dates -->
+        <script>
+            document.querySelectorAll('.requested-at').forEach(function (el) {
+                const raw = el.getAttribute('data-date');
+                if (!raw || raw === "null") {
+                    el.textContent = "Pending";
+                } else {
+                    const date = new Date(raw);
+                    if (isNaN(date.getTime())) {
+                        el.textContent = "Pending";
+                    } else {
+                        el.textContent = date.toString().split(' GMT')[0];
+                    }
+                }
+            });
+        </script>
+
+
+    </section>
+
+
+    <!-- Image Zoom Modal -->
+    <div id="image-zoom-modal" class="image-zoom-modal" style="display:none;">
+        <span id="close-zoom" class="close-zoom">&times;</span>
+        <img id="zoomed-image" class="zoomed-image" src="" alt="Zoomed Receipt" />
+    </div>
+    <script src="/script.js"></script>
+
+    <script id="plans-data" type="application/json">{{{json plans}}}</script>
+</body>
+
+</html>

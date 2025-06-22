@@ -1,0 +1,1216 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1b1b1c;
+}
+
+
+/* for all text waining and prompt*/
+.status-unconfirmed {
+    color: #F44336 !important; /* Red */
+}
+.status-confirmed {
+    color: #FFC107 !important; /* Amber */
+}
+.status-completed {
+    color: #4CAF50 !important; /* Green */
+}
+/* Add more as needed */
+.border {
+    padding: 5px;
+    border: 1.5px solid #fff;
+}
+
+.text-danger {
+    font-size: 1rem;
+    color: #D32F2F !important;
+}
+
+.text-warning {
+    color: #ffaf00 !important;
+}
+
+.massage-prompt {
+    display: none;
+    max-width: 90%;
+}
+
+.prompt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(204, 92, 92);
+    color: rgb(124, 7, 7);
+    border: 10px solid rgb(204, 92, 92);
+    border-radius: 6px;
+}
+
+.no-deposit-twice-prompt {
+    display: none;
+    max-width: 90%;
+}
+
+/*for menu bars (bugger) only*/
+.button-one-five-size-no-padding {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+/*google translator continer style rules are here*/
+#google_translate_element select {
+    background-color: #181818;
+    color: #fff;
+    width: 150px;
+    border: 1.5px solid #333;
+    padding: 8px;
+    border-radius: 10px;
+}
+
+/*style rules for general containers*/
+a {
+    text-decoration: none;
+}
+
+.deem-white-color {
+    color: #b8b5b5 !important;
+}
+
+.dark-color {
+    background-color: #1b1b1c;
+    color: #ffffff;
+}
+
+.color-white {
+    color: #ffffff !important;
+}
+
+.white-color {
+    background-color: #cecaca;
+    color: #1b1b1c;
+}
+
+.green-black-buttons {
+    background-color: #1b1b1c;
+    color: #adabab;
+    border: 1.5px solid #19d895;
+    border-radius: 6px;
+    text-decoration: none;
+    ;
+}
+
+.green-black-buttons:hover {
+    background-color: #19d895;
+    text-decoration: none;
+    color: #181818;
+}
+
+.white-buttons {
+    background-color: none;
+    color: #adabab;
+    border-radius: 10px;
+    text-decoration: none;
+    border: none;
+}
+
+.white-buttons:hover {
+    border: none;
+    color: #fff;
+    text-decoration: none;
+}
+
+.yellow-buttons {
+    background-color: #1b1b1c;
+    color: #adabab;
+    border: 1.5px solid #ffaf00;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.yellow-buttons:hover {
+    background-color: #ffaf00;
+    text-decoration: none;
+    color: #181818;
+}
+
+.green {
+    color: green;
+}
+
+.green-buttons {
+    background-color: #1b1b1c;
+    color: #adabab;
+    border: 1.5px solid #19d895;
+    border-radius: 6px;
+    text-decoration: none;
+    ;
+}
+
+.green-buttons:hover {
+    background-color: #19d895;
+    text-decoration: none;
+    color: #fff;
+}
+
+.blue-buttons {
+    background-color: #1b1b1c;
+    color: #adabab;
+    text-decoration: none;
+    border: 1.5px solid #2196f3;
+    border-radius: 6px;
+}
+
+.blue-buttons:hover {
+    text-decoration: none;
+    color: #fff;
+    background-color: #2196f3;
+}
+
+.button-size-with-padding {
+    font-size: 1rem;
+    padding: 7px 15px;
+}
+
+.gap-and-padding {
+    gap: 10px;
+    padding: 10px;
+}
+
+.margin-bottom {
+    margin-bottom: 15px;
+}
+
+.margin {
+    margin: 10px;
+}
+
+.font-weight {
+    font-weight: 600;
+}
+
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-wrap: break-word;
+}
+
+.border-with-padding {
+    padding: 10px;
+    border: 1.5px solid #adabab;
+}
+
+/* nav bar style rules are here*/
+.left-bugger {
+    display: block;
+}
+
+.right-bugger {
+    display: none;
+}
+
+.nav-container {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.nav-bar {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-left: 0;
+    align-items: top;
+    justify-content: space-between;
+    background-color: #1b1b1c;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    gap: 10px;
+    transition: left 0.3s ease-out;
+    z-index: 1000;
+}
+
+.navbar-brand-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.count-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: #fff;
+}
+
+.counter {
+    background-color: #ffaf00 !important;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 5px;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    left: 12px;
+}
+
+.navbar-brand {
+    margin: 0 10px;
+}
+
+.logo {
+    height: 40px;
+    transition: 0.2s ease-out;
+    display: flex;
+}
+
+.logo-active {
+    display: none;
+}
+
+.nav-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+}
+
+/*All logged in maain style rules are here*/
+section {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    padding: 20px 10px;
+    width: 100%;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    background-color: #181818;
+    min-height: 100vh;
+}
+
+main {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    margin: 0;
+    padding-bottom: 30px;
+    gap: 10px;
+
+}
+
+.bgc {
+    background-color: #e7eeed;
+    margin: 0;
+}
+
+.menu-left {
+    display: none;
+    position: absolute;
+    margin-top: 55px;
+    width: 100%;
+    max-width: 0;
+    height: fit-content;
+    padding: 20px 10 70px 0;
+    z-index: 100;
+    background-color: #181818;
+    border: ipx solid rgba(0, 0, 0, 0.7);
+    transition: max-width 0.5s ease-in-out;
+}
+
+.left-menu-active {
+    max-width: 250px;
+    z-index: 100;
+    padding: 10px;
+    display: flex;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.nav-active {
+    padding-left: 25%;
+    transition: 0.3s ease-in-out;
+}
+
+.profile-and-lng {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-direction: column;
+    width: 100%;
+}
+
+.profile-name-n-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
+}
+
+.profile-picture {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #adabab;
+    border-radius: 50%;
+}
+
+.last-loggedin {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 20px;
+    width: 100%;
+    height: fit-content;
+    list-style: none;
+}
+
+.nav-item {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+
+}
+
+.nav-link {
+    display: flex;
+    justify-self: start;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: #adabab;
+    font-size: larger;
+    font-weight: 400;
+    width: 100%;
+    padding: 10px 10px 10px 20px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-link span {
+    padding-left: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-link:hover span {
+    padding-left: 0;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    background-color: #fff;
+    color: #000;
+    font-weight: 600;
+    width: 100%;
+}
+
+.nav-link:hover i {
+    color: #adabab;
+}
+
+.menu-icons {
+    padding-top: 20px;
+    display: block;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    gap: 25px;
+    width: 70px;
+    height: fit-content;
+    padding: 10px 0;
+    z-index: 9;
+}
+
+.menu-icons-active {
+    display: none;
+}
+
+.nav-item-hover {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: fit-content;
+    padding: 10px 30px 10px 10px;
+    border-radius: 0 8px 8px 0;
+}
+
+.nav-item-hover:hover {
+    background-color: rgb(9, 35, 92);
+
+}
+
+.nav-hover {
+    display: flex;
+    justify-self: start;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #adabab;
+    font-size: larger;
+    font-weight: 400;
+    width: fit-content;
+    padding: 10px 10px 10px 20px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-hover span {
+    padding-left: 5px;
+    transition: 0.3s ease-in-out;
+    display: none;
+}
+
+.nav-hover i {
+    font-size: 1.5rem;
+    background-color: #181818;
+}
+
+.nav-hover:hover span {
+    padding-left: 0;
+    display: block;
+    transition: 0.3s ease-in-out;
+}
+
+/*style rule for account summary in logged in dashboard*/
+.account-summary-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    padding-top: 40px;
+    width: 100%;
+    height: fit-content;
+}
+
+.account-and-history {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: fit-content;
+    padding: 15px;
+}
+
+.account-summary {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 400px;
+    height: fit-content;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.sumary-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 12px;
+    border-bottom: 2px solid #adabab;
+}
+
+.balance-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 15px;
+    width: 100%;
+}
+
+.deposit-and-withdrawal {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 10px;
+    width: 100%;
+    height: fit-content;
+}
+
+.d-and-w {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 150px;
+    height: 150px;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.divider {
+    width: 2px;
+    height: 50px;
+}
+
+.referal {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 350px;
+    height: fit-content;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px;
+    border: 2px solid #adabab;
+}
+
+.referal-link {
+    padding: 10px;
+    border: 1.5px solid #adabab;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    white-space: normal;
+    display: inline-block;
+    width: 100%;
+}
+
+.popular-market {
+    width: 90%;
+    justify-content: start;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.all-balance-container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.all-transactions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+/*deposit.html style rules are here*/
+.signing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #181818;
+    padding: 20px 0;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.sign-up-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 20px;
+    padding: 10px;
+    color: #adabab;
+}
+
+.signing-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+
+}
+
+.have-accont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    text-decoration: none;
+    color: #adabab;
+}
+
+.have-accont a {
+    text-decoration: none;
+    color: #adabab;
+    padding: 5px;
+}
+
+.have-accont a:hover {
+    color: #fff;
+    text-decoration: none;
+    padding: 3px;
+    border: 2px solid #fff;
+}
+
+
+.header {
+    color: #adabab;
+    text-decoration: none;
+    padding: 5px 10px;
+    display: flex;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #adabab;
+    border-radius: 10px;
+    text-transform: uppercase;
+}
+
+.deposit-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    margin-top: 15px;
+    width: 90%;
+    height: fit-content;
+    padding: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 8px;
+    padding: 10px;
+}
+
+.blue-link {
+    text-decoration: none;
+    color: #2196f3;
+    font-size: medium;
+    font-weight: 500;
+}
+
+.blue-link:hover {
+    text-decoration: underline;
+}
+
+.select-input {
+    display: flex;
+    padding: 10px;
+    border: 1.5px solid #adabab;
+    border-radius: 6px;
+}
+
+.submit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #6608FE;
+    color: #fff;
+    font-size: large;
+    cursor: pointer;
+}
+
+.withdrawal-table .for-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 10px;
+    width: 100%;
+}
+
+.for-image span {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+}
+
+.footer-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-text a {
+    text-decoration: none;
+    color: #adabab;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
+
+/*withdrawal.hbs style rules are here*/
+.withdrawal-request {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 10px;
+    width: 90%;
+    height: fit-content;
+}
+
+.withdrawal-table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 5px;
+    width: 100%;
+    max-width: 300px;
+    flex-wrap: wrap;
+    height: fit-content;
+    padding: 0;
+    background-color: #1f1e1e !important;
+    border: 1px solid #adabab;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.withdrawal-table p {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    gap: 10px;
+    padding: 0 10px;
+    border-bottom: 1px solid #adabab !important;
+}
+
+.withdrawal-table p:last-of-type {
+    border-bottom: none !important;
+}
+
+.withdrawal-table p :nth-child(1) {
+    font-weight: normal;
+    width: 110px;
+    flex-wrap: wrap;
+    line-break: anywhere;
+}
+
+.withdrawal-adress-field {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    max-width: 300px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.withdrawal-adress-field input {
+    display: flex;
+    padding: 10px;
+    border: 1.5px solid #adabab;
+    border-radius: 6px;
+}
+
+.detail-deposit-table {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    flex-wrap: wrap;
+    width: 90%;
+    max-width: 300px;
+    background-color: #1f1e1e !important;
+    border: 1px solid #adabab;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    border-radius: 10px;
+    padding: 0 !important;
+    gap: 10px;
+}
+.detail-deposit-table-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #adabab !important;
+}
+.detail-deposit-table p {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    gap: 10px;
+    padding: 10px 10px 0 10px;
+    border-bottom: 1px solid #adabab !important;
+}
+.detail-deposit-table p :nth-child(1) {
+    font-weight: normal;
+    width: 110px;
+    flex-wrap: wrap;
+    line-break: anywhere;
+}
+.detail-deposit-table p:last-of-type {
+    border-bottom: none !important;
+}
+
+/*settings.hbs style rules are here*/
+.profile-settings-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(225, 225, 225, 0.7);
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
+    width: 90%;
+    height: fit-content;
+    padding: 20px;
+}
+
+.profile-photo-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.profile-fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 90%;
+    height: fit-content;
+    padding: 10px;
+}
+
+.profile-fields label {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+}
+
+.profile-fields input {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    font-size: medium;
+    border: 1.5px solid #adabab;
+    border-radius: 6px;
+}
+
+.profile-settings-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/*History style rules are here*/
+.investment-plans-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+    height: fit-content;
+    padding: 20px 10px;
+    flex-wrap: wrap;
+}
+
+.investment-plans {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    max-width: 250px;
+    height: fit-content;
+    padding: 20px 10px;
+    gap: 15px;
+    flex-wrap: wrap;
+    background-color: #222;
+    color: rgba(255, 255, 255, .7);
+    border: 1.5px solid rgba(255, 255, 255, .7);
+    border-radius: 10px;
+}
+
+.get-started {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, .7);
+    color: #222;
+    text-decoration: none;
+    transition: 0.2s ease-in;
+}
+
+.get-started:hover {
+    background-color: #222;
+    color: #fff;
+    text-decoration: none;
+}
+
+.investment-plans-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 10px;
+    border-radius: 10px;
+    background-color: #222;
+    color: rgba(255, 255, 255, .7);
+    margin: 0;
+}
+
+.investment-plans-card img {
+    width: 90%;
+    height: 200px;
+    border-radius: 15px;
+}
+
+.text-white {
+    color: rgba(255, 255, 255, .7);
+}
+
+/*style rules for zoom image are here*/
+.image-zoom-modal {
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.zoomed-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+    border-radius: 8px;
+}
+
+.close-zoom {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+.form-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    color: rgba(255, 255, 255, .7);
+    margin-bottom: 20px;
+}
+
+.footer-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+@media (max-width:750px) {
+    .nav-icon-container {
+        margin-top: 38px;
+    }
+
+    .logo {
+        height: 30px;
+        width: auto;
+    }
+
+    .logo-active {
+        display: flex;
+    }
+
+    .navbar-brand {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 20px;
+    }
+
+    .left-bugger {
+        display: none;
+    }
+
+    .right-bugger {
+        display: block;
+    }
+
+    .menu-logo {
+        display: none;
+    }
+
+    .menu-icons {
+        display: none;
+    }
+
+    .left-menu-active {
+        max-width: 100%;
+        z-index: 9;
+        margin-top: 90px;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .nav-active {
+        padding-left: 10px;
+        transition: 0.3s ease-in-out;
+    }
+
+    .signing {
+        padding: 50px 0;
+    }
+
+    /*style rule for account summary in logged in dashboard*/
+    .account-summary-container {
+        margin-top: 50px;
+    }
+
+    .account-and-history {
+        flex-direction: column;
+    }
+
+    .account-summary {
+        width: 100%;
+    }
+
+    .referal {
+        width: 90%;
+        font-size: medium;
+    }
+
+
+}
+
+@media(max-width:350px) {
+    .deposit-and-withdrawal {
+        flex-direction: column;
+    }
+
+    .divider {
+        width: 80%;
+        height: 2px;
+    }
+
+    .account-summary-container {
+        font-size: medium;
+    }
+}

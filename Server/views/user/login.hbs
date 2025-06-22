@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zxx" dir="ltr">
+<style>
+    .goog-logo-link {
+        display: none !important;
+    }
+
+    .goog-te-gadget {
+        color: transparent !important;
+    }
+
+    .goog-te-gadget .goog-te-combo {
+        color: black !important;
+    }
+</style>
+
+<head>
+    <!-- GetButton.io widget -->
+    <script type="text/javascript">
+        (function () {
+            var options = {
+                whatsapp: "+61485972443", // WhatsApp number
+                call_to_action: "Message us", // Call to action
+                button_color: "#FF6550", // Color of button
+                position: "left", // Position may be 'right' or 'left'
+                pre_filled_message: "How do I get started with your company?", // WhatsApp pre-filled message
+            };
+            var proto = 'https:', host = "getbutton.io", url = proto + '//static.' + host;
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        })();
+    </script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/66c7afbeea492f34bc092681/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+    <!-- Standard Meta -->
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#181818">
+    <!-- Site Properties -->
+    <title>simplinestle.org | Home </title>
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="/Uikit/css/uikit.min.css">
+    <!-- UIkit JavaScript -->
+    <script src="Uikit/js/uikit.min.js"></script>
+    <script src="Uikit/js/uikit-icons.min.js"></script>
+    <!--forawesome-->
+    <script src="https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
+
+    <!-- Favicon and apple icon -->
+    <link rel="shortcut icon" href="/static/app/images/favicon.54f7c0a8907c.png" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" href="/static/app/images/favicon.54f7c0a8907c.png">
+    <!-- css -->
+
+    <!--for google translator-->
+    <script src="https://www.gstatic.com/translate/translate_tts.js"></script>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="signing">
+        <div class="sign-up-header">
+            <div class="signing-header">
+                <b>Welcome</b>
+            </div>
+            <div class="have-accont">
+                <span>Don't have an account?</span>
+                <a href="/user/signUp">REGISTER</a>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <span>Enter your details below.</span>
+            <form id="signup-form" class="signup-form" action="/user/login" method="POST">
+                <div class="formDetails">
+                    <div class="input-icon">
+                        <i class="fa-regular fa-envelope sign-up-icon"></i>
+                        <input type="text" name="email" id="email" placeholder="Email Address" writingsuggestions="true"
+                            value="{{email}}">
+                    </div>
+                    <span class="error-message" id="email-error">{{#if
+                        emailError}}{{emailError}}{{else}}&nbsp;{{/if}}</span>
+
+                </div>
+
+                <div class="formDetails">
+                    <div class="input-icon">
+                        <i class="fa-solid fa-key sign-up-icon"></i>
+                        <input type="password" name="password" id="password" placeholder="Password"
+                            writingsuggestions="true">
+                        <i class="fa-solid fa-eye toggle-password"></i>
+                    </div>
+                    <span class="error-message">{{#if
+                        passwordError}}{{passwordError}}{{else}}&nbsp;{{/if}}</span>
+                </div>
+
+                <p class='text-warning'><a href="/user/passwordReset">Forgot Password?</a></p>
+                <button type="submit" class="purple--button" id="sign-up">SIGN IN <i class="fa fa-sign-in"></i></button>
+            </form>
+
+            <p>Copyright © simplinestle.org. All rights reserved.</p>
+            <p class="footer-text">
+                <a href="/user/about">About Us</a>
+                <a href="/user/termOfUse">Terms And Conditions</a>
+            </p>
+        </div>
+
+    </div>
+
+
+    <script src="/script.js"></script>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                { pageLanguage: 'en' },
+                'google_translate_element'
+            );
+        } 
+    </script>
+    <!-- Google tranlator -->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>

@@ -1,0 +1,1255 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  z-index: -1;
+  background-color: #181818;
+
+}
+
+.status-unconfirmed {
+    color: #F44336 !important; /* Red */
+}
+.status-confirmed {
+    color: #FFC107 !important; /* Amber */
+}
+.status-completed {
+    color: #4CAF50 !important; /* Green */
+}
+
+.orange-color {
+  color: #f79504fb;
+}
+.select-input {
+    display: flex;
+    padding: 10px;
+    border: 1.5px solid #adabab;
+    border-radius: 6px;
+}
+
+.cp {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  gap: 10px;
+}
+
+.active-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  background-color: green;
+  z-index: 100;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+.active-inactive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+
+}
+
+.color-red {
+  color: #D32F2F !important;
+}
+
+.large-size {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+}
+
+.normal-size {
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+.small-size {
+  font-size: 1rem !important;
+  font-weight: normal;
+  color: #fff;
+}
+
+.close-button {
+  font-size: 1.3rem;
+  color: #D32F2F !important;
+  display: flex;
+  justify-self: flex-end;
+  align-self: flex-end;
+}
+
+.close-button:hover {
+  color: #e70f0f !important;
+}
+
+.submit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #6608FE;
+    color: #fff;
+    font-size: large;
+    cursor: pointer;
+}
+
+.green {
+  color: green;
+}
+
+.a {
+  text-decoration: none;
+}
+
+.remove-button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+.logo-and-searchBar {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 10px;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #181818;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+}
+
+.menu-and-header {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  position: fixed;
+  top: 100px;
+  left: 5px;
+  color: #fff;
+  z-index: 1000;
+}
+
+.HeaderSearchBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  height: 50px;
+  border: 1px solid #dad5d5;
+  border-radius: 10px;
+  background-color: #f8f2f2;
+  padding: 5px;
+  border-radius: 10px;
+  position: relative;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.HeaderSearchBar input {
+  width: 100%;
+  height: 40px;
+  font-size: 14px;
+  padding-left: 10px;
+  background: transparent !important;
+  outline: none !important;
+  color: rgba(0, 0, 0, 0.8);
+  border: none !important;
+}
+
+.HeaderSearchBar button {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  z-index: 10;
+  min-width: 35px;
+  height: 35px;
+  width: 35px !important;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.HeaderSearchBar button:hover,
+.HeaderSearchBar button:active {
+  background-color: rgb(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.HeaderSearchBar button i {
+  font-size: 25px;
+}
+
+.menu-and-header i {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.menu-and-header i:hover {
+  color: #f79504fb !important;
+}
+
+
+.side-nav {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  color: #d1cdcd;
+  width: fit-content;
+  height: fit-content;
+  position: sticky;
+  top: 80px;
+  z-index: 1000;
+}
+
+.close-nav {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.close-nav i {
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+}
+
+.close-nav i:hover {
+  color: #D32F2F !important;
+}
+
+.side-nav ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: start;
+  gap: 20px;
+  color: #fff;
+  width: 200px;
+  height: fit-content;
+  font-size: large;
+  font-weight: 500;
+  list-style: none;
+}
+
+.side-nav ul li {
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: large;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+}
+
+nav ul li:hover {
+  background-color: #181818;
+}
+
+nav ul li.active {
+  background-color: #181818;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 10px;
+  width: 100%;
+  margin-top: 100px;
+  padding: 10px;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+  position: relative;
+}
+
+section h2 {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  padding: 10px;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/*Dashboard.hbs style rules are here*/
+.total-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  flex-wrap: wrap;
+  width: fit-content;
+}
+
+.total-container-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.total-card {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: large;
+  font-weight: 500;
+  gap: 20px;
+  color: #fff;
+  cursor: pointer;
+  width: 200px;
+  height: 100px;
+}
+
+.total-card:hover {
+  background-color: #000;
+}
+
+.total-card i {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 100%;
+  font-size: 30px;
+  color: #000;
+}
+
+.total-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 10px;
+}
+
+.total-details span {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.total-details p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+/*user.hbs style rules are here*/
+.preview-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 20px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.preview-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+}
+
+.preview-card span {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.preview-card:hover {
+  background-color: #000;
+}
+
+.preview-percent-line {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  height: 8px;
+  width: 80%;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.preview-percent-line span {
+  width: 80%;
+  height: 100%;
+  background-color: #f79504fb;
+  border-radius: 5px;
+  transition: width 0.5s ease-in-out;
+}
+
+.total-reviewers {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
+
+}
+
+.alerts-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.user-container {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 10px;
+  padding: 10px;
+  flex-wrap: wrap;
+  width: fit-content;
+  height: fit-content;
+}
+
+.users-card {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #f79504fb;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  max-width: 350px !important;
+  height: fit-content;
+}
+
+.users-card:hover {
+  background-color: #ad6a06fb;
+}
+
+.user-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  background-color: #fff;
+  font-size: small;
+  object-fit: cover;
+}
+
+.user-name {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 15px;
+  width: 100%;
+  max-width: 100%;
+  height: fit-content;
+  text-align: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+  /* Add ellipsis for overflowed text (optional) */
+}
+
+.user-name-email {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  height: fit-content;
+  flex-wrap: wrap;
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+.user-name p {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 5px;
+  width: 100%;
+  max-width: 100%;
+  word-break: break-word;
+  color: #181818;
+}
+
+.user-name a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  background-color: #ad6a06fb;
+  color: #fff;
+}
+
+.user-name a:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.detailed-card {
+  display: none;
+  /* Initially hidden */
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 90%;
+  max-width: 600px;
+  z-index: 1000;
+}
+
+.detailed-card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100% !important;
+  background-color: #f79504fb;
+  border: 1px solid rgba(0, 0, 0, 0.9);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: #fff;
+
+}
+
+.detailed-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+/*deposit.hbs and widthdrawal style rules are here*/
+.deposit-withdrawal-container {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  gap: 10px;
+  padding: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+  height: fit-content;
+}
+
+.deposit-withdrawal-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  max-width: 350px !important;
+  height: fit-content;
+}
+
+.deposit-withdrawal-card:hover {
+  background-color: #000;
+}
+
+.depositor-withdrawal-short-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.deposit-withdrawal-card ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  flex-wrap: wrap;
+}
+
+.deposit-withdrawal-card ul li {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.time-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f79504fb;
+  padding: 6px;
+}
+
+.deposit-withdrawal-details {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  flex-wrap: wrap;
+  width: 90%;
+  max-width: 400px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  gap: 10px;
+  color: #fff;
+}
+
+.deposit-withdrawal-long-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: #fff;
+  width: 100%;
+  padding: 20px 0 10px 0;
+}
+
+.deposit-withdrawal-long-details p {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.deposit-details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+}
+.withdrawal-receipt-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 5px;
+  width: 100%;
+  padding: 0;
+}
+.withdrawal-button-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.withdrawal-receipt-container b{
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.withdrawal-receipt-container b:hover{
+  background-color: #f79504fb;
+  color: #000 !important;
+}
+.no-unconfirmed-message {
+  display: none;
+  z-index: 100;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
+  color: #fff !important;
+}
+
+.image-zoom-modal {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zoomed-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  max-width: 90%;
+  max-height: 90vh;
+  border-radius: 8px;
+}
+.close-zoom {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+  z-index: 10000;
+}
+.image-when-zoomed{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 90%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+
+/*All history.hbs style rules are here*/
+.transactions-modal {
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.transactions-content-head {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+  flex-wrap: wrap;
+  color: #fff;
+  background-color: #181818;
+  padding: 10px;
+}
+
+.transaction-head-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 1px;
+  z-index: 1000;
+  background-color: #fff;
+}
+
+.transactions-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  background: #181818;
+  top: 70px;
+  z-index: 1000;
+  width: 100%;
+}
+
+.transactions-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 15px;
+  color: #fff;
+}
+
+.user-deposit-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: start;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  width: 100%;
+  height: fit-content;
+}
+
+.transaction-identifier {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  place-items: center;
+  width: 100%;
+  align-self: center;
+}
+
+.user-deposit-card ul {
+  width: 100%;
+  max-width: 350px !important;
+  background-color: #3f3d3d !important;
+  padding: 10px;
+  border-radius: 10px;
+  gap: 2px;
+}
+
+.user-deposit-card ul li {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 2px;
+}
+
+.transaction-header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: #fff;
+  font-weight: 600;
+}
+
+.date {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.total-in-out {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  width: 100%;
+  color: #fff;
+  font-weight: 600;
+}
+
+.filter-by-date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  color: #fff;
+  flex-wrap: wrap;
+}
+
+.filter-by-date label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.filter-by-date input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #000;
+  font-size: 1rem;
+}
+
+.filter-by-date button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f79504fb;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.filter-by-date button:hover {
+  background-color: #ad6a06fb;
+}
+
+/*investment-plan.hbs and walletManagement.hbs style rules are here*/
+.total-plan-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+}
+
+.my-plan {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 400px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  gap: 10px;
+  color: #fff;
+}
+
+.my-plan i {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.my-plan-header {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.deposit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.depositor-name-and-email {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: fit-content;
+}
+
+.my-wallet-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.my-plan ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  font-size: larger;
+  width: 100%;
+}
+
+.my-plan ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 10px;
+}
+
+.plan-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color: #181818;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.plan-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  color: #000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  min-width: 250px;
+  max-width: 400px;
+  box-shadow: 0 6px 10px rgba(187, 179, 179, 0.2);
+  gap: 10px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  padding-bottom: 10px;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 10px;
+  font-size: larger;
+}
+
+.modal-content form input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #000;
+}
+
+.hidden {
+  display: none;
+}
+
+.close-modal {
+  float: right;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.close-wallet-modal {
+  float: right;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.my-plan-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.admin-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.admin-login .input-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  min-width: 200px;
+  gap: 0;
+  position: relative;
+  margin-top: 10px;
+}
+
+.admin-login .input-icon input {
+  padding: 14px;
+  width: 90%;
+  background-color: #000;
+  color: #adabab;
+  border: 1.5px solid #adabab;
+  border-radius: 10px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 30px;
+  top: 70%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #a09b9b !important;
+  font-size: 1.2rem;
+  background-color: none !important;
+}
+
+.admin-login button {
+  width: fit-content;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  color: #000;
+  background-color: #ffff;
+}
+
+
+@media (max-width: 768px) {
+  .side-nav {
+    display: none;
+  }
+
+  .menu-and-header {
+    display: block;
+  }
+
+  .menu-and-header i {
+    display: block;
+  }
+
+  .side-bar-active {
+    display: flex;
+    position: fixed;
+    top: 110px;
+    left: 15px;
+    width: 90%;
+  }
+
+  nav ul {
+    width: 100%;
+    align-items: center;
+  }
+
+  .close-nav {
+    display: flex;
+  }
+
+
+}

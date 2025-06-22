@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+    .goog-logo-link {
+        display: none !important;
+    }
+    .goog-te-gadget {
+        color: transparent !important;
+    }
+    .goog-te-gadget .goog-te-combo {
+        color: black !important;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+      <!--for google translator-->
+    <script src="https://www.gstatic.com/translate/translate_tts.js"></script>
+
+      <link rel="stylesheet" href="/adminStyle.css">
+</head>
+<body>
+<nav>
+    <!-- logo begin -->
+            <div id="google_translate_element"></div>
+            <img src="https://res.cloudinary.com/dmlxkewu7/image/upload/v1737962980/simpli_nestle-logo_rulund.png"
+                data-src="https://res.cloudinary.com/dmlxkewu7/image/upload/v1737962980/simpli_nestle-logo_rulund.png"
+                alt="LOGO" width="146" data-uk-img>
+
+                <ul>
+                    <li><a>Dashboard Overview</a></li>
+                    <li><a>User Management</a></li>
+                    <li><a>Transaction history</a></li>
+                    <li><a>Investment Plan Management</a></li>
+                    <li><a>Wallet Management</a></li>
+                    <li><a>Support/Help Deck</a></li>
+                    <li><a>Analytics and Reporting</a></li>
+                    <li><a>Notifications and Alerts</a></li>
+                    <li><a>Content Management System (CMS)</a></li>
+                    <li><a>Settings</a></li>
+
+
+                    <!--<li><a></a></li>
+                    <li><a>Security and Audit Logs</a></li>-->
+                </ul>
+
+</nav>
+<main>
+    
+</main>
+
+
+
+
+ <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                { pageLanguage: 'en' },
+                'google_translate_element'
+            );
+        } 
+    </script>
+    <!-- Google tranlator -->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+    <!-- Flag click handler -->
+    <script type="text/javascript">
+        $('.translation-links a').click(function () {
+            var lang = $(this).data('lang');
+            var $frame = $('.goog-te-menu-frame:first');
+            if (!$frame.size()) {
+                alert("Error: Could not find Google translate frame.");
+                return false;
+            }
+            $frame.contents().find('.goog-te-menu2-item span.text:contains(' + lang + ')').get(0).click();
+            return false;
+        });
+
+    </script>
+</body>
+</html>

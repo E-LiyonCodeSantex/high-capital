@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .goog-logo-link {
+        display: none !important;
+    }
+
+    .goog-te-gadget {
+        color: transparent !important;
+    }
+
+    .goog-te-gadget .goog-te-combo {
+        color: black !important;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!--forawesome-->
+    <script src="https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/adminStyle.css">
+</head>
+
+<body>
+    <div class="logo-and-searchBar">
+        <img src="https://res.cloudinary.com/dmlxkewu7/image/upload/v1737962980/simpli_nestle-logo_rulund.png"
+            data-src="https://res.cloudinary.com/dmlxkewu7/image/upload/v1737962980/simpli_nestle-logo_rulund.png"
+            alt="LOGO" width="146" data-uk-img>
+    </div>
+    <main>
+        <form class="admin-login" action="/admin/login" method="POST">
+            <h2>Admin Login</h2>
+            <div class="input-icon">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-icon">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <i class="fa-solid fa-eye toggle-password"></i>
+            </div>
+            {{#if errorMessage}}
+            <p class="error">{{errorMessage}}</p>
+            {{/if}}
+            <button type="submit">Login</button>
+        </form>
+    </main>
+
+
+    <script src="/adminScript.js"></script>
+</body>
+
+</html>

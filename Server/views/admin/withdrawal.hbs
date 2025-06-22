@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .goog-logo-link {
+        display: none !important;
+    }
+
+    .goog-te-gadget {
+        color: transparent !important;
+    }
+
+    .goog-te-gadget .goog-te-combo {
+        color: black !important;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <!--forawesome-->
+    <script src="https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/adminStyle.css">
+</head>
+
+<body>
+    <section>
+        <h2>User Withdrawals</h2>
+        <button id="toggle-unconfirmed" class="get-all-uncomfirmed-deposit submit-button a">Get all unapproved
+            withdrawal</button>
+
+        <span id="no-unconfirmed-message" class="no-unconfirmed-message small-size"></span>
+
+        <div class="deposit-withdrawal-container">
+            <script>
+                const withdrawals = {{{ withdrawalsJSON }}}; // Initialize the withdrawals array for JavaScript
+            </script>
+            {{#each withdrawals}}
+            <div class="deposit-withdrawal-card withdrawal-card" id="withdrawal-card" data-status="{{status}}"
+                data-index="{{@index}}">
+                <div class="depositor-withdrawal-short-details">
+                    <img src="{{user.profilePhoto}}" alt="User" width="50px" class="user-img image" />
+                    <div class="depositor-name-and-email">
+                        <span class=" user-name-email small-size">{{user.name}}</span>
+                        <span class="user-name-email small-size">{{user.email}}</span>
+                    </div>
+                </div>
+                <ul>
+                    <li>Amount:<span>${{amount}}</span></li>
+                    <li>Status:<span
+                            class="time-counter withdrawer-status {{#unless (eq status 'pending')}}text-warning{{/unless}}"
+                            data-withdrawal-id="{{_id}}" data-status="{{status}}"
+                            style="{{#if (eq status 'pending')}}color:#D32F2F;{{/if}}">
+                            {{status}}</span></li>
+                </ul>
+                <button class="submit-button process-withdrawal confirm-withdrawal" data-withdrawal-id="{{_id}}">Process
+                    <i class="fa fa-sign-in"></i></button>
+            </div>
+            {{/each}}
+        </div>
+
+        <div class=" deposit-withdrawal-details withdrawal-details" id="withdrawal-details">
+            <i class="fa-solid fa-xmark close-button" id="close-button"></i>
+            <div class="deposit-header">
+                <img src="{{user.profilePhoto}}" alt="User" width="50px" class="user-img image" id="withdrawer-img" />
+                <div class="depositor-name-and-email">
+                    <h4 id="withdrawer-name"></h4>
+                    <h4 id="withdrawer-email"></h4>
+                </div>
+            </div>
+            <div class="deposit-withdrawal-long-details">
+                <p>Amount: <span class="green" id="withdrawer-amount"> </span></p>
+                <p>Method: <span class="green" id="withdrawer-method"> </span></p>
+                <p>Wallet/Bank: <span class="green" id="withdrawer-wallet-bank"> </span></p>
+                <p>Adress/Ac Number: <span class="green" id="withdrawer-adress-number"> </span></p>
+                <p id="acount-Name-container">Acount Name: <span class="green" id="account-Name"> </span></p>
+                <p>Status:
+                    <span id="withdrawer-status"
+                        class="green withdrawer-status {{#unless (eq status 'pending')}}text-warning{{/unless}}"
+                        data-withdrawal-id="{{_id}}" data-status="{{status}}"
+                        style="{{#if (eq status 'pending')}}color:#D32F2F;{{/if}}">
+                        {{status}} </span>
+                </p>
+                <p>Requested At: <span class="green" id="withdrawal-requested-at"></span></p>
+                <p class="withdrawal-receipt-container">
+                    <label for="withdrawal-receipt" class="orange-color" id="withdrawal-receipt-lable">Send Withdrawal
+                        Receipt here (PDF or Image):</label>
+                    <input type="file" name="withdrawal-receipt" id="withdrawer-receipt-upload"
+                        class="darker-color select-input" accept=".png, .jpg, .jpeg, .pdf" required>
+                    <span class="error-message">{{#if fileSizeError}}{{fileSizeError}}{{else}}{{/if}}</span>
+                    <b class="orange-color" id="view-receipt" style="display: none;">View Receipt</b>
+                    <img src="{{wihdrawalReceipt}}" id="wihdrawal-receipt" alt="Withdrawal Receipt"
+                        style="display: none;" width="90%" height="100px" />
+                    <span class="receipt-massage"></span> 
+                </p>
+
+            </div>
+            <div class="withdrawal-button-container">
+                <button class="submit-button confirm-withdrawal Submit-withdrawal" data-withdrawal-id="{{_id}}">Confirm
+                    Withdrawal</button>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Image Zoom Modal -->
+    <div id="image-zooming" class="image-zoom-modal" style="display:none;">
+        <span id="close-zoom" class="close-zoom">&times;</span>
+        <div id="image-when-zoomed" class="image-when-zoomed">
+
+        </div>
+    </div>
+
+
+
+
+    <script src="/adminScript.js"></script>
+</body>
+
+</html>

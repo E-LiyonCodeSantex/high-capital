@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>simplinestle.org | INVESTMENT PLANS</title>
+    <meta name="theme-color" content="#181818">
+    <!-- GetButton.io widget -->
+    <script type="text/javascript">
+        (function () {
+            var options = {
+                whatsapp: "+61485972443", // WhatsApp number
+                call_to_action: "Message us", // Call to action
+                button_color: "#FF6550", // Color of button
+                position: "left", // Position may be 'right' or 'left'
+                pre_filled_message: "How do I get started with your company?", // WhatsApp pre-filled message
+            };
+            var proto = 'https:', host = "getbutton.io", url = proto + '//static.' + host;
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        })();
+    </script>
+    <!-- Smartsupp Live Chat script -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '95a6f6427d672cd97d461c55da6d0661c3492b99';
+        window.smartsupp || (function (d) {
+            var s, c, o = smartsupp = function () { o._.push(arguments) }; o._ = [];
+            s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
+            c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?'; s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
+    <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
+    <!--forawesome-->
+    <script src="/https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/loggedInStyle.css">
+    <!-- Google Translate script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+
+<body>
+    <section>
+        <div class="sign-up-header">
+            <div class="have-accont">
+                <a href="/user/Dashboard"> Access Your Dashboard</a>
+                <p class="header">INVESTMENT PLANS</p>
+            </div>
+        </div>
+
+        {{#if plans.length}}
+        <h3>You can invest in</h3>
+    <div class="investment-plans-container">
+             {{#each plans}}
+        <div class="investment-plans">
+            <div style="display: flex; align-items: center; justify-content: start; margin-bottom: 10px; gap: 10px; ">
+                <span class="in-product-name red"><i class="fas fa-database" style="color: #e54a41;"></i></span>
+                <h4 class="uk-margin-remove">{{name}}</h4>
+            </div>
+            <ul style="display: flex; flex-direction: column; gap: 8px;  padding: 0; margin: 0;">
+                <li>Minimum: <b>${{minDeposit}}</b></li>
+                <li>Maximum: <b>${{maxDeposit}}</b></li>
+                <li>Daily Profit: <b>{{dailyProfit}}%</b></li>
+                <li>Duration: <b>{{duration}}Days</b></li>
+                <li>Referral Bonus: <b>{{referralBonus}}%</b></li>
+                <li>Category: <b><span
+                            style="margin-left: 15px; font-weight: 400; font-size: 12px; color: #fff; padding: 2px 4px; background-color: #e54a41; border-radius: 5px;">TRADING</span></b>
+                </li>
+            </ul>
+            <a href="/user/makeDeposit?planId={{_id}}" class="get-started">Get Started<i
+                    class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
+        </div>
+        {{/each}}
+    </div>
+        {{else}}
+        <p class="no-withdrawal-request">No investment plan found.</p>
+        {{/if}}
+
+        <div>
+            <div class="investment-plans-card">
+                <img src="/Photos/coins/crypto-gold-card.jpg" alt="" />
+                <h3 class="text-white in-highlight ">Simpli Nestle offers Card to investors on the Gold plan</h3>
+                <p>
+                    The partnership aims to fill a gap in the traditional financial system that has left
+                    many without access to essential
+                    banking products. According to a 2017 survey by the FDIC, 25 percent of U.S. households
+                    are unbanked or underbanked,
+                    while global numbers have reached a staggering 1.7 billion, according to data released
+                    by the World Bank. Through BlockCard,
+                    Simpli Nestle investors can have a virtual card issued to them while a physical card is
+                    mailed to them. The card has a
+                    minimum of $1000 balance needed. It can be used at over 45 million merchants and ATMs –
+                    anywhere in the world where major credit cards are accepted.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <script src="/script.js"></script>
+    <script id="plans-data" type="application/json">{{{json plans}}}</script>
+</body>
+
+</html>

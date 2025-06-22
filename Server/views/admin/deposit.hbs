@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .goog-logo-link {
+        display: none !important;
+    }
+
+    .goog-te-gadget {
+        color: transparent !important;
+    }
+
+    .goog-te-gadget .goog-te-combo {
+        color: black !important;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Investment Plans</title>
+    <!--forawesome-->
+    <script src="https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/adminStyle.css">
+</head>
+
+<body>
+    <section>
+        <h2>User Deposits</h2>
+        <button id="toggle-unconfirmed" class="get-all-uncomfirmed-deposit submit-button a">Get all uncomfirmed
+            deposit</button>
+        <span id="no-unconfirmed-message" class="no-unconfirmed-message small-size"></span>
+
+        <div class="deposit-container deposit-withdrawal-container">
+            <script>
+                const deposits = {{{ depositsJSON }}}; // Initialize the deposits array for JavaScript
+            </script>
+            {{#each deposits}}
+            <div class="deposit-card deposit-withdrawal-card" data-status="{{status}}" data-index="{{@index}}">
+                <div class="depositor-short-details depositor-withdrawal-short-details">
+                    <img src="{{user.profilePhoto}}" alt="User" width="50px" class="user-img image" />
+                    <div class="depositor-name-and-email">
+                        <span class=" user-name-email small-size">{{user.name}}</span>
+                        <span class="user-name-email small-size">{{user.email}}</span>
+                    </div>
+                </div>
+                <ul>
+                    <li><span>{{coinType}} worth of ${{amount}}</span></li>
+                    <li>Status:
+                        {{#if (eq status "completed")}}
+                        <span class="status-completed">{{capitalize status}}</span>
+                        {{else if (eq status "confirmed")}}
+                        <span class="status-confirmed">{{capitalize status}}</span>
+                        {{else}}
+                        <span class="status-unconfirmed">Unconfirmed</span>
+                        {{/if}}
+                    </li>
+                    <li><span class="duration-count-down time-counter" data-deposit-id="{{_id}}"
+                            data-end-date="{{endDate}}" data-status="{{status}}"></span></li>
+                </ul>
+                <b class="confirm-deposit plan-button" data-deposit-id="{{_id}}"> {{#if (eq status "confirmed")}}
+                    {{else}}
+                    Activate
+                    {{/if}}</b>
+            </div>
+            {{/each}}
+        </div>
+
+
+
+        <div class=" deposit-details deposit-withdrawal-details">
+            <i class="fa-solid fa-xmark close-button" id="close-button"></i>
+            <div class="deposit-header">
+                <img src="{{user.profilePhoto}}" alt="User" width="50px" class="user-img image" id="depositor-img" />
+                <div class="depositor-name-and-email">
+                    <h4 id="depositor-name"></h4>
+                    <h4 id="depositor-email"></h4>
+                </div>
+            </div>
+            <div class="deposit-long-details deposit-withdrawal-long-details">
+                <p>Plan Name: <span class="green" id="deposit-plan-name"> </span></p>
+                <p>Crypto Currency: <span class="green" id="deposit-plan-coin"> </span></p>
+                <p>Daily Profit: <span class="green" id="deposit-plan-daily-profit"> </span></p>
+                <p>Amount: <span class="green" id="deposit-plan-amount"> </span></p>
+                <p>Duration: <span class="green" id="deposit-plan-duration"> </span></p>
+                <p>Referral Bonus: <span class="green" id="deposit-plan-referral-bonus"> </span></p>
+                <p>
+                </p>
+                <p>Deposit Date: <span class="green" id="deposit-plan-date"></span></p>
+
+                <p>Status:<span class="time-counter status" id="detail-status"></span></p>
+                <p>Transaction Receipt:
+                    <img id="deposit-receipt" src="" alt="Deposit Receipt" class=" image" width="100%" height="100px" />
+                </p>
+                <p><span class="duration-count-down time-counter" data-deposit-id="{{_id}}" data-end-date="{{endDate}}"
+                        data-status="{{status}}"></span></p>
+                <p>Total Balance: <span id="total-balance"></span></p>
+            </div>
+            <div class="my-plan-buttons">
+                <b class="confirm-deposit plan-button" data-deposit-id="{{_id}}"> {{#if (eq status "confirmed")}}
+                    <i class="fa fa-pause"></i>
+                    {{else}}
+                    Activate
+                    {{/if}}</b>
+                <b class="cancel-deposit color-red plan-button" id="delete-deposit" data-deposit-id="{{_id}}">Delete</b>
+            </div>
+        </div>
+
+
+    </section>
+
+
+    <!-- Image Zoom Modal -->
+    <div id="image-zoom-modal" class="image-zoom-modal" style="display:none;">
+        <span id="close-zoom" class="close-zoom">&times;</span>
+        <img id="zoomed-image" class="zoomed-image" src="" alt="Zoomed Receipt" />
+    </div>
+
+    <script src="/adminScript.js"></script>
+</body>
+
+</html>

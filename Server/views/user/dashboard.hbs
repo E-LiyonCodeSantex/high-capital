@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- GetButton.io widget -->
+    <script type="text/javascript">
+        (function () {
+            var options = {
+                whatsapp: "+61485972443", // WhatsApp number
+                call_to_action: "Message us", // Call to action
+                button_color: "#FF6550", // Color of button
+                position: "left", // Position may be 'right' or 'left'
+                pre_filled_message: "How do I get started with your company?", // WhatsApp pre-filled message
+            };
+            var proto = 'https:', host = "getbutton.io", url = proto + '//static.' + host;
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        })();
+    </script>
+    <!-- Smartsupp Live Chat script -->
+    <script type="text/javascript">
+        var _smartsupp = _smartsupp || {};
+        _smartsupp.key = '95a6f6427d672cd97d461c55da6d0661c3492b99';
+        window.smartsupp || (function (d) {
+            var s, c, o = smartsupp = function () { o._.push(arguments) }; o._ = [];
+            s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
+            c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
+            c.src = 'https://www.smartsuppchat.com/loader.js?'; s.parentNode.insertBefore(c, s);
+        })(document);
+    </script>
+    <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>simplinestle.org | User Dashboard </title>
+    <meta name="theme-color" content="#181818">
+    <!--forawesome-->
+    <script src="https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/loggedInStyle.css">
+    <!-- Google Translate script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+
+<body>
+    <main class="dark-color">
+        <div class="account-summary-container">
+        <h2>Hello {{user.userName}}</h2>
+            <div class="account-and-history">
+                <div class="account-summary gap-and-padding">
+                    <div class="sumary-head darker-color">
+                        <h4>Account Summary</h4>
+                        <a class="blue-buttons button-size-with-padding" href="/user/history">
+                            <i class="fa fa-file-text"> </i> History</a>
+                    </div>
+                    <div class="balance-detail">
+                        <div class="deposit-and-withdrawal gap-and-padding">
+                            <div class="gap-and-padding border darker-color d-and-w">
+                                <p class="margin-bottom">Available Balance</p>
+                                <h1 id="ab">${{availableBalance}}</h1>
+                            </div>
+                            <div class="gap-and-padding border darker-color d-and-w">
+                                <p class="margin-bottom">Total Balance</p>
+                                <h1 id="ab">${{totalBalance}}</h1>
+                            </div>
+                        </div>
+                        <div class="deposit-and-withdrawal gap-and-padding">
+                            <div class="deposit border darker-color d-and-w">
+                                <p class="margin-bottom">Total Deposit</p>
+                                <h4 class="margin-bottom">${{totalDeposit}}</h4>
+                                <a href="deposit.html" class="green-black-buttons button-size-with-padding"><i
+                                        class="fa fa-upload"></i> Deposit</a>
+                            </div>
+
+                            <div class=" border darker-color d-and-w">
+                                <p class="margin-bottom">Total withdraw</p>
+                                <h4 class="margin-bottom">${{totalWithdraw}}</h4>
+                                <a href="withdraw.html" class="yellow-buttons button-size-with-padding margin-bottom">
+                                    <i class="fa fa-download"></i> Withdraw
+                                </a>
+                            </div>
+                        </div>
+                        <div class="balance-speech gap-and-padding">
+                            <p>Your Available balance is the actual balance you can withdraw from while your book
+                                balance is
+                                your potential balance that will become available when your deposit plan is completed.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="referal font-weight">
+                    <h5>Invite Your Friends</h5>
+                    <p><small class="">Earn more when you refer your friends to invest with us. The reward on our
+                            referral
+                            program is dependent on the deposit plans.</small></p>
+                    <p class="referal-link darker-color flex-wrap" id="referal-link">
+                        http://simplinestle.org/ref=SantexDLyon/</p>
+
+                </div>
+            </div>
+            <div class="popular-market margin-bottom">
+                <div class="sumary-head darker-color margin-bottom">
+                    <h4>Popular Market</h4>
+                    <a class="green-buttons button-size-with-padding" href="/account/user/account-details/"><i
+                            class="fa fa-upload"></i> Invest Now</a>
+                </div>
+                <div class="all-balance-container">
+                    <div class="flex-wrap total">
+                        <div class="gap-and-padding border-with-padding margin ">
+                            <p class="margin-bottom">ACCOUNT BALANCE</p>
+                            <h1 id="ab">$0.0</h1>
+                        </div>
+                        <div class="gap-and-padding border-with-padding margin">
+                            <p class="margin-bottom">ACTIVE DEPOSIT</p>
+                            <h1 id="ab">$0.0</h1>
+                        </div>
+                        <div class="gap-and-padding border-with-padding margin">
+                            <p class="margin-bottom">TOTAL DEPOSIT</p>
+                            <h1 id="ab">$0.0</h1>
+                        </div>
+                        <div class="gap-and-padding border-with-padding margin">
+                            <p class="margin-bottom">TOTAL WITHDRAW</p>
+                            <h1 id="ab">$0.0</h1>
+                        </div>
+                    </div>
+                    <div class="flex-wrap total">
+                        <div class="gap-and-padding border-with-padding margin">
+                            <p class="margin-bottom">TOTAL EARNING</p>
+                            <h1 id="ab">$0.0</h1>
+                        </div>
+                        <div class="gap-and-padding border-with-padding margin">
+                            <p class="margin-bottom">LAST DEPOSIT</p>
+                            <h1 id="ab">$0.0</h1>
+                        </div>
+                        <div class="gap-and-padding border-with-padding margin">
+                            <p class="margin-bottom">LAST WITHDRAW</p>
+                            <h1 id="ab">$0.0</h1>
+                        </div>
+                        <div class="gap-and-padding border-with-padding margin">
+                            <p class="margin-bottom">PENDING WITHDRAW</p>
+                            <h1 id="ab">$0.0</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="all-transactions margin">
+                <p class="margin-bottom">Recent Transaction</p>
+                <a class="green-black-buttons button-size-with-padding" href="/account/user/account-details/">Show all
+                    transactions</a>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="/script.js"></script>
+</body>
+
+</html>
