@@ -3,7 +3,7 @@ const Admin = require('../models/adminModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
-const WalletAdress = require('../models/walletmodel');
+const WalletAdress = require('../models/walletModel');
 
 
 // Get all investment plans
