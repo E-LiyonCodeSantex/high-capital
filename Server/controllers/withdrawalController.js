@@ -1,6 +1,6 @@
 const Withdrawal = require('../models/withdrawalModel');
 const deposit = require('../models/depositModel');
-const WalletAdress = require('../models/walletmodel');
+const WalletAdress = require('../models/walletModel');
 
 exports.getUserWithdrawals = async (req, res, next) => {
   try {
