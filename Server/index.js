@@ -45,6 +45,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
 app.use('/web', webRoutes);
+app.get('/', (req, res) => {
+    res.redirect('/web');
+});
 
 // Serve static files
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
