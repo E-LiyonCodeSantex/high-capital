@@ -84,7 +84,7 @@ const exphbsInstance = exphbs.create({
 // Configure view engine
 app.engine('hbs', exphbsInstance.engine);
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, '../server/views'));
+app.set('views', path.join(__dirname, 'views'));
 
 // Start the server
 const PORT = process.env.PORT || 5000;
