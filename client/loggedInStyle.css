@@ -24,7 +24,7 @@ body {
 }
 
 main.all-body.body {
-    background-image: url(/photos/background.jpg);
+    background-image: url(/clientphotos/background.jpg);
     width: 100%;
     min-height: 100vh;
     background-size: cover;
@@ -328,7 +328,7 @@ nav {
 }
 
 .nav-links li {
-    background: url('/photos/logos/logo-clip.jpeg') no-repeat center center;
+    background: url('/clientphotos/logos/logo-clip.jpeg') no-repeat center center;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
