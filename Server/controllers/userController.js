@@ -40,23 +40,23 @@ const registerUser = async (req, res) => {
             profilePhoto
         });
 
-    // After saving user to DB:
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS
-        }
-    });
+        // After saving user to DB:
+        let transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS
+            }
+        });
 
-    let mailOptions = {
-        from: process.env.EMAIL_USER,
-        to: email,
-        subject: 'Welcome to SimpliNestle!',
-        text: `Hello ${name},\n\nThank you for registering at SimpliNestle! We're glad to have you.\n\nBest regards,\nThe SimpliNestle Team`
-    };
+        let mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: email,
+            subject: 'Welcome to SimpliNestle!',
+            text: `Hello ${name},\n\nThank you for registering at SimpliNestle! We're glad to have you.\n\nBest regards,\nThe SimpliNestle Team`
+        };
 
-    await transporter.sendMail(mailOptions);
+        await transporter.sendMail(mailOptions);
 
         if (user) {
             res.redirect('/user/login');
@@ -246,6 +246,17 @@ const updateUserSettings = async (req, res, next) => {
     }
 };
 
+const logoutUser = (req, res) => {
+    req.session.destroy(err => {
+        if (err) {
+            console.error('Logout error:', err);
+            return res.status(500).send('Error logging out');
+        }
+        res.clearCookie('connect.sid');
+        res.render('user/logout', { layout: false });
+    });
+};
+
 
 module.exports = {
     registerUser,
@@ -254,4 +265,5 @@ module.exports = {
     verifyResetCode,
     verifyPassword,
     updateUserSettings,
+    logoutUser,
 };

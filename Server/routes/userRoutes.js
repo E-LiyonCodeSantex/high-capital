@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose'); // Import mongoose
-const { registerUser, loginUser, resetPassword, verifyResetCode, verifyPassword, updateUserSettings } = require('../controllers/userController'); // Import the user controller
+const { registerUser, loginUser, resetPassword, verifyResetCode, verifyPassword, updateUserSettings, logoutUser } = require('../controllers/userController'); // Import the user controller
 const InvestmentPlan = require('../models/investmentPlanModel');
 const { authenticateUser } = require('../middleware/authMiddleware');
 const WalletAdress = require('../models/walletModel'); // Correct the casing of the file name
@@ -13,6 +13,8 @@ const User = require('../models/userModel'); // Import the User model
 const updateLastActive = require('../middleware/updateLastActive');
 const withdrawalController = require('../controllers/withdrawalController');
 const deposit = require('../models/depositModel');
+const { getTransactionHistory } = require('../controllers/historyController');
+
 
 // Middleware to set default layout for all user routes
 router.use((req, res, next) => {
@@ -98,7 +100,6 @@ router.post('/settings', authenticateUser, setUserLocals, updateLastActive, uplo
         next(err);
     }
 });
-router.get('/logout', authenticateUser, setUserLocals, updateLastActive, (req, res) => res.render('user/logout'));
 
 router.get('/makeDeposit', authenticateUser, setUserLocals, updateLastActive, async (req, res) => {
     try {
@@ -151,6 +152,23 @@ router.get('/investmentPlans', authenticateUser, setUserLocals, updateLastActive
     } catch (error) {
         console.error('Error fetching data for deposit page:', error);
         res.status(500).send('An error occurred while fetching data for the deposit page.');
+    }
+});
+
+//router.get('/history', authenticateUser, setUserLocals, updateLastActive, getTransactionHistory);
+router.get('/history', authenticateUser, setUserLocals, updateLastActive, async (req, res, next) => {
+    try {
+        await getTransactionHistory(req, res, next);
+    } catch (err) {
+        next(err); 
+    }
+});
+
+router.get('/logout', async (req, res, next) => {
+    try {
+        await logoutUser(req, res, next);
+    } catch (err) {
+        next(err); 
     }
 });
 

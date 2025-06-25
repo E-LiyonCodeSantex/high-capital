@@ -1,56 +1,26 @@
 //nav bar toggling and dropdown
-document.addEventListener('DOMContentLoaded', function () {
-    var dropdown = document.querySelector('.company-header');
-    var dropdownMenu = document.querySelector('.company-drop_down');
-    var burger = document.querySelector('.burger');
-    var nav = document.querySelector('.nav-bar');
-    var navLinks = document.querySelectorAll('.nav-bar li');
-    var navArrow = document.querySelector('.company-header i');
+//for nav toggling
+document.addEventListener('DOMContentLoaded', () =>{
 
-    // Only run dropdown logic if elements exist
-    if (dropdown && dropdownMenu && navArrow) {
-        // Toggle dropdown on click
-        dropdown.addEventListener('click', function (event) {
-            console.log('dropdown clicked');
-            event.stopPropagation();
-            dropdownMenu.classList.toggle('show');
-            navArrow.classList.toggle('navArowActive');
-        });
+const burger = document.querySelector('.burger');
+const nav = document.querySelector('.nav-links');
+const navLinks = document.querySelectorAll('.nav-links li');
+const body = document.querySelector('body');
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function (event) {
-            if (!dropdown.contains(event.target) && !dropdownMenu.contains(event.target)) {
-                dropdownMenu.classList.remove('show');
-                navArrow.classList.remove('navArowActive');
-            }
-        });
-    }
 
-    // Only run burger/nav logic if elements exist
-    if (burger && nav) {
-        // Toggle nav on burger click
-        burger.addEventListener('click', function () {
-            nav.classList.toggle('nav-active');
-            burger.classList.toggle('toggle');
-        });
-
-        // Close nav when a link is clicked
-        navLinks.forEach(function (link) {
-            link.addEventListener('click', function () {
-                nav.classList.remove('nav-active');
-                burger.classList.remove('toggle');
-            });
-        });
-
-        // Close nav when clicking outside
-        document.addEventListener('click', function (event) {
-            if (!nav.contains(event.target) && !burger.contains(event.target)) {
-                nav.classList.remove('nav-active');
-                burger.classList.remove('toggle');
-            }
-        });
-    }
+burger.addEventListener('click', () => {
+    nav.classList.toggle('nav-active');
+    burger.classList.toggle('toggle');
+    body.classList.toggle('nav-active');
 });
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        nav.classList.remove('nav-active');
+        burger.classList.remove('toggle');
+        body.classList.remove('nav-active');
+    });
+});
+})
 
 /*Function for FAQ drawer*/
 document.addEventListener('DOMContentLoaded', () => {

@@ -2,33 +2,6 @@
 <html lang="en">
 
 <head>
-    <!-- GetButton.io widget -->
-    <script type="text/javascript">
-        (function () {
-            var options = {
-                whatsapp: "+61485972443", // WhatsApp number
-                call_to_action: "Message us", // Call to action
-                button_color: "#FF6550", // Color of button
-                position: "left", // Position may be 'right' or 'left'
-                pre_filled_message: "How do I get started with your company?", // WhatsApp pre-filled message
-            };
-            var proto = 'https:', host = "getbutton.io", url = proto + '//static.' + host;
-            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
-            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
-            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
-        })();
-    </script>
-    <!-- Smartsupp Live Chat script -->
-    <script type="text/javascript">
-        var _smartsupp = _smartsupp || {};
-        _smartsupp.key = '95a6f6427d672cd97d461c55da6d0661c3492b99';
-        window.smartsupp || (function (d) {
-            var s, c, o = smartsupp = function () { o._.push(arguments) }; o._ = [];
-            s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
-            c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
-            c.src = 'https://www.smartsuppchat.com/loader.js?'; s.parentNode.insertBefore(c, s);
-        })(document);
-    </script>
     <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -49,179 +22,73 @@
 </head>
 
 <body>
-    <nav class="nav-container dark-color" id="nav">
-        <div class="nav-bar">
-            <div class="navbar-brand-wrapper">
-                <a class="navbar-brand" href="index.html">
-                    <img alt="" src="https://res.cloudinary.com/daniela1/image/upload/v1686989256/logo2_us4i1h.png"
-                        width="100" class="logo">
-                </a>
-                <div class="nav-icon-container">
-                    <a href="#nav" class="white-buttons button-one-five-size-no-padding left-bugger bugger">
-                        <i class="fa-solid fa-bars"></i>
-                    </a>
-                    <a href="#0" class="green-buttons button-size-with-padding">
-                        <i class="fa fa-comments  "></i>
-                    </a>
-                    <a href="#0" class="blue-buttons button-size-with-padding">
-                        <i class="fa fa-gear"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="nav-icon-container">
-                <a class=" count-indicator" id="notificationDropdown" href="#" data-toggle="dropdown">
-                    <i class="fa fa-bell button-one-five-size-no-padding"></i>
-                    <span class="counter">3</span>
-                </a>
-                <a href="#nav" class="white-buttons button-one-five-size-no-padding right-bugger bugger">
-                    <i class="fa-solid fa-bars"></i>
-                </a>
-            </div>
+    <nav>
+        <ul class="nav-links">
+            <li> <a href="/user/dashboard/">
+                    <i class='fa fa-bank i-con'></i>
+                    <span>Dashboard</span>
+                </a></li>
+            <li> <a href="/user/makeDeposit/">
+                    <i class='fa fa-upload i-con'></i>
+                    <span>Deposit</span>
+                </a></li>
+            <li> <a href="/user/withdrawal">
+                    <i class='fa fa-download i-con'></i>
+                    <span>Withdraw</span>
+                </a></li>
+            <li> <a href="/user/investmentPlans">
+                    <i class="fa fa-briefcase i-con" aria-hidden="true"></i>
+                    <span>Investement Plans</span>
+                </a></li>
+            <li> <a href="/user/history">
+                    <i class='fa fa-file-text-o i-con'></i>
+                    <span>Transaction History</span>
+                </a></li>
+            <li> <a href="/user/contact">
+                    <i class="fa fa-commenting-o i-con" aria-hidden="true"></i>
+                    <span>Get Support</span>
+                </a></li>
+            <li> <a href="/user/settings/confirm">
+                    <i class="fa fa-gear i-con" aria-hidden="true"></i>
+                    <span>Profile Settings</span>
+                </a></li>
+            <li> <a href="/user/logout">
+                    <i class='fa fa-sign-out i-con'></i>
+                    <span>Log Out</span>
+                </a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
         </div>
+        <a href="/user/dashboard"></a>
+        <h3 class="logo">High Capital</h3></a>
     </nav>
-    <main class="dark-color">
-        <div class="menu-icons darker-color">
-            <ul class="dashboard">
-                <li class="nav-item-hover">
-                    <a class="nav-hover" href="/user/dashboard/">
-                        <i class='fa fa-bank i-con'></i>
-                        <span class="menu-title">Dashboard</span>
-                    </a>
-                </li>
 
-                <li class="nav-item-hover">
-                    <a class="nav-hover" href="/user/makeDeposit/">
-                        <i class='fa fa-upload i-con'></i>
-                        <span class="menu-title">Deposit</span>
-                    </a>
-                </li>
-
-                <li class="nav-item-hover">
-                    <a class="nav-hover" href="/user/withdrawal">
-                        <i class='fa fa-download i-con'></i>
-                        <span class="menu-title">Withdraw</span>
-                    </a>
-                </li>
-
-                <li class="nav-item-hover">
-                    <a class="nav-hover" href="/user/investmentPlans">
-                        <i class='fa fa-file-text-o i-con'></i>
-                        <span class="menu-title">Investment Plans</span>
-                    </a>
-                </li>
-
-                <li class="nav-item-hover">
-                    <a class="nav-hover" data-toggle="collapse" href="/user/history">
-                        <i class='fa fa-file-text-o i-con'></i>
-                        <span class="menu-title">Transaction History</span>
-                    </a>
-                </li>
-
-                <li class="nav-item-hover">
-                    <a class="nav-hover" href="/user/contact">
-                        <i class="fa fa-commenting-o i-con" aria-hidden="true"></i>
-                        <span class="menu-title">Get Support</span>
-                    </a>
-                </li>
-                <li class="nav-item-hover">
-                    <a class="nav-hover" href="/user/settings/confirm">
-                        <i class="fa fa-gear i-con" aria-hidden="true"></i>
-                        <span class="menu-title">Profile Settings</span>
-                    </a>
-                </li>
-
-                <li class="nav-item-hover">
-                    <a class="nav-hover" href="/user/logout">
-                        <i class='fa fa-sign-out i-con'></i>
-                        <span class="menu-title">Log Out</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="menu-left  dark-color">
-            <div class="menu-container dark-color">
-                <div class="profile-and-lng">
-                    <a class="navbar-brand " href="user/dashboard">
-                        <img alt="" src="https://res.cloudinary.com/daniela1/image/upload/v1686989256/logo2_us4i1h.png"
-                            width="150" class="menu-logo">
-                    </a>
-                    <div class="profile-name-n-img">
-                        <img src="{{#if user.profilePhoto}}{{user.profilePhoto}}{{else}}https://res.cloudinary.com/daniela1/image/upload/v1658152279/user_nisaxc.png{{/if}}"
-                            alt="Profile Photo" class="profile-picture" id="profile-picture" width="70" height="70">
-                        <p class="profile-name">{{user.userName}}</p>
-                    </div>
-                    <div id="google_translate_element"></div>
-                </div>
-                <ul class="dashboard">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user/dashboard/">
-                            <i class='fa fa-bank i-con'></i>
-                            <span class="menu-title">Dashboard</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user/makeDeposit/">
-                            <i class='fa fa-upload i-con'></i>
-                            <span class="menu-title">Deposit</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user/withdrawal">
-                            <i class='fa fa-download i-con'></i>
-                            <span class="menu-title">Withdraw</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user/investmentPlans">
-                            <i class="fa fa-briefcase i-con" aria-hidden="true"></i>
-                            <span class="menu-title">Investement Plans</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link drawer-head" href="/user/history">
-                            <i class='fa fa-file-text-o i-con'></i>
-                            <span class="menu-title">Transaction History</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user/contact">
-                            <i class="fa fa-commenting-o i-con" aria-hidden="true"></i>
-                            <span class="menu-title">Get Support</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user/settings/confirm">
-                            <i class="fa fa-gear i-con" aria-hidden="true"></i>
-                            <span class="menu-title">Profile Settings</span>
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/user/logout">
-                            <i class='fa fa-sign-out i-con'></i>
-                            <span class="menu-title">Log Out</span>
-                        </a>
-                    </li>
-                </ul>
+    <main class="all-body body">
+        <div class="profile-translor">
+            <div class="profile-name-n-img">
+                <img src="{{#if user.profilePhoto}}{{user.profilePhoto}}{{else}}https://res.cloudinary.com/daniela1/image/upload/v1658152279/user_nisaxc.png{{/if}}"
+                    class="profile-picture" id="profile-picture" width="70" height="70">
+                <p class="profile-name">{{user.userName}}</p>
             </div>
+            <div id="google_translate_element"></div>
         </div>
 
         {{{body}}} <!-- Placeholder for dynamic content -->
+
+
+
+        <div class="form-footer">
+            <p class="footer-text">
+                <a href="../about-us.html">About Us</a>
+                <a href="../term-of-use.html">Terms And Conditions</a>
+            </p>
+            <p>Copyright © simplinestle.org. All rights reserved.</p>
+        </div>
     </main>
 
-    <div class="form-footer"> 
-        <p class="footer-text">
-            <a href="../about-us.html">About Us</a>
-            <a href="../term-of-use.html">Terms And Conditions</a>
-        </p>
-        <p>Copyright © simplinestle.org. All rights reserved.</p>
-    </div>
 </body>
 
 </html>

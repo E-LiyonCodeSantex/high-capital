@@ -26,8 +26,8 @@
 
 <body>
     <section>
-        <div class="have-accont">
-            <a href="/user/Dashboard"> Access Your Dashboard</a>
+        <div class="header">
+            <a href="/user/Dashboard" class="a color-gradient"> Access Your Dashboard</a>
             <p class="header">Withdrawal</p>
         </div>
 
@@ -46,10 +46,10 @@
                 </select>
             </div>
 
-            <div id="crypto-fields" class="darker-color select-input withdrawal-adress-field" style="display:none;">
+            <div id="crypto-fields" class=" select-input withdrawal-adress-field" style="display:none;">
                 <div class="form-group">
                     <label>Select wallet to withdrawal into:</label>
-                    <select name="walletName" class="darker-color select-input" required>
+                    <select name="walletName" class="select-input" required>
                         <option value="selectWallet">Select Wallet</option>
                         {{#each wallets}}
                         <option value="{{this.name}}">{{this.name}}</option>
@@ -80,39 +80,39 @@
         </form>
 
         {{#if withdrawals.length}}
-        <h3>Your Withdrawal Requests</h3>
+        <h3 class="header">Your Withdrawal Requests</h3>
         <div class="withdrawal-request">
             {{#each withdrawals}}
             <!-- ...your withdrawal card... -->
             <div class="withdrawal-table">
                 <p>
-                    <span class="deem-white-color">Amount:</span>
-                    <span class="text-warning">${{amount}}</span>
+                    <span class="">Amount:</span>
+                    <span class="color-gradient">${{amount}}</span>
                 </p>
 
                 <p>
-                    <span class="deem-white-color">Method:</span>
-                    <span class="text-warning">{{capitalize method}}</span>
+                    <span class="">Method:</span>
+                    <span class="color-gradient">{{capitalize method}}</span>
                 </p>
 
                 <p>
-                    <span class="deem-white-color">Wallet/Bank:</span>
-                    <span class="text-warning">
+                    <span class="">Wallet/Bank:</span>
+                    <span class="color-gradient">
                         {{#if walletName}}{{capitalize walletName}}{{/if}}
                         {{#if bankName}}{{capitalize bankName}}{{/if}}
                     </span>
                 </p>
 
                 <p>
-                    <span class="deem-white-color">Adress/Ac Number:</span>
-                    <span class="text-warning">
+                    <span class="">Adress/Ac Number:</span>
+                    <span class="color-gradient">
                         {{#if acountNumber}}{{acountNumber}}{{/if}}
                         {{#if walletAddress}}{{walletAddress}}{{/if}}
                     </span>
                 </p>
 
                 <p>
-                    <span class="deem-white-color">Status:</span>
+                    <span class="">Status:</span>
                     {{#if (eq status "pending")}}
                     <span class="text-danger">Pending</span>
                     {{else}}
@@ -121,13 +121,13 @@
                 </p>
 
                 <p>
-                    <span class="deem-white-color">Requested At:</span>
-                    <span class="text-warning requested-at" data-date="{{requestedAt}}"></span>
+                    <span class="">Requested At:</span>
+                    <span class="color-gradient requested-at" data-date="{{requestedAt}}"></span>
                 </p>
 
                 <p>
-                    <span class="deem-white-color">Approved At:</span>
-                    <span class="text-warning requested-at" data-date="{{processedAt}}"></span>
+                    <span class="">Approved At:</span>
+                    <span class="color-gradient requested-at" data-date="{{processedAt}}"></span>
                 </p>
 
             </div>
