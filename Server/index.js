@@ -74,6 +74,7 @@ const exphbsInstance = exphbs.create({
             // This will output: Mon Jun 09 2025 00:49:31
             return new Date(date).toString().split(' GMT')[0];
         },
+        array: (...args) => args.slice(0, -1)
     },
     runtimeOptions: {
         allowProtoPropertiesByDefault: true,

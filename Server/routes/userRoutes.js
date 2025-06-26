@@ -78,7 +78,6 @@ router.get('/dashboard', authenticateUser, setUserLocals, updateLastActive, asyn
 });
 
 router.get('/WalletManagement', authenticateUser, setUserLocals, updateLastActive, (req, res) => res.render('user/wallet'));
-router.get('/history', authenticateUser, setUserLocals, updateLastActive, (req, res) => res.render('user/history'));
 router.get('/settings/confirm', authenticateUser, setUserLocals, updateLastActive, (req, res) => res.render('user/settingsConfirm'));
 
 router.post('/settings/confirm', authenticateUser, setUserLocals, updateLastActive, async (req, res, next) => {
@@ -156,14 +155,7 @@ router.get('/investmentPlans', authenticateUser, setUserLocals, updateLastActive
 });
 
 //router.get('/history', authenticateUser, setUserLocals, updateLastActive, getTransactionHistory);
-router.get('/history', authenticateUser, setUserLocals, updateLastActive, async (req, res, next) => {
-    try {
-        await getTransactionHistory(req, res, next);
-    } catch (err) {
-        next(err); 
-    }
-});
-
+router.get('/history', authenticateUser, setUserLocals, updateLastActive, getTransactionHistory);
 router.get('/logout', async (req, res, next) => {
     try {
         await logoutUser(req, res, next);

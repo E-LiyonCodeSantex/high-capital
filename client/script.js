@@ -1,25 +1,25 @@
 //nav bar toggling and dropdown
 //for nav toggling
-document.addEventListener('DOMContentLoaded', () =>{
+document.addEventListener('DOMContentLoaded', () => {
 
-const burger = document.querySelector('.burger');
-const nav = document.querySelector('.nav-links');
-const navLinks = document.querySelectorAll('.nav-links li');
-const body = document.querySelector('body');
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
+    const body = document.querySelector('body');
 
 
-burger.addEventListener('click', () => {
-    nav.classList.toggle('nav-active');
-    burger.classList.toggle('toggle');
-    body.classList.toggle('nav-active');
-});
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        nav.classList.remove('nav-active');
-        burger.classList.remove('toggle');
-        body.classList.remove('nav-active');
+    burger.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+        burger.classList.toggle('toggle');
+        body.classList.toggle('nav-active');
     });
-});
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('nav-active');
+            burger.classList.remove('toggle');
+            body.classList.remove('nav-active');
+        });
+    });
 })
 
 /*Function for FAQ drawer*/
@@ -330,5 +330,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const historyCard = document.querySelectorAll('.history');
+    const transactionModal = document.getElementById('transaction-history-details');
+    const transactionReceipt = document.getElementById('transaction-receipt');
+
+    historyCard.forEach(each => {
+        each.addEventListener('click', () => {
+            console.log('transaction modal is clicked');
+            transactionModal.style.display = 'block';
+        })
+    })
+
+
+    const closeTransactionDetails = document.getElementById('close-transaction-details');
+    closeTransactionDetails.addEventListener('click', () => {
+        transactionModal.style.display = 'none';
+    });
+})
 
 

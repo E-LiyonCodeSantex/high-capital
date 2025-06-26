@@ -151,9 +151,12 @@ body>* {
     background-color: #181818;
     color: #fff;
     width: 150px;
-    border: 1.5px solid #333;
-    padding: 8px;
+    border: 1.5px solid #adabab;
+    padding: 10px;
     border-radius: 10px;
+    position:sticky;
+    top:0;
+    z-index: 100;
 }
 
 /*style rules for general containers*/
@@ -375,7 +378,7 @@ section {
     margin-top: 100px;
     padding: 30px 10px 10px 10px;
     width: 100%;
-    gap: 15px;
+    gap: 10px;
     justify-content: start;
     align-items: center;
     min-height: 100vh;
@@ -411,20 +414,20 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
     flex-wrap: wrap;
     width: fit-content;
     height: fit-content;
     padding: 10px;
-    border: 1px solid #333;
+    border: 1.5px solid #333;
     border-radius: 8px;
     background: rgba(192, 192, 192, 0.9);
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
 }
 
 .profile-picture {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border: 1px solid #adabab;
     border-radius: 50%;
 }
@@ -434,6 +437,7 @@ main {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    font-size: small;
 }
 
 .last-loggedin {
@@ -918,6 +922,110 @@ main {
 }
 
 /*History style rules are here*/
+.transaction-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 90%;
+    height: fit-content;
+    gap: 10px;
+    background: rgba(192, 192, 192, 0.9);
+    color: #000;
+    padding: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1.5px solid #ffffff;
+    border-radius: 25px 0 25px 0;
+    position:sticky;
+    top: 140px;
+}
+.transaction{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 7px;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: none;
+}
+.select-currency{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+.all-transaction{
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    padding: 7px;
+    background: rgba(192, 192, 192, 0.5);
+    color: #000;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1.5px solid #ffffff;
+    border-radius: 8px 0 8px 0;
+}
+.all-transaction:hover{
+    background: #ffffff;
+}
+.date-format{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+.start-date{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+.transaction-history{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    gap: 10px;
+    width: 100%;
+    height: fit-content;
+    background: rgba(192, 192, 192, 0.7);
+    color: #000;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1.5px solid #ffffff;
+    border-radius: 25px 0 25px 0;
+}
+.history{
+    display: flex;
+    width: 100%;
+    max-height:400px;
+    height: fit-content;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    background: rgba(192, 192, 192, 0.9);
+    color: #000;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid #ffffff;
+    border-radius: 10px 0 10px 0;
+    cursor: pointer;
+}
+.history-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap:6px;
+
+}
 .investment-plans-container {
     display: flex;
     justify-content: center;
@@ -1053,8 +1161,8 @@ main {
 
 @media (max-width:750px) {
     section {
-        margin-top: 100px;
-        padding: 25px;
+        margin-top: 78px;
+        padding: 25px 10px 10px 10px;
     }
 
     nav {
@@ -1120,6 +1228,29 @@ main {
         transform: rotate(45deg) translate(-5px, -6px);
         background-color: #ECFC07;
     }
+    #google_translate_element select {
+    padding: 7px;
+    border-radius: 7px;
+    font-size:small;
+}
+
+    .profile-translor {
+    padding: 45px 10px 10px 10px;
+}
+
+.profile-name-n-img {
+    gap: 15px;
+    padding: 7px;
+}
+
+.profile-picture {
+    width: 35px;
+    height: 35px;
+}
+
+.profile-name {
+    font-size: small;
+}
 
 
     /*style rule for account summary in logged in dashboard*/
@@ -1136,16 +1267,20 @@ main {
         width: 95%;
         font-size: medium;
     }
+    .transaction-content{
+        width: 100%;
+    }
+    .all-transaction{
+        width: 120px;
+    }
+    .transaction-content{
+    top: 120px;
+}
 
 
 }
 
 @media(max-width:383px) {
-    section {
-        margin-top: 160px;
-        padding: 25px 10px 10px 10px;
-    }
-
     .divider {
         width: 80%;
         height: 2px;
@@ -1168,5 +1303,15 @@ main {
     .coin-card a {
         font-size: small;
         margin-top: 5px;
+    }
+    .all-transaction{
+        width: 100px;
+    }
+
+}
+@media(max-width:370px){
+     section {
+        margin-top: 145px;
+        padding: 25px 10px 10px 10px;
     }
 }

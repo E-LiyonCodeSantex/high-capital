@@ -1,51 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Transaction History</title>
     <style>
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
-        th { background: #f5f5f5; }
-        .success { color: green; }
-        .pending { color: orange; }
-        .failed { color: red; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background: #f5f5f5;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .pending {
+            color: orange;
+        }
+
+        .failed {
+            color: red;
+        }
     </style>
 </head>
+
 <body>
-  <section>
-      <h3 class="header">Transaction History</h3>
-    {{#if transactions.length}}
-    <table>
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Type</th>
-                <th>Amount</th>
-                <th>Status</th>
-                <th>Reference</th>
-            </tr>
-        </thead>
-        <tbody>
+    <section>
+        <div class="header">
+            <p class="color-gradient">TRANSACTIONS</p>
+        </div>
+
+        <form class="transaction-content" id="filter-form" method="get" action="/user/history">
+            <div class="transaction">
+                <div class="select-currency">
+                    <label for="transaction-type">Transaction Type:</label>
+                    <select name="type" class="all-transaction" id="transaction-type" title="transaction">
+                        <option value="all" {{#if (eq selected.type "all" )}}selected{{/if}}>All Transactions</option>
+                        <option value="deposit" {{#if (eq selected.type "deposit" )}}selected{{/if}}>Deposit</option>
+                        <option value="withdrawal">Withdrawal</option>
+                        <option value="profit" {{#if (eq selected.type "withdrawal" )}}selected{{/if}}>Profit</option>
+                        <option value="referral">Referral Commission</option>
+                    </select>
+                </div>
+                <div class="select-currency">
+                    <label for="transaction-currency">Select Currency:</label>
+                    <select name="currency" class="all-transaction" id="transaction-currency" title="transaction">
+                        <option value="all" {{#if (eq selected.currency "all" )}}selected{{/if}}>All Currencies</option>
+                        {{#each wallets}}
+                        <option value="{{this.name}}">{{this.name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </div>
+
+            <div class="date-format">
+                <div class="select-currency">
+                    <label for="start-date">Choose Date:</label>
+                    <div class="start-date">
+                        <select name="month" class="all-transaction" id="month" title="Month">
+                            <option value="">All Months</option>
+                            {{#each (array "01" "02" "03" "04" "05" "06" "07" "08" "09" "10" "11" "12")}}
+                            <option value="{{this}}" {{#if (eq ../selected.month this)}}selected{{/if}}>{{this}}
+                            </option>
+                            {{/each}}
+                        </select>
+                        <select name="year" class="all-transaction" id="year" title="Year">
+                            <option value="">All Years</option>
+                            {{!-- You can generate year options dynamically if needed --}}
+                            <option value="2025" {{#if (eq selected.year "2025" )}}selected{{/if}}>2025</option>
+                            <option value="2024" {{#if (eq selected.year "2024" )}}selected{{/if}}>2024</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="transaction-history" >
+            <!-- Transactions will be dynamically inserted here -->
+            {{#if transactions.length}}
             {{#each transactions}}
-            <tr>
-                <td>{{formatDate date}}</td>
-                <td>{{capitalize type}}</td>
-                <td>{{amount}}</td>
-                <td class="{{status}}">{{capitalize status}}</td>
-                <td>{{reference}}</td>
-            </tr>
+            <div class="history" >
+                <div class="history-content">
+                    <h3 class="color-gradient">{{capitalize type}}</h3>
+                    <p class="color-gradient">{{formatDate date}}</p>
+                </div>
+                <div class="history-content">
+                    <p class="color-gradient">${{amount}}</p>
+                    <p class="color-gradient">{{capitalize status}}</p>
+                </div>
+            </div>
             {{/each}}
-        </tbody>
-    </table>
-    {{else}}
-        <p>No transactions found.</p>
-    {{/if}}
-  </section>
+            {{else}}
+            <p>No transactions found.</p>
+            {{/if}}
+        </div>
 
 
+        <div class="detail-deposit-table" id="transaction-history-details">
+            <div class="detail-deposit-table-header">
+                <h3>Deposit</h3>
+                <i class="fa-solid fa-xmark text-danger button-one-five-size-no-padding"
+                    id="close-transaction-details"></i>
+            </div>
+            <div class="for-image">
+                <span class="">Transaction Receipt:</span>
+                <img src="" class="image" id="transaction-receipt" alt="" width="100%" height="100px">
+            </div>
+            <p>
+                <span class="">Plan name:</span>
+                <span class="color-gradient" id="detail-plan-name"></span>
+            </p>
+
+            <p>
+                <span class="">Coin Deposited:</span>
+                <span class="color-gradient" id="detail-coin-type"></span>
+            </p>
+
+            <p>
+                <span class="">Amount:</span>
+                <span class="color-gradient" id="detail-amount"></span>
+            </p>
+
+            <p>
+                <span class="">Daily Profit:</span>
+                <span class="color-gradient" id="detail-daily-profit"></span>
+            </p>
+
+            <p>
+                <span class="">Duration:</span>
+                <span class="color-gradient" id="detail-duration"></span>
+            </p>
+
+            <p>
+                <span class="">Status:</span>
+                <span id="detail-status"></span>
+            </p>
+
+            <p>
+                <span class="">Date:</span>
+                <span class="color-gradient mainDate" id="detail-date"></span>
+            </p>
+
+            <p>
+                <span class="">Total Profit:</span>
+                <span class="color-gradient" id="detail-total-profit"></span>
+            </p>
+
+            <p>
+                <span class="">End Date</span>
+                <span class="color-gradient" id="detail-end-date"></span>
+            </p>
+
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('#filter-form select').forEach(function (select) {
+            select.addEventListener('change', function () {
+                document.getElementById('filter-form').submit();
+            });
+        });
+    </script>
 
 
-  <script src="/script.js"></script>
+     <script src="/script.js"></script>
 </body>
+
 </html>
