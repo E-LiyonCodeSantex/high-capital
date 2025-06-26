@@ -125,6 +125,9 @@ h1 {
     padding: 0;
     margin: 0;
 }
+a {
+    text-decoration: none;
+}
 
 p {
     padding: 0;
@@ -137,6 +140,22 @@ p {
     color: #fff;
     background-color: blue;
     border-radius: 10px;
+}
+.logo {
+    color: #fff;
+    display: flex;
+    font-family: "Irish Grover";
+    width: 200px;
+    font-weight: 400;
+    font-style: normal;
+    font-size: large;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: linear-gradient(to left, #0000FF, #800080, #FFFF00);
+    /* Blue, Purple, Yellow gradient */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /*style rules for all a link buttons are here*/

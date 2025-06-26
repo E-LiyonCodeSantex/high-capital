@@ -22,20 +22,18 @@
 
 <body>
     <section>
-        <div class="sign-up-header">
-            <div class="have-accont">
-                <a href="/user/Dashboard"> Access Your Dashboard</a>
-                <p class="header">INVESTMENT PLANS</p>
-            </div>
+         <div class="header">
+            <a href="/user/Dashboard" class="a color-gradient"> Access Your Dashboard</a>
+            <p class="header">INVESTMENT PLANS</p>
+            <h3>You can invest in</h3>
         </div>
 
         {{#if plans.length}}
-        <h3>You can invest in</h3>
     <div class="investment-plans-container">
              {{#each plans}}
         <div class="investment-plans">
             <div style="display: flex; align-items: center; justify-content: start; margin-bottom: 10px; gap: 10px; ">
-                <span class="in-product-name red"><i class="fas fa-database" style="color: #e54a41;"></i></span>
+                <span class="in-product-name red"><i class="fas fa-database" style="color: #711afd;"></i></span>
                 <h4 class="uk-margin-remove">{{name}}</h4>
             </div>
             <ul style="display: flex; flex-direction: column; gap: 8px;  padding: 0; margin: 0;">
@@ -45,10 +43,10 @@
                 <li>Duration: <b>{{duration}}Days</b></li>
                 <li>Referral Bonus: <b>{{referralBonus}}%</b></li>
                 <li>Category: <b><span
-                            style="margin-left: 15px; font-weight: 400; font-size: 12px; color: #fff; padding: 2px 4px; background-color: #e54a41; border-radius: 5px;">TRADING</span></b>
+                            style="margin-left: 15px; font-weight: 400; font-size: 12px; color: #fff; padding: 2px 4px; background-color: #711afd; border-radius: 5px;">TRADING</span></b>
                 </li>
             </ul>
-            <a href="/user/makeDeposit?planId={{_id}}" class="get-started">Get Started<i
+            <a href="/user/makeDeposit?planId={{_id}}" class="submit-button">Get Started<i
                     class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
         </div>
         {{/each}}
@@ -59,8 +57,8 @@
 
         <div>
             <div class="investment-plans-card">
-                <img src="/Photos/coins/crypto-gold-card.jpg" alt="" />
-                <h3 class="text-white in-highlight ">Simpli Nestle offers Card to investors on the Gold plan</h3>
+                <img src="/clientphotos/img_yunllr.jpg" alt="" />
+                <h3 class="header in-highlight ">High Capital offers Card to investors on the Gold plan</h3>
                 <p>
                     The partnership aims to fill a gap in the traditional financial system that has left
                     many without access to essential
@@ -68,7 +66,7 @@
                     are unbanked or underbanked,
                     while global numbers have reached a staggering 1.7 billion, according to data released
                     by the World Bank. Through BlockCard,
-                    Simpli Nestle investors can have a virtual card issued to them while a physical card is
+                    High Capital investors can have a virtual card issued to them while a physical card is
                     mailed to them. The card has a
                     minimum of $1000 balance needed. It can be used at over 45 million merchants and ATMs –
                     anywhere in the world where major credit cards are accepted.

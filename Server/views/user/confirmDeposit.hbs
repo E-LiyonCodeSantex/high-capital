@@ -7,97 +7,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>simplinestle.org | CONFIRRM DEPOSIT </title>
     <meta name="theme-color" content="#181818">
-    <!-- GetButton.io widget -->
-    <script type="text/javascript">
-        (function () {
-            var options = {
-                whatsapp: "+61485972443", // WhatsApp number
-                call_to_action: "Message us", // Call to action
-                button_color: "#FF6550", // Color of button
-                position: "left", // Position may be 'right' or 'left'
-                pre_filled_message: "How do I get started with your company?", // WhatsApp pre-filled message
-            };
-            var proto = 'https:', host = "getbutton.io", url = proto + '//static.' + host;
-            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
-            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
-            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
-        })();
-    </script>
-    <!-- Smartsupp Live Chat script -->
-    <script type="text/javascript">
-        var _smartsupp = _smartsupp || {};
-        _smartsupp.key = '95a6f6427d672cd97d461c55da6d0661c3492b99';
-        window.smartsupp || (function (d) {
-            var s, c, o = smartsupp = function () { o._.push(arguments) }; o._ = [];
-            s = d.getElementsByTagName('script')[0]; c = d.createElement('script');
-            c.type = 'text/javascript'; c.charset = 'utf-8'; c.async = true;
-            c.src = 'https://www.smartsuppchat.com/loader.js?'; s.parentNode.insertBefore(c, s);
-        })(document);
-    </script>
     <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
     <!--forawesome-->
     <script src="/https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/loggedInStyle.css">
-    <!-- Google Translate script -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 
 <body>
-    <div class="signing">
-        <div class="sign-up-header">
-            <div class="have-accont">
-                <a href=" /user/Dashboard"> Access Your Dashboard</a>
-                <p class="header">CONFIRRM DEPOSIT</p>
-            </div>
+<section>
+        <div class="header">
+        <a href="/user/Dashboard" class="a color-gradient"> Access Your Dashboard</a>
+        <p class="header">CONFIRM DEPOSIT</p>
+    </div>
+
+    <form id="confirmDepositForm" action="/user/deposit" method="post" enctype="multipart/form-data"
+        class="deposit-form gap-and-padding margin-bottom color-black">
+        <h4 class="header">Please confirm your deposit</h4>
+        <span class="error-message-for-coin">You are about to invest in {{name}} with the deposit of
+            ${{amount}} worth of {{coinType }} to your account.</span>
+        <span class="error-message-for-coin">This plan comes with {{dailyProfit}}% daily profit and
+            {{referralBonus}}% referral bonus (if your your referree invest on thesame plan). It will last for
+            {{duration}} days and Your total profit wiil be ${{totalProfit}}. Investment duration will begin count upon
+            admin confirmation</span>
+
+        <div class="form-group">
+            <label for="wallet-to-deposit" class="form-control-label">Make your transfer to this coin Adress</label>
+            <span class="error-message-for-coin"> Click adress to copy</span>
+            <input type="text" name="adress" id="wallet-to-deposit" class="darker-color select-input" value="{{adress}}"
+                required readonly
+                onclick="this.select(); document.execCommand('copy'); alert('Address copied to clipboard!');">
+
+            <input type="hidden" name="name" value="{{name}}">
+            <input type="hidden" name="coinType" value="{{coinType}}">
+            <input type="hidden" name="dailyProfit" value="{{dailyProfit}}">
+            <input type="hidden" name="amount" value="{{amount}}">
+            <input type="hidden" name="duration" value="{{duration}}">
+            <input type="hidden" name="referralBonus" value="{{referralBonus}}">
+            <input type="hidden" name="depositId" value="{{depositId}}">
+            <input type="hidden" name="totalProfit" value="{{totalProfit}}">
+            <!-- Ensure the depositId is passed to the server -->
+
+            <label for="receipt-upload" class="form-control-label">Upload your deposit receipt here (PDF or
+                Image):</label>
+            <input type="file" name="deposit_receipt" id="receipt-upload" class="darker-color select-input"
+                accept=".png, .jpg, .jpeg, .pdf" required>
+            <span class="error-message">{{#if fileSizeError}}{{fileSizeError}}{{else}}&nbsp;{{/if}}</span>
         </div>
 
-        <form id="confirmDepositForm" action="/user/deposit" method="post" enctype="multipart/form-data"
-            class="deposit-form gap-and-padding dark-color margin-bottom">
-            <h3 class="header">Please confirm your deposit</h3>
-            <span class="error-message-for-coin text-warning">You are about to invest in {{name}} with the deposit of
-                ${{amount}} worth of {{coinType }} to your account.</span>
-            <span class="error-message-for-coin text-warning">This plan comes with {{dailyProfit}}% daily profit with
-                {{referralBonus}}%  referral bonus (if your your referree invest on thesame plan) and will last for
-                {{duration}} days. Your total profit wiil be ${{totalProfit}} and investment duration will begin count upon admin confirmation</span>
+        <div class="form-group">
+            <button type="submit" class="submit-button">CONFIRM DEPOSIT <i class="fa fa-check-circle"></i></button>
+        </div>
+    </form>
+</section>
 
-            <div class="form-group">
-                <label for="wallet-to-deposit" class="form-control-label">Make your transfer to this coin Adress</label>
-                <span class="error-message-for-coin text-warning"> Click adress to copy</span>
-                <input type="text" name="adress" id="wallet-to-deposit" class="darker-color select-input"
-                    value="{{adress}}" required readonly
-                    onclick="this.select(); document.execCommand('copy'); alert('Address copied to clipboard!');">
-
-                <input type="hidden" name="name" value="{{name}}">
-                <input type="hidden" name="coinType" value="{{coinType}}">
-                <input type="hidden" name="dailyProfit" value="{{dailyProfit}}">
-                <input type="hidden" name="amount" value="{{amount}}">
-                <input type="hidden" name="duration" value="{{duration}}">
-                <input type="hidden" name="referralBonus" value="{{referralBonus}}">
-                <input type="hidden" name="depositId" value="{{depositId}}">
-                <input type="hidden" name="totalProfit" value="{{totalProfit}}">
-                <!-- Ensure the depositId is passed to the server -->
-
-                <label for="receipt-upload" class="form-control-label">Upload your deposit receipt here (PDF or
-                    Image):</label>
-                <input type="file" name="deposit_receipt" id="receipt-upload" class="darker-color select-input"
-                    accept=".png, .jpg, .jpeg, .pdf" required>
-                        <span class="error-message">{{#if fileSizeError}}{{fileSizeError}}{{else}}&nbsp;{{/if}}</span>
-            </div>
-
-            <div class="form-group">
-                <button type="submit" class="submit-button">CONFIRM DEPOSIT <i class="fa fa-check-circle"></i></button>
-            </div>
-        </form>
-
-        <script src="/script.js"></script>
-        <script id="plans-data" type="application/json">{{{json plans}}}</script>
-    </div>
+    <script src="/script.js"></script>
+    <script id="plans-data" type="application/json">{{{json plans}}}</script>
 
 
     <script src="/script.js"></script>

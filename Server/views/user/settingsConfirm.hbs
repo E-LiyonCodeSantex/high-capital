@@ -23,9 +23,8 @@
 </head>
 
 <body>
-    <main class="dark-color">
         <section>
-            <form class="profile-fields" action="/user/settings/confirm" method="POST">
+            <form class="profile-fields gap" action="/user/settings/confirm" method="POST">
                 <label>
                     Please enter your password to access settings:
                     <input type="password" name="password" required>
@@ -34,8 +33,6 @@
             </form>
             {{#if error}}<p class="error">{{error}}</p>{{/if}}
         </section>
-
-    </main>
 
 
     <script src="/script.js"></script>

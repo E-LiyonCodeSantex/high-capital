@@ -23,81 +23,70 @@
 </head>
 
 <body>
-    <main class="dark-color">
+    <section>
+        <div class="header">
+            <a href="/user/Dashboard" class="a color-gradient"> Access Your Dashboard</a>
+            <p class="header">PROFILE SETTINGS</p>
+        </div>
 
-        <section>
-            <div class="signing">
-                <div class="sign-up-header">
-                    <div class="have-accont">
-                        <a href="/user/Dashboard"> Access Your Dashboard</a>
-                        <p class="header">DEPOSIT</p>
-                    </div>
-                </div>
+        <form class="profile-settings-form" action="/user/settings" method="POST" enctype="multipart/form-data">
 
-                <form class="profile-settings-form" action="/user/settings" method="POST" enctype="multipart/form-data">
+            <div class="profile-photo-section">
+                <img src="{{user.profilePhoto}}" alt="Profile Photo" class="profile-picture" id="profile-photo-preview">
+                <label for="profilePhoto" class="upload-photo-label">
+                    <i class="fa fa-camera"></i> Change Photo
+                    <input type="file" name="profilePhoto" id="profilePhoto" accept="image/*" style="display:none;">
+                </label>
+            </div>
 
-                    <div class="profile-photo-section">
-                        <img src="{{user.profilePhoto}}" alt="Profile Photo" class="profile-picture"
-                            id="profile-photo-preview">
-                        <label for="profilePhoto" class="upload-photo-label">
-                            <i class="fa fa-camera"></i> Change Photo
-                            <input type="file" name="profilePhoto" id="profilePhoto" accept="image/*"
-                                style="display:none;">
-                        </label>
-                    </div>
-
-                    <div class="profile-fields">
-                        <label>
-                            Full Name
-                            <input type="text" name="name" value="{{user.name}}" required>
-                        </label>
-                        <label>
-                            <label>
-                                User Name
-                                <input type="text" name="userName" value="{{user.userName}}" required>
-                            </label>
-                            <label>
-                                Email
-                                <input type="email" name="email" value="{{user.email}}" required>
-                            </label>
-                            <label>
-                                Phone Number (start from your country code eg. +61)
-                                <input type="tel" name="phoneNumber" value="{{user.phone}}">
-                            </label>
-                            <label>
-                                Bitcoin Wallet
-                                <input type="text" name="bitcoinWallet" value="{{user.bitcoinWallet}}">
-                            </label>
-                            <label>
-                                USDT Wallet
-                                <input type="text" name="usdtWallet" value="{{user.usdtWallet}}">
-                            </label>
-                            <label>
-                                Ethereum Wallet
-                                <input type="text" name="ethereumWallet" value="{{user.ethereumWallet}}">
-                            </label>
-                    </div>
-                    <hr>
-                    <div class="profile-fields">
-                        <label>
-                            New Password
-                            <input type="password" name="newPassword" autocomplete="new-password">
-                        </label>
-                        <label>
-                            Confirm New Password
-                            <input type="password" name="confirmPassword" autocomplete="new-password">
-                        </label>
-                    </div>
-                    <div class="profile-settings-actions">
-                        <button type="submit" class="btn green-black-buttons button-size-with-padding">Save
-                            Changes</button>
-                        <a href="/user/dashboard" class="btn yellow-buttons button-size-with-padding">Cancel</a>
-                    </div>
-                </form>
-        </section>
-
-    </main>
-
+            <div class="profile-fields">
+                <label>
+                    Full Name
+                    <input type="text" name="name" value="{{user.name}}" required>
+                </label>
+                <label>
+                    <label>
+                        User Name
+                        <input type="text" name="userName" value="{{user.userName}}" required>
+                    </label>
+                    <label>
+                        Email
+                        <input type="email" name="email" value="{{user.email}}" required>
+                    </label>
+                    <label>
+                        Phone Number (start from your country code eg. +61)
+                        <input type="tel" name="phoneNumber" value="{{user.phone}}">
+                    </label>
+                    <label>
+                        Bitcoin Wallet
+                        <input type="text" name="bitcoinWallet" value="{{user.bitcoinWallet}}">
+                    </label>
+                    <label>
+                        USDT Wallet
+                        <input type="text" name="usdtWallet" value="{{user.usdtWallet}}">
+                    </label>
+                    <label>
+                        Ethereum Wallet
+                        <input type="text" name="ethereumWallet" value="{{user.ethereumWallet}}">
+                    </label>
+            </div>
+            <div class="profile-fields">
+                <label>
+                    New Password
+                    <input type="password" name="newPassword" autocomplete="new-password">
+                </label>
+                <label>
+                    Confirm New Password
+                    <input type="password" name="confirmPassword" autocomplete="new-password">
+                </label>
+            </div>
+            <div class="profile-settings-actions">
+                <button type="submit" class="btn green-black-buttons button-size-with-padding">Save
+                    Changes</button>
+                <a href="/user/dashboard" class="btn yellow-buttons button-size-with-padding">Cancel</a>
+            </div>
+        </form>
+    </section>
 
     <script src="/script.js"></script>
 </body>

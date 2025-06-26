@@ -151,8 +151,8 @@ const resetPassword = async (req, res, next) => {
     const mailOptions = {
         from: process.env.EMAIL_USER,
         to: email,
-        subject: 'Your Simpli nestle Password Reset Code',
-        text: `Your Simpli nestle password reset code is: ${resetCode}`
+        subject: 'Your High Capital Password Reset Code',
+        text: `Your High Capital password reset code is: ${resetCode}`
     };
 
     try {
