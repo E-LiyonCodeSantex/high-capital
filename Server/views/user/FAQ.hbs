@@ -1,49 +1,7 @@
 <!DOCTYPE html>
 <html lang="zxx" dir="ltr">
-<style>
-    .goog-logo-link {
-        display: none !important;
-    }
-
-    .goog-te-gadget {
-        color: transparent !important;
-    }
-
-    .goog-te-gadget .goog-te-combo {
-        color: black !important;
-    }
-</style>
 
 <head>
-    <!-- GetButton.io widget -->
-    <script type="text/javascript">
-        (function () {
-            var options = {
-                whatsapp: "+61485972443", // WhatsApp number
-                call_to_action: "Message us", // Call to action
-                button_color: "#FF6550", // Color of button
-                position: "left", // Position may be 'right' or 'left'
-                pre_filled_message: "How do I get started with your company?", // WhatsApp pre-filled message
-            };
-            var proto = 'https:', host = "getbutton.io", url = proto + '//static.' + host;
-            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
-            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
-            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
-        })();
-    </script>
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-        (function () {
-            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-            s1.async = true;
-            s1.src = 'https://embed.tawk.to/66c7afbeea492f34bc092681/default';
-            s1.charset = 'UTF-8';
-            s1.setAttribute('crossorigin', '*');
-            s0.parentNode.insertBefore(s1, s0);
-        })();
-    </script>
-    <!--End of Tawk.to Script-->
     <!-- Standard Meta -->
     <meta charset="utf-8">
     <meta name="description" content="">
@@ -51,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#181818">
     <!-- Site Properties -->
-    <title>simplinestle.org | Home </title>
+    <title>HIGH CAPITAL | FAQ </title>
 
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="/Uikit/css/uikit.min.css">
@@ -65,9 +23,6 @@
     <link rel="shortcut icon" href="/static/app/images/favicon.54f7c0a8907c.png" type="image/x-icon">
     <link rel="apple-touch-icon-precomposed" href="/static/app/images/favicon.54f7c0a8907c.png">
     <!-- css -->
-
-    <!--for google translator-->
-    <script src="https://www.gstatic.com/translate/translate_tts.js"></script>
 
     <link rel="stylesheet" href="/style.css">
 </head>
@@ -364,33 +319,6 @@
     <script src="/static/app/js/config-particles.379b25b7ee02.js"></script>
     <script src="/static/app/js/config-theme.ff231947ee82.js"></script>
 
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement(
-                { pageLanguage: 'en' },
-                'google_translate_element'
-            );
-        } 
-    </script>
-    <!-- Google tranlator -->
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-
-    <!-- Flag click handler -->
-    <script type="text/javascript">
-        $('.translation-links a').click(function () {
-            var lang = $(this).data('lang');
-            var $frame = $('.goog-te-menu-frame:first');
-            if (!$frame.size()) {
-                alert("Error: Could not find Google translate frame.");
-                return false;
-            }
-            $frame.contents().find('.goog-te-menu2-item span.text:contains(' + lang + ')').get(0).click();
-            return false;
-        });
-
-    </script>
-
     <script>
         function triggerClick(x) {
             document.querySelector(x).click();
@@ -423,50 +351,7 @@
         }
 
     </script>
-
-
-
-    <script>
-        function showTime() {
-            var date = new Date();
-            var h = date.getHours(); // 0 - 23
-            var m = date.getMinutes(); // 0 - 59
-            var s = date.getSeconds(); // 0 - 59
-            var session = "AM";
-
-            if (h === 0) {
-                h = 12;
-            }
-
-            if (h > 12) {
-                h = h - 12;
-                session = "PM";
-            }
-
-            h = (h < 10) ? "0" + h : h;
-            m = (m < 10) ? "0" + m : m;
-            s = (s < 10) ? "0" + s : s;
-
-            var time = h + " : " + m + " : " + s + " " + session;
-            document.getElementById("MyClockDisplay").innerText = time;
-            document.getElementById("MyClockDisplay").textContent = time;
-
-            setTimeout(showTime, 1000);
-
-        }
-
-        showTime();
-
-        function btc_to_usd(valNum) {
-            var calc = valNum * 28993.14;
-            document.getElementById("val_usd").value = calc.toFixed(2);
-        }
-
-        function usd_to_btc(valNum) {
-            var calc = valNum / 28993.14;
-            document.getElementById("val_btc").value = calc.toFixed(8);
-        }
-    </script>
+    
 </body>
 
 </html>

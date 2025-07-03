@@ -327,7 +327,7 @@ nav {
     z-index: 10;
 }
 
-.nav-links {
+.nav-bar {
     display: flex;
     align-items: center;
     font-size: medium;
@@ -340,7 +340,7 @@ nav {
 
 }
 
-.nav-links li {
+.nav-bar li {
     background: url('/clientphotos/logos/logo-clip.jpeg') no-repeat center center;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -350,7 +350,7 @@ nav {
     font-size: 1rem;
 }
 
-.nav-links li:hover {
+.nav-bar li:hover {
     background: none;
     -webkit-background-clip: border-box;
     -webkit-text-fill-color: #BAB520;
@@ -1308,7 +1308,7 @@ td:nth-child(2) {
         padding: 10px;
     }
 
-    .nav-links {
+    .nav-bar {
         flex-direction: column;
         gap: 10px;
         position: absolute;
@@ -1323,12 +1323,12 @@ td:nth-child(2) {
         transition: transform 0.5s ease-in-out;
     }
 
-    .nav-links li {
+    .nav-bar li {
         letter-spacing: 2px;
         margin: 10px 0;
     }
 
-    .nav-links.nav-active {
+    .nav-bar.nav-active {
         transform: translateX(100%);
     }
 

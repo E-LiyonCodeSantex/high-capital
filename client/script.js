@@ -1,5 +1,5 @@
-//nav bar toggling and dropdown
-//for nav toggling
+//nav bar toggling and dropdown for web layout
+// This script toggles the navigation bar and handles the dropdown functionality for the company section
 document.addEventListener('DOMContentLoaded', () => {
 
     const burger = document.querySelector('.burger');
@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 })
 
-//for nav company drawer
+//for nav company drawer for web layout
+// This script handles the dropdown functionality for the company section in the navigation bar
 document.addEventListener('DOMContentLoaded', () =>{
     const companyHeader = document.querySelector('.company-header');
     const companyDropDown = document.querySelector('.company-drop_down');
@@ -32,7 +33,8 @@ document.addEventListener('DOMContentLoaded', () =>{
     })
 })
 
-/*Function for FAQ drawer*/
+//Function for FAQ drawer for web layout
+// This script handles the FAQ section where clicking on a question toggles the answer visibility
 document.addEventListener('DOMContentLoaded', () => {
     const drawerHeaders = document.querySelectorAll('.drawer-head');
     drawerHeaders.forEach(header => {
