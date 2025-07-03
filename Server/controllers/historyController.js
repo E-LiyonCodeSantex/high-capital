@@ -13,6 +13,7 @@ function filterByDate(items, month, year) {
     });
 }
 
+
 exports.getTransactionHistory = async (req, res) => {
     try {
         const userId = req.user._id;
@@ -43,15 +44,29 @@ exports.getTransactionHistory = async (req, res) => {
                 amount: tx.amount,
                 status: tx.status,
                 reference: tx._id,
-                currency: tx.coinType
+                currency: tx.coinType,
+                transactionReceipt: tx.transactionReceipt, // <-- add this
+                name: tx.name,
+                dailyProfit: tx.dailyProfit,
+                duration: tx.duration,
+                totalProfit: tx.totalProfit,
+                endDate: tx.endDate
             })),
             ...withdrawals.map(tx => ({
                 date: tx.requestedAt,
                 type: 'withdrawal',
                 amount: tx.amount,
+                method: tx.method,
+                walletName: tx.walletName,
+                walletAddress: tx.walletAddress,
+                acountNumber: tx.acountNumber,
+                acountName: tx.acountName,
+                bankName: tx.bankName,
                 status: tx.status,
                 reference: tx._id,
-                currency: tx.method || tx.walletName
+                processedAt: tx.processedAt,
+                transactionReceipt: tx.transactionReceipt,
+                endDate: tx.processedAt
             })),
             // Add profit and referral commission here if you have those models/data
         ];

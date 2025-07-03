@@ -19,11 +19,47 @@ exports.createWithdrawal = async (req, res, next) => {
     const { amount, method, walletAddress, bankName, acountNumber, acountName, status } = req.body;
     const walletName = method === 'crypto' && req.body.walletName !== 'selectWallet' ? req.body.walletName : null;
 
-    // Optional: Check if user has enough available balance
-    // (You should implement a robust check here)
-    // Example: Calculate available balance as in your dashboard controller
+    // Calculate available balance
+    const deposits = await deposit.find({ user: userId, status: 'completed' });
+    const withdrawals = await Withdrawal.find({ user: userId });
+    const pendingWithdrawals = withdrawals.filter(w => w.status === 'pending');
+    const successfulWithdrawals = withdrawals.filter(w => w.status === 'Successful');
 
-    const withdrawal = new Withdrawal({
+    const totalWithdraw = successfulWithdrawals.reduce((sum, w) => sum + w.amount, 0);
+    const totalPending = pendingWithdrawals.reduce((sum, w) => sum + w.amount, 0);
+
+    let availableBalance = deposits.reduce((sum, dep) => {
+      let profit = 0;
+      if (dep.dailyProfit && dep.duration) {
+        profit = dep.amount * (Number(dep.dailyProfit) / 100) * dep.duration;
+      }
+      return sum + dep.amount + profit + (dep.oldBalance || 0);
+    }, 0) - totalWithdraw - totalPending;
+
+    // Too many pending requests
+    if (pendingWithdrawals.length >= 2) {
+      const wallets = await WalletAdress.find();
+      return res.render('user/withdrawal', {
+        errorMessage: 'Too many unprocessed withdrawal requests, please try again later.',
+        wallets,
+        withdrawals,
+        user: req.user
+      });
+    }
+
+    // Insufficient balance
+    if (availableBalance <= 0 || Number(amount) > availableBalance) {
+      const wallets = await WalletAdress.find();
+      return res.render('user/withdrawal', {
+        errorMessage: 'Insufficient balance for withdrawal.',
+        wallets,
+        withdrawals,
+        user: req.user
+      });
+    }
+
+    // Proceed with withdrawal
+    const withdrawalDoc = new Withdrawal({
       user: userId,
       amount,
       method,
@@ -34,7 +70,7 @@ exports.createWithdrawal = async (req, res, next) => {
       acountName,
       status,
     });
-    await withdrawal.save();
+    await withdrawalDoc.save();
     res.redirect('/user/withdrawal');
   } catch (err) {
     next(err);

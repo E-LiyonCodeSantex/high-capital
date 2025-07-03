@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>HIGH CAPITAL | Get Support</title>
+    <noscript> Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
+    <script src="https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/loggedInStyle.css">
+</head>
+
+<body>
+    <section>
+        <div class="header">
+            <p class="color-gradient">MESSAGE US</p>
+        </div>
+        <div class="transaction-content">
+            <h2>Get Support</h2>
+            <p>If you have any questions or need assistance, please send a message to our support team.</p>
+
+            <script language=javascript>
+
+                function checkform() {
+                    if (document.mainform.name.value == '') {
+                        alert("Please type your full name!");
+                        document.mainform.name.focus();
+                        return false;
+                    }
+                    if (document.mainform.email.value == '') {
+                        alert("Please enter your e-mail address!");
+                        document.mainform.email.focus();
+                        return false;
+                    }
+                    if (document.mainform.message.value == '') {
+                        alert("Please type your message!");
+                        document.mainform.message.focus();
+                        return false;
+                    }
+                    return true;
+                }
+
+            </script>
+
+            <form method=post name=mainform onsubmit="return checkform()" class="contact-us-form"><input type="hidden"
+                    name="form_id" value="16589247592357"><input type="hidden" name="form_token"
+                    value="1f13bdae4d2ed393668aa7383d0d18de">
+                <input type=hidden name=a value=support>
+                <input type=hidden name=action value=send>
+
+                {{#if message}}
+                <div class="{{#if success}}status-completed{{else}}status-unconfirmed{{/if}}">
+                    {{message}}
+                </div>
+                {{/if}}
+
+                <div class="leave-massage">
+                    <div class="form-group">
+                        <input class="white-color select-input" type="text" name="name" value=""
+                            placeholder="Full name">
+                    </div>
+
+                    <div class="form-group">
+                        <input class="white-color select-input" type="text" name="email" value=""
+                            placeholder="Email address">
+                    </div>
+                </div>
+                <textarea class="support-message" name=message cols=45 rows=4
+                    placeholder="Briefly tell us what you want... "></textarea>
+
+                <button class="submit-button" type="submit" name="send">Send Message</button>
+            </form>
+
+        </div>
+
+    </section>
+
+
+
+
+    <script src="/script.js"></script>
+
+</body>
+
+</html>

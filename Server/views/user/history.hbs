@@ -3,37 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Transaction History</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Transaction History | simplinestle.org</title>
+    <noscript> Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
+    <script src="https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/loggedInStyle.css">
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
         }
-
-        th,
-        td {
-            padding: 10px;
-            border: 1px solid #ccc;
-            text-align: left;
-        }
-
-        th {
-            background: #f5f5f5;
-        }
-
-        .success {
-            color: green;
-        }
-
-        .pending {
-            color: orange;
-        }
-
-        .failed {
-            color: red;
-        }
-    </style>
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 
 <body>
@@ -50,8 +31,6 @@
                         <option value="all" {{#if (eq selected.type "all" )}}selected{{/if}}>All Transactions</option>
                         <option value="deposit" {{#if (eq selected.type "deposit" )}}selected{{/if}}>Deposit</option>
                         <option value="withdrawal">Withdrawal</option>
-                        <option value="profit" {{#if (eq selected.type "withdrawal" )}}selected{{/if}}>Profit</option>
-                        <option value="referral">Referral Commission</option>
                     </select>
                 </div>
                 <div class="select-currency">
@@ -59,7 +38,8 @@
                     <select name="currency" class="all-transaction" id="transaction-currency" title="transaction">
                         <option value="all" {{#if (eq selected.currency "all" )}}selected{{/if}}>All Currencies</option>
                         {{#each wallets}}
-                        <option value="{{this.name}}">{{this.name}}</option>
+                        <option value="{{this.name}}" {{#if (eq ../selected.currency this.name)}}selected{{/if}}>
+                            {{this.name}}</option>
                         {{/each}}
                     </select>
                 </div>
@@ -87,18 +67,26 @@
             </div>
         </form>
 
-        <div class="transaction-history" >
+        <div class="transaction-history">
             <!-- Transactions will be dynamically inserted here -->
             {{#if transactions.length}}
             {{#each transactions}}
-            <div class="history" >
+            <div class="history">
                 <div class="history-content">
                     <h3 class="color-gradient">{{capitalize type}}</h3>
                     <p class="color-gradient">{{formatDate date}}</p>
                 </div>
                 <div class="history-content">
                     <p class="color-gradient">${{amount}}</p>
-                    <p class="color-gradient">{{capitalize status}}</p>
+                    <p>
+                        {{#if (eq status "completed")}}
+                        <span class="status-completed">{{capitalize status}}</span>
+                        {{else if (eq status "confirmed")}}
+                        <span class="status-confirmed">{{capitalize status}}</span>
+                        {{else}}
+                        <span class="status-unconfirmed">Unconfirmed</span>
+                        {{/if}}
+                    </p>
                 </div>
             </div>
             {{/each}}
@@ -107,8 +95,8 @@
             {{/if}}
         </div>
 
-
-        <div class="detail-deposit-table" id="transaction-history-details">
+        <!--
+        <div class="detail-deposit-table" id="transaction-history-details" data-status="{{status}}" data-index="{{@index}}">
             <div class="detail-deposit-table-header">
                 <h3>Deposit</h3>
                 <i class="fa-solid fa-xmark text-danger button-one-five-size-no-padding"
@@ -119,13 +107,21 @@
                 <img src="" class="image" id="transaction-receipt" alt="" width="100%" height="100px">
             </div>
             <p>
-                <span class="">Plan name:</span>
+                <span class="detail-plan-name-label"></span>
                 <span class="color-gradient" id="detail-plan-name"></span>
             </p>
 
             <p>
-                <span class="">Coin Deposited:</span>
+                <span class="detail-coin-type-label"></span>
                 <span class="color-gradient" id="detail-coin-type"></span>
+            </p>
+            <p class="detail-account-name-container">
+                <span class="detail-account-name-label"></span>
+                <span class="color-gradient" id="detail-account-name"></span>
+            </p>
+            <p class="detail-account-number-container">
+                <span class="detail-account-number-label"></span>
+                <span class="color-gradient" id="detail-account-number"></span>
             </p>
 
             <p>
@@ -133,7 +129,7 @@
                 <span class="color-gradient" id="detail-amount"></span>
             </p>
 
-            <p>
+            <p class="hide">
                 <span class="">Daily Profit:</span>
                 <span class="color-gradient" id="detail-daily-profit"></span>
             </p>
@@ -144,8 +140,8 @@
             </p>
 
             <p>
-                <span class="">Status:</span>
-                <span id="detail-status"></span>
+                <span >Status:</span>
+                <span class="detail-status"></span>
             </p>
 
             <p>
@@ -164,6 +160,7 @@
             </p>
 
         </div>
+        -->
     </section>
 
     <script>
@@ -175,7 +172,8 @@
     </script>
 
 
-     <script src="/script.js"></script>
+    <script src="/script.js"></script>
+   <!--- <script id="history-data" type="application/json">{{{json transactions}}}</script>-->
 </body>
 
 </html>

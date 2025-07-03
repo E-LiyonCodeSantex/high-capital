@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose'); // Import mongoose
-const { registerUser, loginUser, resetPassword, verifyResetCode, verifyPassword, updateUserSettings, logoutUser } = require('../controllers/userController'); // Import the user controller
+const { registerUser, loginUser, resetPassword, verifyResetCode, verifyPassword, updateUserSettings, logoutUser, getReferees } = require('../controllers/userController'); // Import the user controller
 const InvestmentPlan = require('../models/investmentPlanModel');
 const { authenticateUser } = require('../middleware/authMiddleware');
 const WalletAdress = require('../models/walletModel'); // Correct the casing of the file name
@@ -14,6 +14,7 @@ const updateLastActive = require('../middleware/updateLastActive');
 const withdrawalController = require('../controllers/withdrawalController');
 const deposit = require('../models/depositModel');
 const { getTransactionHistory } = require('../controllers/historyController');
+const nodemailer = require('nodemailer');
 
 
 // Middleware to set default layout for all user routes
@@ -22,17 +23,17 @@ router.use((req, res, next) => {
     next();
 });
 
-router.get('/signUp', (req, res) => res.render('user/signUp', { layout: false })); // Sign-up page
+router.get('/signUp', (req, res) => res.render('user/signUp', { layout: false, ref: req.query.ref }));
 
 router.post('/register', upload.single('profilePhoto'), async (req, res) => {
     try {
         await registerUser(req, res);
     } catch (error) {
         if (error.code === 'LIMIT_FILE_SIZE') {
-            return res.render('user/signUp', { fileSizeError: 'File size exceeds the limit of 2MB.' });
+            return res.render('user/signUp', { fileSizeError: 'File size exceeds the limit of 2MB.', layout: false });
         }
         console.error('Error in registration route:', error);
-        res.status(500).render('errorPage', { errorMessage: 'An unexpected error occurred. Please try again.' });
+        res.status(500).render('errorPage', { headerError: 'An unexpected error occurred. Please try again.', layout: false });
     }
 });
 
@@ -78,6 +79,7 @@ router.get('/dashboard', authenticateUser, setUserLocals, updateLastActive, asyn
 });
 
 router.get('/WalletManagement', authenticateUser, setUserLocals, updateLastActive, (req, res) => res.render('user/wallet'));
+router.get('/errorPage', authenticateUser, setUserLocals, updateLastActive, (req, res) => res.render('/user/errorPage'));
 router.get('/settings/confirm', authenticateUser, setUserLocals, updateLastActive, (req, res) => res.render('user/settingsConfirm'));
 
 router.post('/settings/confirm', authenticateUser, setUserLocals, updateLastActive, async (req, res, next) => {
@@ -160,8 +162,46 @@ router.get('/logout', async (req, res, next) => {
     try {
         await logoutUser(req, res, next);
     } catch (err) {
-        next(err); 
+        next(err);
     }
 });
+router.get('/support', authenticateUser, setUserLocals, updateLastActive, (req, res) => res.render('user/support'));
+// POST contact form
+router.post('/support', authenticateUser, setUserLocals, updateLastActive, async (req, res) => {
+    const { name, email, message } = req.body;
+
+    // Set up Nodemailer transporter with Gmail
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS // Use App Password, not your main password
+        }
+    });
+
+    // Email options
+    let mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: 'bosssantexdlyon@gmail.com',
+        replyTo: email,
+        subject: `New Contact Message from ${name}`,
+        text: `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+        res.render('user/support', {
+            message: 'Your message has been sent successfully. We will get back to you soon.',
+            success: true,
+            name: '',
+            email: '',
+            messageValue: ''
+        });
+    } catch (error) {
+        console.error(error);
+        res.render('user/support', { message: 'Error sending message. Please try again.', success: false });
+    }
+});
+router.get('/referees', authenticateUser, setUserLocals, updateLastActive, getReferees);
 
 module.exports = router; // Export the router

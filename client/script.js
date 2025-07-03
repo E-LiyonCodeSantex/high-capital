@@ -3,8 +3,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const burger = document.querySelector('.burger');
-    const nav = document.querySelector('.nav-links');
-    const navLinks = document.querySelectorAll('.nav-links li');
+    const nav = document.querySelector('.nav-bar');
+    const navLinks = document.querySelectorAll('.nav-bar li');
     const body = document.querySelector('body');
 
 
@@ -20,6 +20,16 @@ document.addEventListener('DOMContentLoaded', () => {
             body.classList.remove('nav-active');
         });
     });
+})
+
+//for nav company drawer
+document.addEventListener('DOMContentLoaded', () =>{
+    const companyHeader = document.querySelector('.company-header');
+    const companyDropDown = document.querySelector('.company-drop_down');
+
+    companyHeader.addEventListener('click', () =>{
+        companyDropDown.classList.toggle('show');
+    })
 })
 
 /*Function for FAQ drawer*/
@@ -119,6 +129,40 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+});
+
+//fucntion for validating the file size of the uploaded profile photo
+// This function checks the file size of the uploaded profile photo
+document.addEventListener('DOMContentLoaded', () => {
+    // Handle file size validation for the signup form
+    const signupForm = document.getElementById('signup-form');
+    if (signupForm) {
+        signupForm.addEventListener('submit', function (e) {
+            const fileInput = document.getElementById('profile-photo');
+            if (fileInput) {
+                const file = fileInput.files[0];
+                if (file && file.size > 2 * 1024 * 1024) { // 2MB limit
+                    e.preventDefault();
+                    alert('The uploaded file is too large. Please upload a file smaller than 3MB.');
+                }
+            }
+        });
+    }
+
+    // Handle file size validation for the deposit form
+    const depositForm = document.getElementById('deposit-form');
+    if (depositForm) {
+        depositForm.addEventListener('submit', function (e) {
+            const fileInput = document.getElementById('deposit-receipt');
+            if (fileInput) {
+                const file = fileInput.files[0];
+                if (file && file.size > 2 * 1024 * 1024) { // 2MB limit
+                    e.preventDefault();
+                    alert('The uploaded file is too large. Please upload a file smaller than 3MB.');
+                }
+            }
+        });
+    }
 });
 
 // Function to handle plan selection and autofill for deposit form
@@ -297,48 +341,95 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-//fucntion for validating the file size of the uploaded profile photo
-// This function checks the file size of the uploaded profile photo
-document.addEventListener('DOMContentLoaded', () => {
-    // Handle file size validation for the signup form
-    const signupForm = document.getElementById('signup-form');
-    if (signupForm) {
-        signupForm.addEventListener('submit', function (e) {
-            const fileInput = document.getElementById('profile-photo');
-            if (fileInput) {
-                const file = fileInput.files[0];
-                if (file && file.size > 2 * 1024 * 1024) { // 2MB limit
-                    e.preventDefault();
-                    alert('The uploaded file is too large. Please upload a file smaller than 3MB.');
-                }
-            }
-        });
-    }
-
-    // Handle file size validation for the deposit form
-    const depositForm = document.getElementById('deposit-form');
-    if (depositForm) {
-        depositForm.addEventListener('submit', function (e) {
-            const fileInput = document.getElementById('deposit-receipt');
-            if (fileInput) {
-                const file = fileInput.files[0];
-                if (file && file.size > 2 * 1024 * 1024) { // 2MB limit
-                    e.preventDefault();
-                    alert('The uploaded file is too large. Please upload a file smaller than 3MB.');
-                }
-            }
-        });
-    }
-});
-
+/**
 document.addEventListener('DOMContentLoaded', () => {
     const historyCard = document.querySelectorAll('.history');
     const transactionModal = document.getElementById('transaction-history-details');
     const transactionReceipt = document.getElementById('transaction-receipt');
+    const detailPlanName = document.getElementById('detail-plan-name');
+    const detailCoinType = document.getElementById('detail-coin-type');
+    const detailAmount = document.getElementById('detail-amount');
+    const detailDailyProfit = document.getElementById('detail-daily-profit');
+    const detailDuration = document.getElementById('detail-duration');
+    const detailStatus = document.querySelector('.detail-status');
+    const detailDate = document.getElementById('detail-date');
+    const detailTotalProfit = document.getElementById('detail-total-profit');
+    const detailEndDate = document.getElementById('detail-end-date');
+    const detailAccountNumber = document.getElementById('detail-account-number');
+    const detailAccountName = document.getElementById('detail-account-name');
+    const detailAccountNumberContainer = document.querySelector('.detail-account-number-container');
+    const detailAccountNameContainer = document.querySelector('.detail-account-name-container');
 
-    historyCard.forEach(each => {
+    //label declaration detail-account-number-container
+    const detailPlanNameLabel = document.querySelector('.detail-plan-name-label');
+    const detailCoinTypeLabel = document.querySelector('.detail-coin-type-label');
+    const detailAccountNameLabel = document.querySelector('.detail-account-name-label');
+    const detailAccountNumberLabel = document.querySelector('.detail-account-number-label');
+
+    const transactions = JSON.parse(document.getElementById('history-data').textContent);
+    historyCard.forEach((each, index) => {
         each.addEventListener('click', () => {
-            console.log('transaction modal is clicked');
+            // console.log('index is clicked:', index);
+            const transaction = transactions[index];
+
+            const type = transaction.type;
+            if (type === 'deposit') {
+                detailAccountNumberContainer.style.display = 'none';
+                detailAccountNameContainer.style.display = 'none';
+                transactionReceipt.src = transaction.transactionReceipt;
+                detailPlanNameLabel.textContent = 'Plan name:';
+                detailPlanName.textContent = transaction.name;
+                detailCoinTypeLabel.textContent = 'Coin Deposited:';
+                detailCoinType.textContent = transaction.currency;
+                detailAmount.textContent = `$${transaction.amount}`;
+                detailDailyProfit.textContent = `${transaction.dailyProfit}%`;
+                detailDuration.textContent = `${transaction.duration} days`;
+                detailTotalProfit.textContent = `$${transaction.totalProfit}`;
+                detailDate.textContent = new Date(transaction.date).toLocaleDateString();
+                let status = transaction.status;
+                if (status === 'unconfirmed') {
+                    detailStatus.textContent = 'Unconfirmed';
+                    detailEndDate.textContent = 'unconfirmed';
+                    detailStatus.classList.remove('status-confirmed', 'status-completed');
+                    detailStatus.classList.add('status-unconfirmed');
+                } else if (status === 'confirmed') {
+                    detailStatus.textContent = 'Confirmed';
+                    detailEndDate.textContent = 'Confirmed';
+                    detailStatus.classList.remove('status-unconfirmed', 'status-completed');
+                    detailStatus.classList.add('status-confirmed');
+                } else if (status === 'completed') {
+                    detailStatus.textContent = 'Completed';
+                    detailEndDate.textContent = new Date(transaction.date).toLocaleDateString();
+                    detailStatus.classList.remove('status-unconfirmed', 'status-confirmed');
+                    detailStatus.classList.add('status-completed');
+                } else {
+                    // Default for other statuses
+                    detailStatus.textContent = status.charAt(0).toUpperCase() + status.slice(1);
+                    detailEndDate.textContent = new Date(transaction.date).toLocaleDateString();
+                }
+            } else if (type === 'withdrawal') {
+                transactionReceipt.src = transaction.transactionReceipt;
+                detailPlanNameLabel.textContent = 'Method:';
+                detailPlanName.textContent = transaction.method;
+                if (transaction.method === 'bank') {
+                    detailCoinTypeLabel.textContent = 'Bank Name';
+                    detailCoinType.textContent = transaction.bankName;
+                    detailAccountNameLabel.textContent = 'Account Name:';
+                    detailAccountName.textContent = transaction.acountName;
+                    detailAccountNumberLabel.textContent = 'Account Number:';
+                    detailAccountNumber.textContent = transaction.acountNumber;
+                } else if (transaction.method === 'crypto') {
+                    detailCoinTypeLabel.textContent = 'Wallet Name:';
+                    detailCoinType.textContent = transaction.walletName;
+                    detailAccountNumberContainer.style.display = 'none';
+                    detailAccountNameLabel.textContent = 'Wallet Adress:';
+                    detailAccountName.textContent = transaction.walletAddress;
+                }
+                detailAmount.textContent = `$${transaction.amount}`;
+
+            }
+
+
             transactionModal.style.display = 'block';
         })
     })
@@ -349,5 +440,6 @@ document.addEventListener('DOMContentLoaded', () => {
         transactionModal.style.display = 'none';
     });
 })
+    **/
 
 

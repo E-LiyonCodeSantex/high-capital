@@ -18,8 +18,10 @@ const userSchema = new mongoose.Schema(
     role: { type: String, default: 'user' },
     lastLogin: { type: Date, default: null },
     lastActiveAt: { type: Date, default: Date.now },
-    resetPasswordCode: {type: String, default: null }, // Code for password reset
-    resetPasswordExpires: {type: Date, default: null },
+    resetPasswordCode: { type: String, default: null }, // Code for password reset
+    resetPasswordExpires: { type: Date, default: null },
+    referralCode: { type: String, unique: true },
+    referredBy: { type: String }, // stores the referralCode of the referrer
   },
   {
     timestamps: true
@@ -32,7 +34,7 @@ userSchema.pre('save', async function (next) {
     return next();
   }
 
-    // Only hash if not already hashed (bcrypt hashes are always 60 chars and start with $2)
+  // Only hash if not already hashed (bcrypt hashes are always 60 chars and start with $2)
   if (this.password && this.password.startsWith('$2b$')) {
     return next();
   }

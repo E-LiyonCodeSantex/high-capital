@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+    .goog-logo-link {
+        display: none !important;
+    }
+
+    .goog-te-gadget {
+        color: transparent !important;
+    }
+
+    .goog-te-gadget .goog-te-combo {
+        color: black !important;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIGH CAPITAL | User Referees</title>
+    <!--forawesome-->
+    <script src="https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/loggedInStyle.css">
+</head>
+<body>
+    <section>
+            <p class="header">Your Referees</p>
+
+        {{#if referees.length}}
+            <table >
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Joined</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each referees}}
+                        <tr>
+                            <td>{{this.userName}}</td>
+                            <td>{{this.email}}</td>
+                            <td>{{formatDateNumbersOnly this.createdAt}}</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        {{else}}
+            <p style="color: #000000;">You have not referred any users yet.</p>
+        {{/if}}
+        <a href="/user/dashboard" class="blue-buttons button-size-with-padding">Back to Dashboard</a>
+
+    </section>
+
+    <script src="/script.js"></script>
+</body>
+</html>

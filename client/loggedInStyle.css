@@ -60,7 +60,9 @@ body>* {
     padding: 10px 0;
 }
 
-
+.hide{
+    display: none;
+}
 /* for all text waining and prompt*/
 .status-unconfirmed {
     color: #F44336 !important;
@@ -83,9 +85,11 @@ body>* {
     color: #146917 !important;
     /* Green */
 }
-.color-black{
+
+.color-black {
     color: #000000;
 }
+
 /* Add more as needed */
 .border {
     padding: 5px;
@@ -154,8 +158,8 @@ body>* {
     border: 1.5px solid #adabab;
     padding: 10px;
     border-radius: 10px;
-    position:sticky;
-    top:0;
+    position: sticky;
+    top: 0;
     z-index: 100;
 }
 
@@ -262,9 +266,11 @@ a {
     font-size: 1rem;
     padding: 5px 10px;
 }
-.gap{
+
+.gap {
     gap: 10px;
 }
+
 .gap-and-padding {
     gap: 5px;
     padding: 5px;
@@ -312,7 +318,7 @@ nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
     background: #000;
     width: 100%;
     height: fit-content;
@@ -375,10 +381,10 @@ nav {
 section {
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
+    margin-top: 115px;
+    gap: 10px;
     padding: 30px 10px 10px 10px;
     width: 100%;
-    gap: 10px;
     justify-content: start;
     align-items: center;
     min-height: 100vh;
@@ -404,7 +410,7 @@ main {
     flex-wrap: wrap;
     padding: 55px 10px 10px 10px;
     background: rgba(192, 192, 192, 0.7);
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 1);
     border-radius: 0 0 10px 10px;
     position: fixed;
     z-index: 10;
@@ -458,20 +464,19 @@ main {
 /*style rule for account summary in logged in dashboard*/
 .account-summary-container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    padding-top: 10px;
+    padding: 10px;
     width: 100%;
     height: fit-content;
 }
 
 .account-and-history {
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    gap: 10px;
     flex-wrap: wrap;
     width: 100%;
     height: fit-content;
@@ -481,9 +486,10 @@ main {
 .account-summary {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
-    width: 400px;
+    max-width: 400px;
+    width: 100%;
     height: fit-content;
     flex-wrap: wrap;
     gap: 20px;
@@ -494,6 +500,7 @@ main {
     justify-content: space-around;
     align-items: center;
     width: 100%;
+    gap: 10px;
     padding: 12px;
     color: #ffffff;
     border-bottom: 2px solid #adabab;
@@ -571,7 +578,8 @@ main {
     justify-content: start;
     align-items: center;
     margin-top: 15px;
-    width: 350px;
+    max-width: 350px;
+    width: 100%;
     height: fit-content;
     color: #000000;
     flex-wrap: wrap;
@@ -582,6 +590,7 @@ main {
 
 .referal-link {
     padding: 10px;
+    background-color: none;
     border: 1.5px solid #ffffff;
     word-break: break-all;
     overflow-wrap: break-word;
@@ -647,12 +656,12 @@ main {
     padding: 5px 10px;
     display: flex;
     flex-direction: column;
-    margin: 10px;
     justify-content: center;
     align-items: center;
     border: 1px solid #333;
     border-radius: 10px 0 10px 0;
     text-transform: uppercase;
+    font-size: medium;
 }
 
 .deposit-form {
@@ -815,7 +824,7 @@ main {
     background-color: rgba(192, 192, 192, 0.9) !important;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
     color: #000000;
     border-radius: 15px 0 15px 0;
     padding: 0 !important;
@@ -864,9 +873,9 @@ main {
     background-color: rgba(192, 192, 192, .7);
     border-radius: 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
-    color: #ffffff;
+    color: #000000;
     width: 98%;
-    gap: 10px;
+    gap: 5px;
     height: fit-content;
     padding: 10px;
 }
@@ -886,6 +895,7 @@ main {
     align-items: center;
     width: 90%;
     height: fit-content;
+    gap: 8px;
 }
 
 .profile-fields label {
@@ -895,7 +905,7 @@ main {
     align-items: start;
     gap: 10px;
     width: 100%;
-    color: #fff;
+    color: #000000;
     height: fit-content;
 }
 
@@ -922,7 +932,7 @@ main {
 }
 
 /*History style rules are here*/
-.transaction-content{
+.transaction-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -937,10 +947,11 @@ main {
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
     border: 1.5px solid #ffffff;
     border-radius: 25px 0 25px 0;
-    position:sticky;
+    position: sticky;
     top: 140px;
 }
-.transaction{
+
+.transaction {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -951,14 +962,16 @@ main {
     font-weight: 500;
     background-color: none;
 }
-.select-currency{
+
+.select-currency {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 7px;
 }
-.all-transaction{
+
+.all-transaction {
     display: flex;
     width: fit-content;
     height: fit-content;
@@ -971,23 +984,27 @@ main {
     border: 1.5px solid #ffffff;
     border-radius: 8px 0 8px 0;
 }
-.all-transaction:hover{
+
+.all-transaction:hover {
     background: #ffffff;
 }
-.date-format{
+
+.date-format {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 7px;
 }
-.start-date{
+
+.start-date {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 8px;
 }
-.transaction-history{
+
+.transaction-history {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1002,10 +1019,11 @@ main {
     border: 1.5px solid #ffffff;
     border-radius: 25px 0 25px 0;
 }
-.history{
+
+.history {
     display: flex;
     width: 100%;
-    max-height:400px;
+    max-height: 400px;
     height: fit-content;
     justify-content: space-between;
     align-items: center;
@@ -1018,14 +1036,16 @@ main {
     border-radius: 10px 0 10px 0;
     cursor: pointer;
 }
-.history-content{
+
+.history-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    gap:6px;
+    gap: 6px;
 
 }
+
 .investment-plans-container {
     display: flex;
     justify-content: center;
@@ -1104,6 +1124,54 @@ main {
     color: rgba(255, 255, 255, .7);
 }
 
+/*support contact style rules are here*/
+.contact-us-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 10px;
+    width: 95%;
+    max-width: 500px;
+    height: fit-content;
+    padding: 10px;
+    background-color: rgba(192, 192, 192, 0.9);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1.5px solid #ffffff;
+    border-radius: 15px 0 15px 0;
+}
+
+.leave-massage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.support-message {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border: 1.5px solid #ffffff;
+    border-radius: 6px;
+}
+
+/*style rules for log out page are here*/
+.logout-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 95%;
+    height: 100vh;
+    padding: 20px 10px;
+}
+
 /*style rules for zoom image are here*/
 .image-zoom-modal {
     position: fixed;
@@ -1159,9 +1227,79 @@ main {
     flex-wrap: wrap;
 }
 
+/*style rules for referees.hbs*/
+table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    height: fit-content;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1.5px solid #ffffff;
+    flex-wrap: wrap;
+}
+
+thead {
+    width: 100%;
+    background-color: rgba(128, 125, 125, 0.9);
+    color: #000000;
+    border-bottom: 1.5px solid #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+tr {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+th {
+    width: 33%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+tbody {
+    width: 100%;
+    background-color: rgba(192, 192, 192, 0.9);
+    color: #000000;
+    border-bottom: 1.5px solid #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+td {
+    width: 30%;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: uppercase;
+}
+
+td:nth-child(2) {
+    width: 40%;
+    text-transform: lowercase;
+}
+
 @media (max-width:750px) {
     section {
-        margin-top: 78px;
+        margin-top: 95px;
         padding: 25px 10px 10px 10px;
     }
 
@@ -1228,37 +1366,32 @@ main {
         transform: rotate(45deg) translate(-5px, -6px);
         background-color: #ECFC07;
     }
+
     #google_translate_element select {
-    padding: 7px;
-    border-radius: 7px;
-    font-size:small;
-}
-
-    .profile-translor {
-    padding: 45px 10px 10px 10px;
-}
-
-.profile-name-n-img {
-    gap: 15px;
-    padding: 7px;
-}
-
-.profile-picture {
-    width: 35px;
-    height: 35px;
-}
-
-.profile-name {
-    font-size: small;
-}
-
-
-    /*style rule for account summary in logged in dashboard*/
-
-    .account-and-history {
-        flex-direction: column;
+        padding: 7px;
+        border-radius: 7px;
+        font-size: small;
     }
 
+    .profile-translor {
+        padding: 45px 10px 10px 10px;
+    }
+
+    .profile-name-n-img {
+        gap: 15px;
+        padding: 7px;
+    }
+
+    .profile-picture {
+        width: 35px;
+        height: 35px;
+    }
+
+    .profile-name {
+        font-size: small;
+    }
+
+    /*style rule for account summary in logged in dashboard*/
     .account-summary {
         width: 100%;
     }
@@ -1267,20 +1400,23 @@ main {
         width: 95%;
         font-size: medium;
     }
-    .transaction-content{
+
+    .transaction-content {
         width: 100%;
     }
-    .all-transaction{
+
+    .all-transaction {
         width: 120px;
     }
-    .transaction-content{
-    top: 120px;
-}
+
+    .transaction-content {
+        top: 120px;
+    }
 
 
 }
 
-@media(max-width:383px) {
+@media(max-width:400px) {
     .divider {
         width: 80%;
         height: 2px;
@@ -1288,6 +1424,11 @@ main {
 
     .account-summary-container {
         font-size: medium;
+    }
+
+    .sumary-head p {
+        font-size: medium;
+        font-weight: bold;
     }
 
     .coin-card {
@@ -1304,14 +1445,17 @@ main {
         font-size: small;
         margin-top: 5px;
     }
-    .all-transaction{
+
+    .all-transaction {
         width: 100px;
     }
 
 }
-@media(max-width:370px){
-     section {
-        margin-top: 145px;
+
+@media(max-width: 305px) {
+    section {
+        margin-top: 140px;
         padding: 25px 10px 10px 10px;
     }
+
 }

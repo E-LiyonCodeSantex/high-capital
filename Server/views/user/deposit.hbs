@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>simplinestle.org | User Deposit </title>
+    <title>simplinestle.org | Make Deposit </title>
     <meta name="theme-color" content="#181818">
 
     <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
     <!--forawesome-->
     <script src="/https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/loggedInStyle.css">
-    <!-- Google Translate script -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
-        }
-    </script>
     <script type="text/javascript"
         src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
@@ -25,8 +18,7 @@
 <body>
     <section>
         <div class="header">
-            <a href="/user/Dashboard " class="a color-gradient"> Access Your Dashboard</a>
-            <p class="header">Deposits</p>
+            <p class="color-gradient">Make Deposit</p>
         </div>
 
         <form id="deposit-form" class="deposit-form gap-and-padding margin-bottom" action="/user/confirmDeposit"
@@ -72,7 +64,7 @@
                 <label for="amount" class="">Amount to Spend ($) </label>
                 <input type="number" class="white-color select-input" name="amount" id="plan-amount"
                     value="{{#if selectedPlan}}{{selectedPlan.minDeposit}}{{/if}}">
-                <span class="error-message-for-amount text-warning"></span>
+                <span class="error-message-for-amount status-confirmed"></span>
             </div>
             <div class="form-group">
                 <label for="duration" class="">Investement Duration <span class="tx-danger"> </span></label>
@@ -206,7 +198,7 @@
         </div>
 
 
-              <div class="detail-deposit-table " id="deposit-details">
+        <div class="detail-deposit-table " id="deposit-details">
             <div class="detail-deposit-table-header">
                 <h3>Deposit</h3>
                 <i class="fa-solid fa-xmark text-danger button-one-five-size-no-padding" id="close-deposit-details"></i>

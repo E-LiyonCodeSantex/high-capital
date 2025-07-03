@@ -32,6 +32,9 @@
         </div>
 
         <form action="/user/withdrawal" class="deposit-form gap-and-padding dark-color margin-bottom" method="POST">
+            {{#if errorMessage}}
+            <div class="status-unconfirmed">{{errorMessage}}</div>
+            {{/if}}
             <div class="form-group">
                 <label>Amount:</label>
                 <input type="number" name="amount" class="darker-color select-input" required min="1" step="any">
@@ -114,9 +117,9 @@
                 <p>
                     <span class="">Status:</span>
                     {{#if (eq status "pending")}}
-                    <span class="text-danger">Pending</span>
-                    {{else}}
-                    <span class="text-warning">{{status}}</span>
+                    <span class="status-unconfirmed">Pending</span>
+                    {{else if (eq status "Successful")}}
+                    <span class="status-completed">Successful</span>
                     {{/if}}
                 </p>
 

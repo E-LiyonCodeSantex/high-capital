@@ -9,6 +9,7 @@ const deposit = require('../models/depositModel'); // Import the Deposit model
 const WalletAdress = mongoose.models.WalletAdress; // Use the existing WalletAdress model from mongoose.models
 const { authenticateUser } = require('../middleware/authMiddleware');
 const { upload, normalizeFilePath } = require('../middleware/upload');
+const withdrawal = require('../models/withdrawalModel');
 
 exports.getUserDashboard = async (req, res, next) => {
     try {
@@ -22,14 +23,14 @@ exports.getUserDashboard = async (req, res, next) => {
 
         // Fetch all deposits and withdrawals for the user
         const deposits = await deposit.find({ user: userId });
-        //const withdrawals = await withdrawal.find({ user: userId });
+        const withdrawals = await withdrawal.find({ user: userId, status: 'Successful' }); // Only successful withdrawals
 
 
         // Calculate total deposit
         const totalDeposit = deposits.reduce((sum, dep) => sum + dep.amount, 0);
 
         // Calculate total withdrawal
-        //const totalWithdraw = withdrawals.reduce((sum, w) => sum + w.amount, 0);
+        const totalWithdraw = withdrawals.reduce((sum, w) => sum + w.amount, 0);
 
         // Calculate available balance (completed deposits + profit, minus withdrawals)
         let availableBalance = deposits
@@ -40,7 +41,7 @@ exports.getUserDashboard = async (req, res, next) => {
                     profit = dep.amount * (Number(dep.dailyProfit) / 100) * dep.duration;
                 }
                 return sum + dep.amount + profit + (dep.oldBalance || 0);
-            }, 0); //- totalWithdraw;
+            }, 0) - totalWithdraw;
 
         // Calculate total balance (all deposits + accrued profit so far, minus withdrawals)
         let totalBalance = deposits
@@ -60,13 +61,13 @@ exports.getUserDashboard = async (req, res, next) => {
                     profit = dep.amount * (Number(dep.dailyProfit) / 100) * elapsedDays;
                 }
                 return sum + dep.amount + profit + (dep.oldBalance || 0);
-            }, 0); //- totalWithdraw;
+            }, 0); - totalWithdraw;
 
         res.render('user/dashboard', {
             availableBalance,
             totalBalance,
             totalDeposit,
-            //totalWithdraw,
+            totalWithdraw,
             user: req.user
         });
     } catch (err) {

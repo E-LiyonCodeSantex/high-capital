@@ -5,26 +5,58 @@ const nodemailer = require('nodemailer');
 const path = require('path');
 const User = require('../models/userModel'); // Import the MongoDB collection
 const comparePasswords = require('../utils/passwordHelpers');
+const upload = require('../middleware/upload');
+
 
 
 //check what this code means later
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '30d' });
 };
-// Register user function
-const upload = require('../middleware/upload');
+function generateReferralCode(length = 8) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let code = '';
+    for (let i = 0; i < length; i++) {
+        code += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return code;
+}
 
+// Custom date formatting helper for referees
+const formatDateNumbersOnly = (date) => {
+    if (!date) return '';
+    const d = new Date(date);
+    const day = String(d.getDate()).padStart(2, '0');
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const year = d.getFullYear();
+    return `${day} ${month} ${year}`;
+};
+
+// Register user function
 const registerUser = async (req, res) => {
     try {
         const { name, userName, email, password, confirmPassword, bitcoinWallet, usdtWallet, ethereumWallet } = req.body;
+        const referredBy = req.query.ref || req.body.ref; // get ref from query or hidden input
+
+        if (!email) {
+            return res.render('user/signUp', { headerError: 'Email is required', layout: false });
+        }
 
         if (password !== confirmPassword) {
-            return res.render('user/signUp', { confirmPasswordError: 'Passwords do not match' });
+            return res.render('user/signUp', { confirmPasswordError: 'Passwords do not match', layout: false });
         }
 
         const userExists = await User.findOne({ email });
         if (userExists) {
-            return res.render('user/signUp', { headerError: 'User already exists' });
+            return res.render('user/signUp', { headerError: 'User already exists', layout: false });
+        }
+
+        // Generate unique referral code
+        let referralCode;
+        let codeExists = true;
+        while (codeExists) {
+            referralCode = generateReferralCode();
+            codeExists = await User.findOne({ referralCode });
         }
 
         const profilePhoto = req.file ? `/uploads/${req.file.filename}` : '/photos/default-user.jpg';
@@ -37,7 +69,9 @@ const registerUser = async (req, res) => {
             bitcoinWallet,
             usdtWallet,
             ethereumWallet,
-            profilePhoto
+            profilePhoto,
+            referralCode,
+            referredBy
         });
 
         // After saving user to DB:
@@ -52,8 +86,8 @@ const registerUser = async (req, res) => {
         let mailOptions = {
             from: process.env.EMAIL_USER,
             to: email,
-            subject: 'Welcome to SimpliNestle!',
-            text: `Hello ${name},\n\nThank you for registering at SimpliNestle! We're glad to have you.\n\nBest regards,\nThe SimpliNestle Team`
+            subject: 'Welcome to High Capital!',
+            text: `Hello ${name},\n\nThank you for registering at High Capital! We're glad to have you.\n\nBest regards,\nThe High Capital Team`
         };
 
         await transporter.sendMail(mailOptions);
@@ -65,7 +99,7 @@ const registerUser = async (req, res) => {
         }
     } catch (error) {
         console.error('Error during registration:', error);
-        return res.status(500).render('errorPage', { errorMessage: 'An unexpected error occurred. Please try again.' });
+        return res.status(500).render('user/errorPage', { errorMessage: 'An unexpected error occurred. Please try again.', layout: false });
     }
 };
 
@@ -113,7 +147,7 @@ const loginUser = async (req, res) => {
         return true;
     } catch (error) {
         console.error('Error during login:', error);
-        return res.status(500).render('errorPage', { errorMessage: 'An unexpected error occurred. Please try again.' });
+        return res.status(500).render('user/errorPage', { errorMessage: 'An unexpected error occurred. Please try again.' });
     }
 };
 
@@ -257,6 +291,17 @@ const logoutUser = (req, res) => {
     });
 };
 
+const getReferees = async (req, res) => {
+    try {
+        // Find users whose referredBy matches the current user's referralCode
+        const referees = await User.find({ referredBy: req.user.referralCode });
+        res.render('user/referees', { referees });
+    } catch (error) {
+        console.error('Error fetching referees:', error);
+        res.status(500).render('errorPage', { errorMessage: 'Could not load referees.' });
+    }
+};
+
 
 module.exports = {
     registerUser,
@@ -266,4 +311,5 @@ module.exports = {
     verifyPassword,
     updateUserSettings,
     logoutUser,
+    getReferees,
 };

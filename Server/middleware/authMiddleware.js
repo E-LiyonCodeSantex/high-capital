@@ -6,7 +6,7 @@ const authenticateAdmin = async (req, res, next) => {
     const token = req.cookies.token || req.header('Authorization')?.replace('Bearer ', '');
 
     if (!token) {
-        return res.status(401).send('Access denied. No token provided.');
+        return res.redirect('/admin/login');
     }
 
     try {
@@ -14,13 +14,13 @@ const authenticateAdmin = async (req, res, next) => {
 
         // Check if the role is admin
         if (decoded.role !== 'admin') {
-            return res.status(403).send('Access denied for non-admin users.');
+            return res.redirect('/admin/login');
         }
 
         // Fetch the admin user from the database
         const admin = await Admin.findById(decoded.id).select('-password');
         if (!admin) {
-            return res.status(401).send('Access denied. Admin not found.');
+            return res.redirect('/admin/login');
         }
 
         req.user = admin; // Attach the admin user to the request
@@ -35,10 +35,10 @@ const authenticateAdmin = async (req, res, next) => {
 const authenticateUser = async (req, res, next) => {
     const token = req.cookies.token || req.header('Authorization')?.replace('Bearer ', '');
     //console.log('Token received:', token);
-    
+
     if (!token) {
         //console.log('No token provided');
-        return res.status(401).send('Access denied. No token provided.');
+        return res.redirect('/user/login');
     }
 
     try {
@@ -49,12 +49,12 @@ const authenticateUser = async (req, res, next) => {
         const user = await User.findById(decoded.id).select('-password'); // Exclude the password field
         if (!user) {
             //console.log('User not found in the database');
-            return res.status(401).send('Access denied. User not found.'); // Redirect to logout if user is not found
+            return res.redirect('/user/login');
         }
 
         // Check if the role is user
         if (decoded.role !== 'user') {
-            return res.status(403).send('Access denied for non-users.'); // Redirect to logout if role is not 'user'
+            return res.redirect('/user/login');
         }
 
         req.user = user; // Attach the user to the request

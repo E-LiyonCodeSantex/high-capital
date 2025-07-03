@@ -16,47 +16,53 @@
 
 <body>
     <section>
+        <div class="header">
+            <p class="color-gradient">DASHBOARD</p>
+        </div>
         <div class="account-summary-container">
             <div class="account-and-history">
                 <div class="account-summary">
                     <div class="sumary-head">
-                        <h3 class="header">Account Summary</h3>
+                        <p class="header">Account Summary</p>
                         <a class="blue-buttons button-size-with-padding" href="/user/history">
                             <i class="fa fa-file-text"> </i> History</a>
                     </div>
                     <div class="balance-detail">
                         <div class="deposit-and-withdrawal">
                             <div class="coin-card">
-                                <span id="ab">${{availableBalance}}</span>
+                                <span id="available-balance">${{availableBalance}}</span>
                                 <p>Available Balance</p>
                             </div>
                             <div class="coin-card">
-                                <span id="ab">${{totalBalance}}</span>
+                                <span id="total-balance">${{totalBalance}}</span>
                                 <p>Total Balance</p>
                             </div>
                         </div>
+
                         <div class="deposit-and-withdrawal">
                             <div class="coin-card">
-                                <span id="ab">${{totalDeposit}}</span>
+                                <span id="total-deposit">${{totalDeposit}}</span>
                                 <p class="">Total Deposit</p>
-                                <a href="/user/deposit" class="green-black-buttons button-size-with-padding"><i
+                                <a href="/user/makeDeposit" class="green-black-buttons button-size-with-padding"><i
                                         class="fa fa-upload"></i> Deposit</a>
                             </div>
 
                             <div class="coin-card">
-                                <span id="ab">${{totalWithdraw}}</span>
+                                <span id="total-withdraw">${{totalWithdraw}}</span>
                                 <p class="">Total withdraw</p>
                                 <a href="/user/withdrawal" class="yellow-buttons button-size-with-padding">
                                     <i class="fa fa-download"></i> Withdraw
                                 </a>
                             </div>
                         </div>
+
                         <div class="balance-speech">
                             <p>Your Available balance is the actual balance you can withdraw from while your book
                                 balance is
                                 your potential balance that will become available when your deposit plan is completed.
                             </p>
                         </div>
+
                     </div>
                 </div>
 
@@ -65,19 +71,34 @@
                     <p><small class="">Earn more when you refer your friends to invest with us. The reward on our
                             referral
                             program is dependent on the deposit plans.</small></p>
-                    <p class="referal-link darker-color flex-wrap" id="referal-link">
-                        http://simplinestle.org/ref=SantexDLyon/</p>
+                    <p>Your referral link (Click to copy): <input type="text" class="referal-link flex-wrap"
+                            id="referal-link"
+                            value="http://localhost:5000/user/signUp?ref={{user.referralCode}}" readonly
+                            onclick="copyReferralLink(this)"></p>
+                    <script>
+                        function copyReferralLink(input) {
+                            input.select();
+                            input.setSelectionRange(0, 99999); // For mobile devices
+                            document.execCommand('copy');
+                            // Optional: show a message
+                            alert('Referral link copied to clipboard!');
+                        }
+                    </script>
 
                 </div>
+
                 <div class="sumary-head margin-bottom">
-                    <h3 class="header">Popular Market</h3>
+                    <a class="green-black-buttons button-size-with-padding" href="/user/referees">
+                        <i class="fa fa-users"></i>View Referees
+                    </a>
                     <a class="yellow-buttons button-size-with-padding" href="/user/investmentPlans">
                         <i class="fa fa-upload"></i> Invest Now</a>
                 </div>
             </div>
 
             <div class="all-transactions margin">
-                <a class="green-black-buttons button-size-with-padding" href="/user/history">View Transactions History</a>
+                <a class="green-black-buttons button-size-with-padding" href="/user/history">View Transactions
+                    History</a>
             </div>
         </div>
     </section>

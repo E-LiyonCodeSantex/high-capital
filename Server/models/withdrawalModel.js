@@ -11,7 +11,7 @@ const withdrawalSchema = new mongoose.Schema({
   acountName: { type: String }, // For bank
   status: { type: String, enum: ['pending', 'Successful', 'rejected'], default: 'pending' },
   requestedAt: { type: Date, default: Date.now },
-  wihdrawalReceipt: {type: String},
+  transactionReceipt: {type: String},
   processedAt: { type: Date, default: null },
 }, { timestamps: true });
 

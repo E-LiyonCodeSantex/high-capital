@@ -74,7 +74,15 @@ const exphbsInstance = exphbs.create({
             // This will output: Mon Jun 09 2025 00:49:31
             return new Date(date).toString().split(' GMT')[0];
         },
-        array: (...args) => args.slice(0, -1)
+        array: (...args) => args.slice(0, -1),
+        formatDateNumbersOnly: function(date) {
+            if (!date) return '';
+            const d = new Date(date);
+            const day = String(d.getDate()).padStart(2, '0');
+            const month = String(d.getMonth() + 1).padStart(2, '0');
+            const year = d.getFullYear();
+            return `${day} ${month} ${year}`;
+        }
     },
     runtimeOptions: {
         allowProtoPropertiesByDefault: true,

@@ -98,25 +98,6 @@ exports.updateDeposit = async (req, res) => {
     }
 };
 
-//function to get all users
-exports.getAllDeposit = async (req, res) => {
-    try {
-        // Fetch all deposits and populate the user field
-        const deposits = await deposit.find().populate('user', 'name email profilePhoto');
-
-        //console.log('Fetched deposits:', deposits);
-
-        // Render the admin/User.hbs view and pass the users
-        res.render('admin/deposit', {
-            deposits, // Pass users as an array for Handlebars
-            depositsJSON: JSON.stringify(deposits) // Pass users as a JSON string for JavaScript
-        });
-    } catch (error) {
-        console.error('Error fetching users:', error);
-        res.status(500).send('An error occurred while fetching users.');
-    }
-};
-
 // Function to activate a deposit
 exports.activateDeposit = async (req, res) => {
     try {
@@ -152,6 +133,28 @@ exports.activateDeposit = async (req, res) => {
         res.status(500).json({ error: 'Failed to activate deposit' });
     }
 };
+
+//function to get all users
+exports.getAllDeposit = async (req, res) => {
+    try {
+        // Fetch all deposits and populate the user field
+        const deposits = await deposit.find().populate('user', 'name email profilePhoto');
+
+        //console.log('Fetched deposits:', deposits);
+
+        // Render the admin/User.hbs view and pass the users
+        res.render('admin/deposit', {
+            deposits, // Pass users as an array for Handlebars
+            depositsJSON: JSON.stringify(deposits) // Pass users as a JSON string for JavaScript
+        });
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        res.status(500).send('An error occurred while fetching users.');
+    }
+};
+
+
+
 
 /*
 exports.activateDeposit = async (req, res) => {
