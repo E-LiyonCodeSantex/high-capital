@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { authenticateAdmin } = require('../middleware/authMiddleware'); // Import both middlewares
 const adminController = require('../controllers/adminController');
-const { getAllUsers } = require('../controllers/adminUserController');
+const adminUserController = require('../controllers/adminUserController');
 const { getAllDeposit, activateDeposit } = require('../controllers/depositController');
 const { getAllWithdrawal, activateWithdrawal } = require('../controllers/withdrawalController');
 const walletController = require('../controllers/walletController');
@@ -21,16 +21,10 @@ router.use((req, res, next) => {
 router.get('/login', (req, res) => res.render('admin/login', { layout: false })); // Render the login page without layout
 
 router.post('/login', adminController.adminLogin);
-router.get('/', authenticateAdmin, (req, res) => res.render('admin/index')); // Admin dashboard
 
-router.get('/user', authenticateAdmin, async (req, res) => {
-  try {
-    await getAllUsers(req, res); // Call the makeDeposit function
-  } catch (err) {
-    console.error('Error in getAllUsers route:', err);
-    res.status(500).json({ error: 'An unexpected error occurred.' });
-  }
-});
+router.get('/', authenticateAdmin, adminUserController.getDashboardStats);
+
+router.get('/user', authenticateAdmin, adminUserController.getAllUsers);
 
 router.get('/user/:userId/transactions', authenticateAdmin, async (req, res) => {
   try {

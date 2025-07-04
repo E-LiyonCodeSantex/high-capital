@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// This script handles the display of user details in the admin panel
+// This script handles the display user details in the admin panel
 // It shows a detailed card with user information when a user card is clicked
 document.addEventListener("DOMContentLoaded", function () {
   const userCards = document.querySelectorAll('.users-card'); // Select all user cards
@@ -78,7 +78,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const detailedUsdt = document.getElementById('user-usdt'); // USDT wallet field
   const detailedEthereum = document.getElementById('user-ethereum'); // Ethereum wallet field
   const detailedLastLogin = document.getElementById('user-last-login'); // Last login field
-  const detailedIsActive = document.getElementById('user-is-active'); // Active status field
 
   // Add click event listeners to all user cards
   userCards.forEach((card, index) => {
@@ -86,21 +85,19 @@ document.addEventListener("DOMContentLoaded", function () {
       const user = users[index]; // Get the user data from the users array
 
       // Populate the detailed card with user details
-      detailedName.textContent = user.name || 'No name provided';
-      detailedEmail.textContent = user.email || 'No email provided';
+      detailedName.textContent = user.name || '';
+      detailedEmail.textContent = user.email || '';
       detailedImg.src = user.profilePhoto || '/photos/default-user.jpg';
-      detailedBitcoin.textContent = user.bitcoinWallet || 'No Bitcoin Wallet Provided';
-      detailedUsdt.textContent = user.usdtWallet || 'No USDT Wallet Provided';
-      detailedEthereum.textContent = user.ethereumWallet || 'No Ethereum Wallet Provided';
-      detailedLastLogin.textContent = user.lastLogin
-        ? new Date(user.lastLogin).toLocaleString()
-        : 'No last login data available';
-
-      // Show "Active" if lastActiveAt is within 5 minutes
-      detailedIsActive.textContent =
-        user.lastActiveAt && (new Date() - new Date(user.lastActiveAt) < 5 * 60 * 1000)
-          ? 'Online'
-          : 'Offline';
+      detailedBitcoin.textContent = user.bitcoinWallet || '';
+      detailedUsdt.textContent = user.usdtWallet || '';
+      detailedEthereum.textContent = user.ethereumWallet || '';
+      if (user.lastActiveAt && (new Date() - new Date(user.lastActiveAt) < 5 * 60 * 1000)) {
+        detailedLastLogin.textContent = 'online';
+      } else {
+        detailedLastLogin.textContent = user.lastLogin
+          ? new Date(user.lastLogin).toLocaleString()
+          : 'offline';
+      }
 
       document.getElementById('check-transactions-btn').dataset.userId = user._id;
       // Show the detailed card
@@ -135,27 +132,43 @@ document.addEventListener("DOMContentLoaded", function () {
           let depositsHtml = '';
           let withdrawalsHtml = '';
 
+          function formatDate(date) {
+            if (!date) return '';
+            const d = new Date(date);
+            return d.toLocaleString(); // or use toLocaleDateString() for just the date
+          }
+
+          function capitalize(str) {
+            if (!str) return '';
+            return str.charAt(0).toUpperCase() + str.slice(1);
+          }
 
           // Build deposits HTML
           if (!data.deposits || data.deposits.length === 0) {
             depositsHtml = '<p>No deposits found.</p>';
           } else {
-            depositsHtml = '<div class="user-deposit-card ul"> <div class="transaction-identifier"> <p > Deposit</p></div>';
+            depositsHtml = '<div class="user-deposit-card"> <div class="transaction-identifier"> <h3 > Deposit</h3></div>';
             data.deposits.forEach(dep => {
+              let statusHtml = '';
+              if (dep.status === 'completed') {
+                statusHtml = `<span class="status-completed">${capitalize(dep.status)}</span>`;
+              } else if (dep.status === 'confirmed') {
+                statusHtml = `<span class="status-confirmed">${capitalize(dep.status)}</span>`;
+              } else {
+                statusHtml = `<span class="status-unconfirmed">Unconfirmed</span>`;
+              }
               depositsHtml += `
-        <ul>
-          <li>
-            <p>Transaction ID: <span class="green">${dep._id}</span></p>
-            <p>Transaction Date: <span class="green">${dep.date}</span></p>
-            <p>Transaction Type: <span class="green">${dep.coinType}</span></p>
-            <p>Amount: <span class="green">${dep.amount}</span></p>
-            <p>Status: <span class="orange-color">${dep.status}</span></p>
-            <p>Transaction Receipt:
-              <img src="${dep.transactionReceipt}" alt="Transaction Receipt" width="100px" height="100px"
-                  class="green image" />
-            </p>
-          </li>
-        </ul>`;
+               <div class="history">
+                  <div class="history-content">
+                      <h3 class="color-gradient">${dep.coinType}</h3>
+                      <p class="color-gradient">${formatDate(dep.date)}</p>
+                  </div>
+                  <div class="history-content">
+                      <p class="color-gradient">${dep.amount}</p>
+                      <p>${statusHtml}</p>
+                  </div>
+                </div>
+            </div>`;
             });
             depositsHtml += '</div>';
           }
@@ -164,24 +177,30 @@ document.addEventListener("DOMContentLoaded", function () {
           if (!data.withdrawals || data.withdrawals.length === 0) {
             withdrawalsHtml = '<p>No withdrawals found.</p>';
           } else {
-            withdrawalsHtml = '<div class=" user-deposit-card ul"> <div class="transaction-identifier"> <p > Deposit</p></div>';
+            withdrawalsHtml = '<div class=" user-deposit-card ul"> <div class="transaction-identifier">  <h3 > Withdrawals</h3></div>';
             identifier.textContent = 'Withdrawal';
             data.withdrawals.forEach(wd => {
+              let statusHtml = '';
+              if (dep.status === 'completed') {
+                statusHtml = `<span class="status-completed">${capitalize(dep.status)}</span>`;
+              } else if (dep.status === 'confirmed') {
+                statusHtml = `<span class="status-confirmed">${capitalize(dep.status)}</span>`;
+              } else {
+                statusHtml = `<span class="status-unconfirmed">Unconfirmed</span>`;
+              }
+
               withdrawalsHtml += `
-              <p>Withdrawal</p>
-        <ul>
-          <li>
-            <p>Transaction ID: <span class="normal-size green">${wd._id}</span></p>
-            <p>Transaction Date: <span class="normal-size green">${wd.date}</span></p>
-            <p>Transaction Type: <span class="normal-size green">${wd.coinType}</span></p>
-            <p>Amount: <span class="normal-size green">${wd.amount}</span></p>
-            <p>Status:<span class="time-counter status">${wd.status}</span></p>
-            <p>Transaction Receipt:
-              <img src="${wd.transactionReceipt}" alt="Transaction Receipt" width="100px" height="100px"
-                  class="green image" />
-            </p>
-          </li>
-        </ul>`;
+              <div class="history">
+                  <div class="history-content">
+                      <h3 class="color-gradient">${wd.coinType}</h3>
+                      <p class="color-gradient">${formatDate(wd.date)}</p>
+                  </div>
+                  <div class="history-content">
+                      <p class="color-gradient">${wd.amount}</p>
+                      <p>${statusHtml}</p>
+                  </div>
+                </div>
+            </div>`;
             });
             withdrawalsHtml += '</div>';
           }

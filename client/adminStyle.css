@@ -12,25 +12,59 @@ body {
   background-color: #181818;
 
 }
+.submit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #711afd;
+    color: #fff;
+    font-size: small;
+    cursor: pointer;
+}
+.submit-button:hover {
+    background-color: #6200ff;
+    color: #fff;
+}
+a{
+  text-decoration: none;
+  color: #fff;
+}
+
+.color-gradient {
+  background: linear-gradient(to right, #0000FF, #800080);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 .status-unconfirmed {
-    color: #F44336 !important; /* Red */
+  color: #F44336 !important;
+  /* Red */
 }
+
 .status-confirmed {
-    color: #FFC107 !important; /* Amber */
+  color: #b88e10 !important;
+  /* Amber */
 }
+
 .status-completed {
-    color: #4CAF50 !important; /* Green */
+  color: #4CAF50 !important;
+  /* Green */
 }
 
 .orange-color {
   color: #f79504fb;
 }
+
 .select-input {
-    display: flex;
-    padding: 10px;
-    border: 1.5px solid #adabab;
-    border-radius: 6px;
+  display: flex;
+  padding: 10px;
+  border: 1.5px solid #adabab;
+  border-radius: 6px;
 }
 
 .cp {
@@ -101,17 +135,17 @@ ul {
 }
 
 .submit-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
-    background-color: #6608FE;
-    color: #fff;
-    font-size: large;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #6608FE;
+  color: #fff;
+  font-size: large;
+  cursor: pointer;
 }
 
 .green {
@@ -129,33 +163,55 @@ ul {
   width: 100%;
 }
 
+/*google translator continer style rules are here*/
+#google_translate_element select {
+  background-color: #222;
+  color: #fff;
+  width: 150px;
+  border: 1.5px solid #adabab;
+  padding: 5px;
+  border-radius: 10px;
+  position: sticky;
+  top: 0;
+}
+
+/*admin dashboard style rules are here*/
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #000000;
+  color: #ffffff;
+  z-index: 1000;
+}
+
 .logo-and-searchBar {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   gap: 10px;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  background-color: #181818;
-  padding: 10px;
+  padding:15px 10px 10px 10px;
   position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 2000;
+  top: 50px;
+  color: #ffffff;
+  background-color: #000000;
+  z-index: 100;
 }
 
 .menu-and-header {
   display: none;
-  flex-wrap: wrap;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
-  width: 100%;
   padding: 10px;
-  position: fixed;
-  top: 100px;
-  left: 5px;
   color: #fff;
-  z-index: 1000;
 }
 
 .HeaderSearchBar {
@@ -163,19 +219,19 @@ ul {
   align-items: center;
   justify-content: center;
   width: 70%;
-  height: 50px;
+  max-width: 500px;
+  height: 40px;
   border: 1px solid #dad5d5;
   border-radius: 10px;
   background-color: #f8f2f2;
   padding: 5px;
-  border-radius: 10px;
   position: relative;
   transition: background-color 0.3s ease-in-out;
 }
 
 .HeaderSearchBar input {
   width: 100%;
-  height: 40px;
+  height: 35px;
   font-size: 14px;
   padding-left: 10px;
   background: transparent !important;
@@ -186,12 +242,12 @@ ul {
 
 .HeaderSearchBar button {
   position: absolute;
-  top: 8px;
+  top: 5px;
   right: 10px;
   z-index: 10;
   min-width: 35px;
-  height: 35px;
-  width: 35px !important;
+  height: 30px;
+  width: 30px !important;
   border-radius: 50%;
   outline: none;
   border: none;
@@ -238,8 +294,8 @@ ul {
   color: #d1cdcd;
   width: fit-content;
   height: fit-content;
-  position: sticky;
-  top: 80px;
+  position: static;
+  top: 100px;
   z-index: 1000;
 }
 
@@ -314,7 +370,7 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   flex-wrap: wrap;
   width: 100%;
   position: relative;
@@ -349,7 +405,7 @@ section h2 {
   align-items: center;
   width: fit-content;
   height: fit-content;
-  gap: 20px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
@@ -363,13 +419,13 @@ section h2 {
   align-items: center;
   padding: 10px;
   border-radius: 10px;
-  font-size: large;
+  font-size: medium;
   font-weight: 500;
-  gap: 20px;
+  gap: 10px;
   color: #fff;
   cursor: pointer;
-  width: 200px;
-  height: 100px;
+  width: 140px;
+  height: 70px;
 }
 
 .total-card:hover {
@@ -380,27 +436,22 @@ section h2 {
   background-color: #fff;
   padding: 10px;
   border-radius: 100%;
-  font-size: 30px;
   color: #000;
+  width: 30px;
+  height: 30px;
 }
 
 .total-details {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
-  gap: 10px;
+  align-items: center;
+  gap: 5px;
 }
 
 .total-details span {
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #fff;
-}
-
-.total-details p {
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
   color: #fff;
 }
 
@@ -493,11 +544,12 @@ section h2 {
   display: flex;
   justify-content: start;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
   padding: 10px;
+  border: 1.5px solid #ffffff;
   border-radius: 10px;
-  background-color: #f79504fb;
-  color: #fff;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #000000;
   cursor: pointer;
   width: 100%;
   max-width: 350px !important;
@@ -509,14 +561,31 @@ section h2 {
 }
 
 .user-img {
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-  border: 2px solid #ccc;
+  border: 1.5px solid #ffffff;
   background-color: #fff;
   font-size: small;
   object-fit: cover;
 }
+.user-name-email {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  height: fit-content;
+  flex-wrap: wrap;
+  font-size: medium;
+  color: #000000;
+  gap: 5px;
+   text-align: center;
+  flex-wrap: wrap;
+  overflow: hidden;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
+}
+
 
 .user-name {
   display: flex;
@@ -525,28 +594,16 @@ section h2 {
   align-items: start;
   gap: 15px;
   width: 100%;
-  max-width: 100%;
+  max-width: 400px;
   height: fit-content;
   text-align: center;
   flex-wrap: wrap;
   overflow: hidden;
   word-wrap: break-word;
   text-overflow: ellipsis;
+  color: #000000;
   /* Add ellipsis for overflowed text (optional) */
 }
-
-.user-name-email {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  width: 100%;
-  max-width: 100%;
-  height: fit-content;
-  flex-wrap: wrap;
-  font-size: 1.3rem;
-  color: #fff;
-}
-
 .user-name p {
   display: flex;
   align-items: center;
@@ -558,24 +615,11 @@ section h2 {
   word-break: break-word;
   color: #181818;
 }
-
-.user-name a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 10px;
-  text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
-  background-color: #ad6a06fb;
-  color: #fff;
+.user-name p span {
+  font-weight: 500;
+  font-size: small;
+  color: #000000;
 }
-
-.user-name a:hover {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
 .detailed-card {
   display: none;
   /* Initially hidden */
@@ -583,7 +627,7 @@ section h2 {
   top: 0;
   left: 10px;
   width: 90%;
-  max-width: 600px;
+  max-width: 400px;
   z-index: 1000;
 }
 
@@ -591,15 +635,15 @@ section h2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   gap: 20px;
   padding: 10px;
   border-radius: 10px;
   width: 100% !important;
-  background-color: #f79504fb;
-  border: 1px solid rgba(0, 0, 0, 0.9);
+  background-color: rgba(255, 255, 255, 225);
+  border: 1.5px solid rgba(0, 0, 0, 0.9);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  color: #fff;
+  color: #000000;
 
 }
 
@@ -609,6 +653,7 @@ section h2 {
   align-items: center;
   width: 100%;
   gap: 20px;
+  color: #000000;
 }
 
 /*deposit.hbs and widthdrawal style rules are here*/
@@ -653,22 +698,7 @@ section h2 {
   gap: 15px;
   flex-wrap: wrap;
   width: 100%;
-}
-
-.deposit-withdrawal-card ul {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
-  flex-wrap: wrap;
-}
-
-.deposit-withdrawal-card ul li {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
+  color: #ffffff !important;
 }
 
 .time-counter {
@@ -727,7 +757,8 @@ section h2 {
   width: 100%;
   gap: 15px;
 }
-.withdrawal-receipt-container{
+
+.withdrawal-receipt-container {
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -736,7 +767,8 @@ section h2 {
   width: 100%;
   padding: 0;
 }
-.withdrawal-button-container{
+
+.withdrawal-button-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -744,15 +776,18 @@ section h2 {
   flex-wrap: wrap;
   margin-top: 10px;
 }
-.withdrawal-receipt-container b{
+
+.withdrawal-receipt-container b {
   cursor: pointer;
   padding: 5px 10px;
   border-radius: 5px;
 }
-.withdrawal-receipt-container b:hover{
+
+.withdrawal-receipt-container b:hover {
   background-color: #f79504fb;
   color: #000 !important;
 }
+
 .no-unconfirmed-message {
   display: none;
   z-index: 100;
@@ -784,6 +819,7 @@ section h2 {
   max-height: 90vh;
   border-radius: 8px;
 }
+
 .close-zoom {
   position: absolute;
   top: 30px;
@@ -793,7 +829,8 @@ section h2 {
   cursor: pointer;
   z-index: 10000;
 }
-.image-when-zoomed{
+
+.image-when-zoomed {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -813,12 +850,11 @@ section h2 {
   flex-wrap: wrap;
   position: absolute;
   left: 0;
-  top: 0;
   z-index: 1000;
   width: 100%;
   max-width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
+  height: fit-content;
+  background-color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
@@ -827,10 +863,10 @@ section h2 {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  gap: 20px;
+  gap: 10px;
   flex-wrap: wrap;
   color: #fff;
-  background-color: #181818;
+  background-color: #000000;
   padding: 10px;
 }
 
@@ -851,7 +887,7 @@ section h2 {
   align-items: center;
   position: sticky;
   background: #181818;
-  top: 70px;
+  top: 0;
   z-index: 1000;
   width: 100%;
 }
@@ -864,24 +900,19 @@ section h2 {
   flex-wrap: wrap;
   width: 100%;
   gap: 15px;
-  color: #fff;
+  color: #000000;
 }
 
 .user-deposit-card {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: start;
-  gap: 8px;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  color: #fff;
-  width: 100%;
-  height: fit-content;
+   display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 400px;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
 }
 
 .transaction-identifier {
@@ -892,14 +923,28 @@ section h2 {
   width: 100%;
   align-self: center;
 }
-
-.user-deposit-card ul {
-  width: 100%;
-  max-width: 350px !important;
-  background-color: #3f3d3d !important;
-  padding: 10px;
-  border-radius: 10px;
-  gap: 2px;
+.history{
+    display: flex;
+    width: 100%;
+    max-height: 400px;
+    height: fit-content;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    background: rgba(192, 192, 192, 0.9);
+    color: #000;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid #ffffff;
+    border-radius: 10px 0 10px 0;
+    cursor: pointer;
+}
+.history-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 6px;
 }
 
 .user-deposit-card ul li {
@@ -1236,10 +1281,13 @@ section h2 {
 
   .side-bar-active {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     position: fixed;
-    top: 110px;
-    left: 15px;
-    width: 90%;
+    top: 0;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
   }
 
   nav ul {

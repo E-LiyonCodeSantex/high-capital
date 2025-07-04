@@ -139,7 +139,6 @@ body>* {
     font-size: large;
     cursor: pointer;
 }
-
 .submit-button:hover {
     background-color: #6200ff;
     color: #fff;
@@ -1043,7 +1042,6 @@ main {
     justify-content: center;
     align-items: start;
     gap: 6px;
-
 }
 
 .investment-plans-container {

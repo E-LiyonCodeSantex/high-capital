@@ -13,6 +13,7 @@
         color: black !important;
     }
 </style>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,19 +22,34 @@
     <script src="https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="/adminStyle.css">
+
+    <!-- Google Translate script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 
 <body>
+    <nav>
+        <h3 class="color-gradient">High Capital</h3>
+        <div id="google_translate_element"></div>
+    </nav>
+
     <div class="logo-and-searchBar">
-        <h3 class="logo">High Capital</h3></a>
+        <div class="menu-and-header">
+            <i class="fa-solid fa-bars menu-bar"></i>
+        </div>
+
         <div class="HeaderSearchBar">
             <input type="text" class="product-search-bar" placeholder="Search for user by name, email ....." />
             <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
-    </div> 
-    <div class="menu-and-header">
-        <i class="fa-solid fa-bars menu-bar"></i>
     </div>
+
     <main>
         <nav class="side-nav">
             <div class="close-nav">
@@ -53,11 +69,9 @@
                         <li><a>Security and Audit Logs</a></li>-->
             </ul>
         </nav>
-        <section>
 
             {{{body}}} <!-- Placeholder for dynamic content -->
 
-        </section>
     </main>
 </body>
 

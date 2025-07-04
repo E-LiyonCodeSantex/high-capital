@@ -1,19 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-    .goog-logo-link {
-        display: none !important;
-    }
-
-    .goog-te-gadget {
-        color: transparent !important;
-    }
-
-    .goog-te-gadget .goog-te-combo {
-        color: black !important;
-    }
-</style>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +15,7 @@
         <h2>User Management</h2>
         <div class="user-container">
             <script>
-                const users = {{{ usersJSON }}}; // Initialize the users array for JavaScript
+                const users = {{{ usersJSON }}};
             </script>
             {{#each users}}
             <div class="users-card">
@@ -37,11 +23,11 @@
                     {{#if (isOnline lastActiveAt)}}
                     <span class="active-indicator" title="Active"></span>
                     {{/if}}
-                    <img src="{{profilePhoto}}" alt="User" width="50px" class="user-img image" />
+                    <img src="{{profilePhoto}}" alt="User" class="user-img image" />
                 </div>
-                <div class="user-name">
-                    <span class=" user-name-email">{{name}}</span>
-                    <span class="user-name-email">{{email}}</span>
+                <div class="user-name-email">
+                    <span >{{name}}</span>
+                    <span >{{email}}</span>
                 </div>
             </div>
             {{/each}}
@@ -54,20 +40,17 @@
                     <i class="fa-solid fa-xmark close-button"></i>
                 </div>
                 <div class="user-name">
-                    <p>Name: <span class="normal-size" id="user-name"></span></p>
-                    <p>Email: <span class="normal-size" id="user-email"></span></p>
-                    <p>Bitcoin Wallet: <span class="normal-size" id="user-bitcoin"></span></p>
-                    <p>USDT Wallet: <span class="normal-size" id="user-usdt"></span></p>
-                    <p>Ethereum Wallet: <span class="normal-size" id="user-ethereum"></span></p>
-                    <p>Last Login: <span class="normal-size" id="user-last-login"></span></p>
-                    <p>Status: <span class="normal-size" id="user-is-active"></span></p>
-                    <a href="#" href="/admin/user/{{_id}}/transactions" id="check-transactions-btn"
+                    <p>Name: <span class="color-gradient"  id="user-name"></span></p>
+                    <p>Email: <span class="color-gradient" id="user-email"></span></p>
+                    <p>Bitcoin Wallet: <span class="color-gradient" id="user-bitcoin"></span></p>
+                    <p>USDT Wallet: <span class="color-gradient" id="user-usdt"></span></p>
+                    <p>Ethereum Wallet: <span class="color-gradient" id="user-ethereum"></span></p>
+                    <p>Last Login: <span class="color-gradient" id="user-last-login"></span></p>
+                    <a href="#" class="submit-button" href="/admin/user/{{_id}}/transactions" id="check-transactions-btn"
                         data-user-id="">Check User Transactions</a>
                 </div>
             </div>
         </div>
-
-    </section>
 
     <div id="transactions-modal" class="transactions-modal">
         <div class="transactions-content">
@@ -87,6 +70,8 @@
 
         </div>
     </div>
+
+    </section>
 
     <!-- Image Zoom Modal -->
     <div id="image-zoom-modal" class="image-zoom-modal" style="display:none;">

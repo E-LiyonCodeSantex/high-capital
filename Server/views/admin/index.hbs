@@ -1,18 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-    .goog-logo-link {
-        display: none !important;
-    }
-
-    .goog-te-gadget {
-        color: transparent !important;
-    }
-
-    .goog-te-gadget .goog-te-combo {
-        color: black !important;
-    }
-</style>
 
 <head>
     <meta charset="UTF-8">
@@ -23,120 +10,118 @@
 
     <link rel="stylesheet" href="/adminStyle.css">
 </head>
-
 <body>
-    <main>
-        <section>
-            <h2>Dashboard Overview</h2>
-            <div class="total-container">
-                <div class="total-container-content">
-                    <div class="total-card">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <div class="total-details">
-                            <span>103</span>
-                            <p>Registered Users</p>
-                        </div>
+    <section>
+        <h2>Dashboard Overview</h2>
+        <div class="total-container">
+            <div class="total-container-content">
+                <a class="total-card a" href="/admin/user">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <div class="total-details">
+                        <span class="color-gradient">{{totalUsers}}</span>
+                        <span>Registered Users</span>
                     </div>
-                    <div class="total-card">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <div class="total-details">
-                            <span>80</span>
-                            <p>Active Users</p>
-                        </div>
+                </a>
+                <a class="total-card a" href="/admin/user">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <div class="total-details">
+                        <span class="color-gradient">{{activeUsers}}</span>
+                        <span>Active Users</span>
                     </div>
+                </a>
+            </div>
+            <div class="total-container-content">
+                <a class="total-card a" href="/admin/userDeposit">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <div class="total-details">
+                        <span class="color-gradient">{{totalDeposits}}</span>
+                        <span>Total Deposit</span>
+                    </div>
+                </a>
+                <a class="total-card a" href="/admin/userWithdrawal">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <div class="total-details">
+                        <span class="color-gradient">{{totalWithdrawals}}</span>
+                        <span>Total Withdrawal</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="preview-container">
+            <h2>Reviews</h2>
+            <div class="preview-card">
+                <span>Positive Reviews</span>
+                <div class="preview-percent-line">
+                    <span></span>
                 </div>
-                <div class="total-container-content">
-                    <div class="total-card">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <div class="total-details">
-                            <span>100</span>
-                            <p>Total Deposit</p>
-                        </div>
-                    </div>
-                    <div class="total-card">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <div class="total-details">
-                            <span>90</span>
-                            <p>Total Withdrawal</p>
-                        </div>
-                    </div>
+                <span>80%</span>
+            </div>
+            <div class="preview-card">
+                <span>Neutral Reviews</span>
+                <div class="preview-percent-line">
+                    <span></span>
+                </div>
+                <span>80%</span>
+            </div>
+            <div class="preview-card">
+                <span>Negative Reviews</span>
+                <div class="preview-percent-line">
+                    <span></span>
+                </div>
+                <span>80%</span>
+            </div>
+            <div class="preview-card total-reviewers">
+                <span>Total Reviewers</span>
+                <span>309</span>
+            </div>
+        </div>
+
+        <div class="alerts-container">
+            <h2>Alerts</h2>
+
+            <a class="total-card a" href="/admin/userDeposit">
+                <i class="fa-solid fa-chart-line color-red"></i>
+                <div class="total-details">
+                    <span class="color-red">{{unconfirmedDepositsCount}}</span>
+                    <p class="color-red">Pending Deposit</p>
+                </div>
+            </a>
+            <a class="total-card a" href="/admin/userWithdrawal">
+                <i class="fa-solid fa-chart-line color-red"></i>
+                <div class="total-details">
+                    <span class="color-red">{{unconfirmedWithdrawalsCount}}</span>
+                    <p class="color-red">Pending Withdrawal</p>
+                </div>
+            </a>
+
+
+            <div class="total-card">
+                <i class="fa-solid fa-chart-line color-red"></i>
+                <div class="total-details">
+                    <span class="color-red">100</span>
+                    <p class="color-red">Failed Deposit</p>
+                </div>
+            </div>
+            <div class="total-card">
+                <i class="fa-solid fa-chart-line color-red"></i>
+                <div class="total-details">
+                    <span class="color-red">90</span>
+                    <p class="color-red">Failed Withdrawal</p>
+                </div>
+            </div>
+            <div class="total-card">
+                <i class="fa-solid fa-chart-line color-red"></i>
+                <div class="total-details">
+                    <span class="color-red">90</span>
+                    <p class="color-red">Flagged Account</p>
                 </div>
             </div>
 
-            <div class="preview-container">
-                <h2>Reviews</h2>
-                <div class="preview-card">
-                    <span>Positive Reviews</span>
-                    <div class="preview-percent-line">
-                        <span></span>
-                    </div>
-                    <span>80%</span>
-                </div>
-                <div class="preview-card">
-                    <span>Neutral Reviews</span>
-                    <div class="preview-percent-line">
-                        <span></span>
-                    </div>
-                    <span>80%</span>
-                </div>
-                <div class="preview-card">
-                    <span>Negative Reviews</span>
-                    <div class="preview-percent-line">
-                        <span></span>
-                    </div>
-                    <span>80%</span>
-                </div>
-                <div class="preview-card total-reviewers">
-                    <span>Total Reviewers</span>
-                    <span>309</span>
-                </div>
-            </div>
+        </div>
 
-            <div class="alerts-container">
-                <h2>Alerts</h2>
+    </section>
 
-                <div class="total-card">
-                    <i class="fa-solid fa-chart-line color-red"></i>
-                    <div class="total-details">
-                        <span>103</span>
-                        <p>Pending Deposit</p>
-                    </div>
-                </div>
-                <div class="total-card">
-                    <i class="fa-solid fa-chart-line color-red"></i>
-                    <div class="total-details">
-                        <span>80</span>
-                        <p>Pending Withdrawal</p>
-                    </div>
-                </div>
-
-
-                <div class="total-card">
-                    <i class="fa-solid fa-chart-line color-red"></i>
-                    <div class="total-details">
-                        <span>100</span>
-                        <p>Failed Deposit</p>
-                    </div>
-                </div>
-                <div class="total-card">
-                    <i class="fa-solid fa-chart-line color-red"></i>
-                    <div class="total-details">
-                        <span>90</span>
-                        <p>Failed Withdrawal</p>
-                    </div>
-                </div>
-                <div class="total-card">
-                    <i class="fa-solid fa-chart-line color-red"></i>
-                    <div class="total-details">
-                        <span>90</span>
-                        <p>Flagged Account</p>
-                    </div>
-                </div>
-
-            </div>
-
-        </section>
-    </main>
 
 
 
