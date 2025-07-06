@@ -167,8 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
                       <p class="color-gradient">${dep.amount}</p>
                       <p>${statusHtml}</p>
                   </div>
-                </div>
-            </div>`;
+                </div>`;
             });
             depositsHtml += '</div>';
           }
@@ -177,30 +176,28 @@ document.addEventListener("DOMContentLoaded", function () {
           if (!data.withdrawals || data.withdrawals.length === 0) {
             withdrawalsHtml = '<p>No withdrawals found.</p>';
           } else {
-            withdrawalsHtml = '<div class=" user-deposit-card ul"> <div class="transaction-identifier">  <h3 > Withdrawals</h3></div>';
-            identifier.textContent = 'Withdrawal';
+            withdrawalsHtml = '<div class="user-deposit-card ul"> <div class="transaction-identifier">  <h3 > Withdrawals</h3></div>';
             data.withdrawals.forEach(wd => {
               let statusHtml = '';
-              if (dep.status === 'completed') {
-                statusHtml = `<span class="status-completed">${capitalize(dep.status)}</span>`;
-              } else if (dep.status === 'confirmed') {
-                statusHtml = `<span class="status-confirmed">${capitalize(dep.status)}</span>`;
+              if (wd.status === 'completed') {
+                statusHtml = `<span class="status-completed">${capitalize(wd.status)}</span>`;
+              } else if (wd.status === 'confirmed') {
+                statusHtml = `<span class="status-confirmed">${capitalize(wd.status)}</span>`;
               } else {
                 statusHtml = `<span class="status-unconfirmed">Unconfirmed</span>`;
               }
 
               withdrawalsHtml += `
-              <div class="history">
-                  <div class="history-content">
-                      <h3 class="color-gradient">${wd.coinType}</h3>
-                      <p class="color-gradient">${formatDate(wd.date)}</p>
-                  </div>
-                  <div class="history-content">
-                      <p class="color-gradient">${wd.amount}</p>
-                      <p>${statusHtml}</p>
-                  </div>
-                </div>
-            </div>`;
+                <div class="history">
+                    <div class="history-content">
+                        <h3 class="color-gradient">${wd.coinType}</h3>
+                        <p class="color-gradient">${formatDate(wd.date)}</p>
+                    </div>
+                    <div class="history-content">
+                        <p class="color-gradient">${wd.amount}</p>
+                        <p>${statusHtml}</p>
+                    </div>
+                  </div>`;
             });
             withdrawalsHtml += '</div>';
           }

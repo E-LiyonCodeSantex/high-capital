@@ -1,18 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-    .goog-logo-link {
-        display: none !important;
-    }
-
-    .goog-te-gadget {
-        color: transparent !important;
-    }
-
-    .goog-te-gadget .goog-te-combo {
-        color: black !important;
-    }
-</style>
 
 <head>
     <meta charset="UTF-8">
@@ -25,34 +12,32 @@
 </head>
 
 <body>
-    <main>
-        <section>
-            <h2>Investment Plans</h2>
-            <div class="total-plan-container">
-                {{#each plans}}
-                <div class="my-plan">
-                    <div class="my-plan-header">
-                        <span><i class="fas fa-database close-button"></i></span>
-                        <h4>{{this.name}}</h4>
-                    </div>
-                    <ul>
-                        <li>Minimum: <b>${{this.minDeposit}}</b></li>
-                        <li>Maximum: <b>${{this.maxDeposit}}</b></li>
-                        <li>Daily Profit: <b>{{this.dailyProfit}}%</b></li>
-                        <li>Duration: <b>{{this.duration}} Day(s)</b></li>
-                        <li>Referral Bonus: <b>{{this.referralBonus}}%</b></li>
-                    </ul>
-                    <div class="my-plan-buttons">
-                        <b class="edit-plan plan-button" data-id="{{this._id}}">Edit Plan</b>
-                        <b class="delete-plan plan-button" data-id="{{this._id}}">Delete Plan</b>
-                    </div>
+    <section>
+        <h2>Investment Plans</h2>
+        <div class="total-plan-container">
+            {{#each plans}}
+            <div class="my-plan">
+                <div class="my-plan-header">
+                    <span><i class="fas fa-database close-button status-unconfirmed"></i></span>
+                    <h4>{{this.name}}</h4>
                 </div>
-                {{/each}}
+                <ul>
+                    <li>Minimum: <b class="color-gradient">${{this.minDeposit}}</b></li>
+                    <li>Maximum: <b class="color-gradient">${{this.maxDeposit}}</b></li>
+                    <li>Daily Profit: <b class="color-gradient">{{this.dailyProfit}}%</b></li>
+                    <li>Duration: <b class="color-gradient">{{this.duration}} Day(s)</b></li>
+                    <li>Referral Bonus: <b class="color-gradient">{{this.referralBonus}}%</b></li>
+                </ul>
+                <div class="my-plan-buttons">
+                    <b class="edit-plan submit-button" data-id="{{this._id}}">Edit Plan</b>
+                    <b class="delete-plan submit-button" style="background-color: #D32F2F !important;" data-id="{{this._id}}">Delete Plan</b>
+                </div>
             </div>
+            {{/each}}
+        </div>
 
-            <button class="add-plan plan-button">Add Plans</button>
-        </section>
-    </main>
+        <button class="add-plan submit-button">Add New Plans</button>
+    </section>
 
 
     {{!-- Modal for creating/Editing Plans --}}
@@ -89,7 +74,7 @@
                     <label for="referral-bonus">Referral Bonus (%):</label>
                     <input type="number" id="referral-bonus" name="referralBonus" required>
                 </div>
-                <button type="submit" class="plan-button">Save Plan</button>
+                <button type="submit" class="submit-button">Save Plan</button>
             </form>
         </div>
     </div>

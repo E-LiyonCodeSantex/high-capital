@@ -35,20 +35,21 @@
 
 <body>
     <nav>
-        <h3 class="color-gradient">High Capital</h3>
-        <div id="google_translate_element"></div>
+        <div class="logo-and-searchBar">
+            <h3 class="color-gradient">High Capital</h3>
+            <div id="google_translate_element"></div>
+        </div>
+
+        <div class="logo-and-searchBar">
+            <div class="menu-and-header">
+                <i class="fa-solid fa-bars menu-bar"></i>
+            </div>
+            <div class="HeaderSearchBar">
+                <input type="text" class="product-search-bar" placeholder="Search for user by name, email ....." />
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
     </nav>
-
-    <div class="logo-and-searchBar">
-        <div class="menu-and-header">
-            <i class="fa-solid fa-bars menu-bar"></i>
-        </div>
-
-        <div class="HeaderSearchBar">
-            <input type="text" class="product-search-bar" placeholder="Search for user by name, email ....." />
-            <button><i class="fa-solid fa-magnifying-glass"></i></button>
-        </div>
-    </div>
 
     <main>
         <nav class="side-nav">
@@ -63,14 +64,14 @@
                 <li><a href="/admin/history">Transaction history</a></li>
                 <li><a href="/admin/investmentPlans">Investment Plan Management</a></li>
                 <li><a href="/admin//walletAdresses">Wallet Management</a></li>
-                <li><a href="/admin/Notifications">Notifications and Alerts</a></li>
+                <li class="disabled"><a href="/admin/Notifications">Notifications and Alerts</a></li>
 
                 <!--<li><a></a></li>
                         <li><a>Security and Audit Logs</a></li>-->
             </ul>
         </nav>
 
-            {{{body}}} <!-- Placeholder for dynamic content -->
+        {{{body}}} <!-- Placeholder for dynamic content -->
 
     </main>
 </body>

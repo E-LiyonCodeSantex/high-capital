@@ -1,23 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-    .goog-logo-link {
-        display: none !important;
-    }
-
-    .goog-te-gadget {
-        color: transparent !important;
-    }
-
-    .goog-te-gadget .goog-te-combo {
-        color: black !important;
-    }
-</style>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>ADMIN Withdrawals</title>
     <!--forawesome-->
     <script src="https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
 
@@ -46,14 +33,18 @@
                         <span class="user-name-email small-size">{{user.email}}</span>
                     </div>
                 </div>
-                <ul>
-                    <li>Amount:<span>${{amount}}</span></li>
-                    <li>Status:<span
-                            class="time-counter withdrawer-status {{#unless (eq status 'pending')}}text-warning{{/unless}}"
+                <div class="history">
+                    <div class="history-content">
+                        <h3 class="color-gradient">${{method}}</h3>
+                        <p class="color-gradient">${{formatDate date}}</p>
+                    </div>
+                    <div class="history-content">
+                        <p class="color-gradient">${{amount}}</p>
+                        <p class="time-counter withdrawer-status {{#unless (eq status 'pending')}}status-completed{{/unless}}"
                             data-withdrawal-id="{{_id}}" data-status="{{status}}"
-                            style="{{#if (eq status 'pending')}}color:#D32F2F;{{/if}}">
-                            {{status}}</span></li>
-                </ul>
+                            style="{{#if (eq status 'successful')}}color: #D32F2F;{{/if}}"> {{status}}</p>
+                    </div>
+                </div>
                 <button class="submit-button process-withdrawal confirm-withdrawal" data-withdrawal-id="{{_id}}">Process
                     <i class="fa fa-sign-in"></i></button>
             </div>
@@ -70,11 +61,11 @@
                 </div>
             </div>
             <div class="deposit-withdrawal-long-details">
-                <p>Amount: <span class="green" id="withdrawer-amount"> </span></p>
-                <p>Method: <span class="green" id="withdrawer-method"> </span></p>
-                <p>Wallet/Bank: <span class="green" id="withdrawer-wallet-bank"> </span></p>
-                <p>Adress/Ac Number: <span class="green" id="withdrawer-adress-number"> </span></p>
-                <p id="acount-Name-container">Acount Name: <span class="green" id="account-Name"> </span></p>
+                <p>Amount: <span class="color-gradient" id="withdrawer-amount"> </span></p>
+                <p>Method: <span class="color-gradient" id="withdrawer-method"> </span></p>
+                <p>Wallet/Bank: <span class="color-gradient" id="withdrawer-wallet-bank"> </span></p>
+                <p>Adress/Ac Number: <span class="color-gradient" id="withdrawer-adress-number"> </span></p>
+                <p id="acount-Name-container">Acount Name: <span class="color-gradient" id="account-Name"> </span></p>
                 <p>Status:
                     <span id="withdrawer-status"
                         class="green withdrawer-status {{#unless (eq status 'pending')}}text-warning{{/unless}}"
@@ -82,7 +73,7 @@
                         style="{{#if (eq status 'pending')}}color:#D32F2F;{{/if}}">
                         {{status}} </span>
                 </p>
-                <p>Requested At: <span class="green" id="withdrawal-requested-at"></span></p>
+                <p>Requested At: <span class="color-gradient" id="withdrawal-requested-at"></span></p>
                 <p class="withdrawal-receipt-container">
                     <label for="withdrawal-receipt" class="orange-color" id="withdrawal-receipt-lable">Send Withdrawal
                         Receipt here (PDF or Image):</label>
@@ -92,7 +83,7 @@
                     <b class="orange-color" id="view-receipt" style="display: none;">View Receipt</b>
                     <img src="{{wihdrawalReceipt}}" id="wihdrawal-receipt" alt="Withdrawal Receipt"
                         style="display: none;" width="90%" height="100px" />
-                    <span class="receipt-massage"></span> 
+                    <span class="receipt-massage"></span>
                 </p>
 
             </div>

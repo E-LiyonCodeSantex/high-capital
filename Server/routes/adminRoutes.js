@@ -8,6 +8,7 @@ const { getAllWithdrawal, activateWithdrawal } = require('../controllers/withdra
 const walletController = require('../controllers/walletController');
 const { adminGetTransactionHistory } = require('../controllers/historyController');
 const deposit = require('../models/depositModel');
+const withdrawal = require('../models/withdrawalModel'); 
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/receipts/' });
 
@@ -31,12 +32,11 @@ router.get('/user/:userId/transactions', authenticateAdmin, async (req, res) => 
   try {
     const userId = req.params.userId;
     const deposits = await deposit.find({ user: userId }).sort({ createdAt: -1 });
-    //const withdrawals = await Withdrawal.find({ user: userId }).sort({ createdAt: -1 });
-    res.json({ deposits });
+    const withdrawals = await withdrawal.find({ user: userId }).sort({ createdAt: -1 });
+    res.json({ deposits, withdrawals });
   } catch (err) {
     console.error('Error fetching transactions:', err);
     res.status(500).json({ error: 'Error fetching transactions' });
-    res.json({ deposits: [], withdrawals: [], error: 'Error fetching transactions' });
   }
 });
 

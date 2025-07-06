@@ -1,18 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-    .goog-logo-link {
-        display: none !important;
-    }
-
-    .goog-te-gadget {
-        color: transparent !important;
-    }
-
-    .goog-te-gadget .goog-te-combo {
-        color: black !important;
-    }
-</style>
 
 <head>
     <meta charset="UTF-8">
@@ -25,32 +12,27 @@
 </head>
 
 <body>
-    <main>
-        <section>
-            <h2>Wallet Adresses</h2>
-            <div class="total-plan-container">
- 
-                {{#each wallets}}
-                <div class="my-plan">
-                    <div class="my-wallet-header">
-                        <span><i class="fa-solid fa-wallet"></i></span>
-                    </div>
-                    <ul>
-                        <li>
-                            <h4>{{this.name}}:</h4> <span class="green">${{this.adress}}</span>
-                        </li>
-                    </ul>
-                    <div class="my-plan-buttons">
-                        <b class="edit-wallet plan-button" data-id="{{this._id}}">Edit Wallet</b>
-                        <b class="delete-wallet plan-button" data-id="{{this._id}}">Delete Wallet</b>
-                    </div>
-                </div>
-                {{/each}}
-            </div>
+    <section>
+        <h2>Wallet Adresses</h2>
+        <div class="total-plan-container">
 
-            <button class="wallet-adress plan-button">Add Wallet Adress</button>
-        </section>
-    </main>
+            {{#each wallets}}
+            <div class="my-wallet">
+                <div class="wallet-details">
+                    <h3><i class="fa-solid fa-wallet" style="background-color: #fffffff;"> </i>{{this.name}}:</h3>
+                    <span class="color-gradient">${{this.adress}}</span>
+                </div>
+                <div class="my-plan-buttons">
+                    <span class="edit-wallet submit-button" data-id="{{this._id}}">Edit Wallet</span>
+                    <span class="delete-wallet submit-button" style="background-color: #D32F2F !important;"
+                        data-id="{{this._id}}">Delete Wallet</span>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+        <button class="wallet-adress submit-button">Add Wallet Adress</button>
+    </section>
 
 
     {{!-- Modal for creating/Editing Plans --}}
@@ -70,7 +52,7 @@
                     <label for="plan-name">Wallet Adress:</label>
                     <input type="text" id="wallet-adress" name="adress" required>
                 </div>
-                <button type="submit" class="plan-button">Save Wallet Adress</button>
+                <button type="submit" class="submit-button">Save Wallet Adress</button>
             </form>
 
         </div>

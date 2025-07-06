@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Admin | Get Users</title>
     <!--forawesome-->
     <script src="https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
 
@@ -56,7 +56,7 @@
         <div class="transactions-content">
             <div class="transactions-content-head">
                 <h3>User Transactions</h3>
-                <span id="close-transactions" class="large-size">&times;</span>
+                <span id="close-transactions" class="large-size status-unconfirmed">&times;</span>
             </div>
             <div class="transaction-head-divider"></div>
             <div class="transactions-content-head">
@@ -75,7 +75,7 @@
 
     <!-- Image Zoom Modal -->
     <div id="image-zoom-modal" class="image-zoom-modal" style="display:none;">
-        <span id="close-zoom" class="close-zoom">&times;</span>
+        <span id="close-zoom" class="close-zoom status-unconfirmed ">&times;</span>
         <img id="zoomed-image" class="zoomed-image" src="" alt="Zoomed Receipt" />
     </div>
 
