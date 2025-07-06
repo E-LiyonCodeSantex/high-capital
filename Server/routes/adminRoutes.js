@@ -6,6 +6,7 @@ const adminUserController = require('../controllers/adminUserController');
 const { getAllDeposit, activateDeposit } = require('../controllers/depositController');
 const { getAllWithdrawal, activateWithdrawal } = require('../controllers/withdrawalController');
 const walletController = require('../controllers/walletController');
+const { adminGetTransactionHistory } = require('../controllers/historyController');
 const deposit = require('../models/depositModel');
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/receipts/' });
@@ -89,8 +90,15 @@ router.post('/ProcessWithdrawal/:id', upload.single('withdrawal-receipt'), async
 });
 
 //router.get('/user/:id', authenticateadmin, isAdmin, adminController.getUserById); // Get user by ID
-router.get('/user-history', adminController.getTransactionHistory);
-router.get('/history', (req, res) => res.render('admin/userHistory')); // History
+router.get('/history', authenticateAdmin, async (req, res) => {
+  try {
+    await adminGetTransactionHistory(req, res);
+  } catch (err) {
+    console.error('Error in adminGetTransactionHistory route:', err);
+    res.status(500).json({ error: 'An unexpected error occurred.' });
+  }
+});
+
 router.get('/adminHistory', authenticateAdmin, (req, res) => res.render('admin/adminHistory'));
 router.get('/Notifications', authenticateAdmin, (req, res) => res.render('admin/Notifications'));
 router.get('/uncomfirmedDeposit', authenticateAdmin, (req, res) => res.render('admin/uncomfirmedDeposit'));

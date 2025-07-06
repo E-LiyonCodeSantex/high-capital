@@ -12,24 +12,27 @@ body {
   background-color: #181818;
 
 }
+
 .submit-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-    border: none;
-    border-radius: 6px;
-    background-color: #711afd;
-    color: #fff;
-    font-size: small;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #711afd;
+  color: #fff;
+  font-size: small;
+  cursor: pointer;
 }
+
 .submit-button:hover {
-    background-color: #6200ff;
-    color: #fff;
+  background-color: #6200ff;
+  color: #fff;
 }
-a{
+
+a {
   text-decoration: none;
   color: #fff;
 }
@@ -128,6 +131,7 @@ ul {
   display: flex;
   justify-self: flex-end;
   align-self: flex-end;
+  cursor: pointer;
 }
 
 .close-button:hover {
@@ -198,7 +202,7 @@ nav {
   gap: 10px;
   justify-content: center;
   align-items: center;
-  padding:15px 10px 10px 10px;
+  padding: 15px 10px 10px 10px;
   position: fixed;
   top: 50px;
   color: #ffffff;
@@ -569,6 +573,7 @@ section h2 {
   font-size: small;
   object-fit: cover;
 }
+
 .user-name-email {
   display: flex;
   flex-direction: column;
@@ -579,7 +584,7 @@ section h2 {
   font-size: medium;
   color: #000000;
   gap: 5px;
-   text-align: center;
+  text-align: center;
   flex-wrap: wrap;
   overflow: hidden;
   word-wrap: break-word;
@@ -604,6 +609,7 @@ section h2 {
   color: #000000;
   /* Add ellipsis for overflowed text (optional) */
 }
+
 .user-name p {
   display: flex;
   align-items: center;
@@ -615,11 +621,13 @@ section h2 {
   word-break: break-word;
   color: #181818;
 }
+
 .user-name p span {
   font-weight: 500;
   font-size: small;
   color: #000000;
 }
+
 .detailed-card {
   display: none;
   /* Initially hidden */
@@ -659,8 +667,8 @@ section h2 {
 /*deposit.hbs and widthdrawal style rules are here*/
 .deposit-withdrawal-container {
   display: flex;
-  justify-content: start;
-  align-items: start;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
   padding: 10px;
   flex-wrap: wrap;
@@ -676,11 +684,10 @@ section h2 {
   gap: 8px;
   padding: 10px;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(225, 225, 225, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.3);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  color: #fff;
   cursor: pointer;
   width: 100%;
   max-width: 350px !important;
@@ -688,7 +695,7 @@ section h2 {
 }
 
 .deposit-withdrawal-card:hover {
-  background-color: #000;
+  background-color: rgba(225, 225, 225, 0.9);
 }
 
 .depositor-withdrawal-short-details {
@@ -698,7 +705,7 @@ section h2 {
   gap: 15px;
   flex-wrap: wrap;
   width: 100%;
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 
 .time-counter {
@@ -715,18 +722,17 @@ section h2 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 10000;
+  z-index: 1000;
   flex-wrap: wrap;
-  width: 90%;
+  width: 100%;
   max-width: 400px;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(225, 225, 225, 0.7);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-radius: 15px;
-  padding: 20px;
+  padding: 10px;
   gap: 10px;
-  color: #fff;
+  color: #000000;
 }
 
 .deposit-withdrawal-long-details {
@@ -736,18 +742,23 @@ section h2 {
   align-items: start;
   flex-wrap: wrap;
   gap: 10px;
-  color: #fff;
+  color: #000000;
   width: 100%;
   padding: 20px 0 10px 0;
 }
 
 .deposit-withdrawal-long-details p {
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   gap: 10px;
+  border-bottom: 1px solid #000000;
   flex-wrap: wrap;
+}
+
+.deposit-withdrawal-long-details p span {
+  width: 40%;
 }
 
 .deposit-details-header {
@@ -799,7 +810,7 @@ section h2 {
 
 .image-zoom-modal {
   position: fixed;
-  z-index: 9999;
+  z-index: 1001;
   left: 0;
   top: 0;
   width: 100%;
@@ -845,17 +856,18 @@ section h2 {
 /*All history.hbs style rules are here*/
 .transactions-modal {
   display: none;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: start;
+  align-items: center;
   flex-wrap: wrap;
   position: absolute;
   left: 0;
   z-index: 1000;
   width: 100%;
   max-width: 100%;
-  height: fit-content;
+  padding: 10px 0;
   background-color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
 }
 
 .transactions-content-head {
@@ -895,24 +907,27 @@ section h2 {
 .transactions-list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
+  padding-top: 150px;
   flex-wrap: wrap;
   width: 100%;
+  height: 100vh;
   gap: 15px;
+  background-color: #ffffff;
   color: #000000;
 }
 
 .user-deposit-card {
-   display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-height: 400px;
-    height: fit-content;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding: 8px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: 400px;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
 }
 
 .transaction-identifier {
@@ -923,28 +938,30 @@ section h2 {
   width: 100%;
   align-self: center;
 }
-.history{
-    display: flex;
-    width: 100%;
-    max-height: 400px;
-    height: fit-content;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    padding: 8px;
-    background: rgba(192, 192, 192, 0.9);
-    color: #000;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-    border: 2px solid #ffffff;
-    border-radius: 10px 0 10px 0;
-    cursor: pointer;
+
+.history {
+  display: flex;
+  width: 100%;
+  max-height: 400px;
+  height: fit-content;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  background: rgba(192, 192, 192, 0.9);
+  color: #000;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  border: 2px solid #ffffff;
+  border-radius: 10px 0 10px 0;
+  cursor: pointer;
 }
-.history-content{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    gap: 6px;
+
+.history-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 6px;
 }
 
 .user-deposit-card ul li {
@@ -1028,6 +1045,111 @@ section h2 {
 .filter-by-date button:hover {
   background-color: #ad6a06fb;
 }
+
+/*History style rules are here*/
+.transction-history-bgc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  gap: 20px;
+  background-color: #181818;
+  position: sticky;
+  top: 0;
+}
+
+.transaction-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 90%;
+  height: fit-content;
+  gap: 10px;
+  background: rgba(192, 192, 192, 0.9);
+  color: #000;
+  padding: 10px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  border: 1.5px solid #ffffff;
+  border-radius: 25px 0 25px 0;
+  position: sticky;
+  top: 140px;
+}
+
+.transaction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 7px;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: none;
+}
+
+.select-currency {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+}
+
+.all-transaction {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+  background: rgba(192, 192, 192, 0.5);
+  color: #000;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  border: 1.5px solid #ffffff;
+  border-radius: 8px 0 8px 0;
+}
+
+.all-transaction:hover {
+  background: #ffffff;
+}
+
+.date-format {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+}
+
+.start-date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.transaction-history {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  gap: 10px;
+  width: 100%;
+  height: fit-content;
+  background: rgba(192, 192, 192, 0.7);
+  color: #000;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  border: 1.5px solid #ffffff;
+  border-radius: 25px 0 25px 0;
+}
+
+
+
 
 /*investment-plan.hbs and walletManagement.hbs style rules are here*/
 .total-plan-container {
@@ -1299,5 +1421,12 @@ section h2 {
     display: flex;
   }
 
+  .transactions-list {
+    padding-top: 120px;
+  }
+
+  .deposit-withdrawal-details {
+    position: fixed;
+  }
 
 }

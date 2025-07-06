@@ -70,7 +70,7 @@ body>* {
 }
 
 .status-confirmed {
-    color: #a7882b !important;
+    color: #b88e10 !important;
     /* Amber */
 }
 
@@ -683,6 +683,7 @@ main {
     width: 95%;
     gap: 8px;
     padding: 0;
+    color: #000000 !important;
 }
 
 .blue-link {
@@ -949,7 +950,6 @@ main {
     position: sticky;
     top: 140px;
 }
-
 .transaction {
     display: flex;
     justify-content: center;
@@ -961,7 +961,6 @@ main {
     font-weight: 500;
     background-color: none;
 }
-
 .select-currency {
     display: flex;
     flex-direction: column;
@@ -969,7 +968,6 @@ main {
     align-items: center;
     gap: 7px;
 }
-
 .all-transaction {
     display: flex;
     width: fit-content;
@@ -983,11 +981,9 @@ main {
     border: 1.5px solid #ffffff;
     border-radius: 8px 0 8px 0;
 }
-
 .all-transaction:hover {
     background: #ffffff;
 }
-
 .date-format {
     display: flex;
     flex-direction: column;
@@ -1018,7 +1014,6 @@ main {
     border: 1.5px solid #ffffff;
     border-radius: 25px 0 25px 0;
 }
-
 .history {
     display: flex;
     width: 100%;
@@ -1035,7 +1030,6 @@ main {
     border-radius: 10px 0 10px 0;
     cursor: pointer;
 }
-
 .history-content {
     display: flex;
     flex-direction: column;

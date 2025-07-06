@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -24,7 +25,7 @@
         <form id="deposit-form" class="deposit-form gap-and-padding margin-bottom" action="/user/confirmDeposit"
             method="get">
             <input type="hidden" class="white-color select-input" id="plan-id" name="planId">
-            <p class="">Select Plans, Cryptocurrency and Amount to Deposit</p>
+            <p class="" style="color: #000000;">Select Plans, Cryptocurrency and Amount to Deposit</p>
 
             <span class="no-deposit-twice-prompt"></span>
             <div class="form-group">
@@ -38,8 +39,15 @@
                     {{/each}}
                 </select>
                 <a href="/user/investmentPlans" class="submit-button">View Invesment Plans</a>
-                <span class="error-message-for-coin text-warning">{{#if
+                <span class="error-message-for-coin status-Unconfirmed">{{#if
                     planErrorMessage}}{{planErrorMessage}}{{else}}&nbsp;{{/if}}</span>
+            </div>
+
+            <div class="form-group">
+                <label for="amount" class="">Amount to Spend ($) </label>
+                <input type="number" class="white-color select-input" name="amount" id="plan-amount"
+                    value="{{#if selectedPlan}}{{selectedPlan.minDeposit}}{{/if}}">
+                <span class="error-message-for-amount status-unconfirmed"></span>
             </div>
 
             <div class="form-group">
@@ -50,7 +58,7 @@
                     <option value="{{this.name}}">{{this.name}}</option>
                     {{/each}}
                 </select>
-                <span class="error-message-for-coin text-warning">{{#if
+                <span class="error-message-for-coin status-unconfirmed">{{#if
                     walletErrorMessage}}{{walletErrorMessage}}{{else}}&nbsp;{{/if}}</span>
             </div>
 
@@ -61,16 +69,11 @@
             </div>
 
             <div class="form-group">
-                <label for="amount" class="">Amount to Spend ($) </label>
-                <input type="number" class="white-color select-input" name="amount" id="plan-amount"
-                    value="{{#if selectedPlan}}{{selectedPlan.minDeposit}}{{/if}}">
-                <span class="error-message-for-amount status-confirmed"></span>
-            </div>
-            <div class="form-group">
                 <label for="duration" class="">Investement Duration <span class="tx-danger"> </span></label>
                 <input type="number" class="white-color select-input" id="investment-duration" disabled
                     value="{{#if selectedPlan}}{{selectedPlan.duration}}{{/if}}">
             </div>
+
             <div class="form-group">
                 <label for="referralBonus" class="">Referal Bonus ($) <span class="tx-danger">*</span></label>
                 <input type="number" class="white-color select-input" id="referal-bonus" disabled

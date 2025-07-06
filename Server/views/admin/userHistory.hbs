@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +12,107 @@
 </head>
 
 <body>
-<section>
-    
-</section>
+    <section>
+        <div class="transction-history-bgc">
+            <h2>User Deposits</h2>
+
+            <form class="transaction-content" id="filter-form" method="get" action="/admin/history">
+                <div class="transaction">
+                    <div class="select-currency">
+                        <label for="transaction-type">Transaction Type:</label>
+                        <select name="type" class="all-transaction" id="transaction-type" title="transaction">
+                            <option value="all" {{#if (eq selected.type "all" )}}selected{{/if}}>All Transactions
+                            </option>
+                            <option value="deposit" {{#if (eq selected.type "deposit" )}}selected{{/if}}>Deposit
+                            </option>
+                            <option value="withdrawal">Withdrawal</option>
+                        </select>
+                    </div>
+                    <div class="select-currency">
+                        <label for="transaction-currency">Select Currency:</label>
+                        <select name="currency" class="all-transaction" id="transaction-currency" title="transaction">
+                            <option value="all" {{#if (eq selected.currency "all" )}}selected{{/if}}>All Currencies
+                            </option>
+                            {{#each wallets}}
+                            <option value="{{this.name}}" {{#if (eq ../selected.currency this.name)}}selected{{/if}}>
+                                {{this.name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="transaction">
+                    <div class="select-currency">
+                        <label for="transaction-user">Select User:</label>
+                        <select name="userId" class="all-transaction" id="transaction-user" title="transaction">
+                            <option value="all" {{#if (eq selected.userId "all" )}}selected{{/if}}>All Users</option>
+                            {{#each users}}
+                            <option value="{{this._id}}" {{#if (eq ../selected.userId this._id)}}selected{{/if}}>
+                                {{this.userName}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="date-format">
+                    <div class="select-currency">
+                        <label for="start-date">Choose Date:</label>
+                        <div class="start-date">
+                            <select name="month" class="all-transaction" id="month" title="Month">
+                                <option value="">All Months</option>
+                                {{#each (array "01" "02" "03" "04" "05" "06" "07" "08" "09" "10" "11" "12")}}
+                                <option value="{{this}}" {{#if (eq ../selected.month this)}}selected{{/if}}>{{this}}
+                                </option>
+                                {{/each}}
+                            </select>
+                            <select name="year" class="all-transaction" id="year" title="Year">
+                                <option value="">All Years</option>
+                                {{!-- You can generate year options dynamically if needed --}}
+                                <option value="2026" {{#if (eq selected.year "2026" )}}selected{{/if}}>2026</option>
+                                <option value="2025" {{#if (eq selected.year "2025" )}}selected{{/if}}>2025</option>
+                                <option value="2024" {{#if (eq selected.year "2024" )}}selected{{/if}}>2024</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="transaction-history">
+            <!-- Transactions will be dynamically inserted here -->
+            {{#if transactions.length}}
+            {{#each transactions}}
+            <div class="history">
+                <div class="history-content">
+                    <h3 class="color-gradient">{{capitalize type}}</h3>
+                    <p class="color-gradient">{{formatDate date}}</p>
+                </div>
+                <div class="history-content">
+                    <p class="color-gradient">${{amount}}</p>
+                    <p>
+                        {{#if (eq status "completed")}}
+                        <span class="status-completed">{{capitalize status}}</span>
+                        {{else if (eq status "confirmed")}}
+                        <span class="status-confirmed">{{capitalize status}}</span>
+                        {{else}}
+                        <span class="status-unconfirmed">Unconfirmed</span>
+                        {{/if}}
+                    </p>
+                </div>
+            </div>
+            {{/each}}
+            {{else}}
+            <p>No transactions found.</p>
+            {{/if}}
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('#filter-form select').forEach(function (select) {
+            select.addEventListener('change', function () {
+                document.getElementById('filter-form').submit();
+            });
+        });
+    </script>
 
 
     <script src="/adminScript.js"></script>

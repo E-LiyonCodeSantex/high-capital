@@ -65,15 +65,13 @@
                 </div>
             </div>
             <div class="deposit-long-details deposit-withdrawal-long-details">
-                <p>Plan Name: <span class="green" id="deposit-plan-name"> </span></p>
-                <p>Crypto Currency: <span class="green" id="deposit-plan-coin"> </span></p>
-                <p>Daily Profit: <span class="green" id="deposit-plan-daily-profit"> </span></p>
-                <p>Amount: <span class="green" id="deposit-plan-amount"> </span></p>
-                <p>Duration: <span class="green" id="deposit-plan-duration"> </span></p>
-                <p>Referral Bonus: <span class="green" id="deposit-plan-referral-bonus"> </span></p>
-                <p>
-                </p>
-                <p>Deposit Date: <span class="green" id="deposit-plan-date"></span></p>
+                <p>Plan Name: <span class="color-gradient" id="deposit-plan-name"> </span></p>
+                <p>Crypto Currency: <span class="color-gradient" id="deposit-plan-coin"> </span></p>
+                <p>Daily Profit: <span class="color-gradient" id="deposit-plan-daily-profit"> </span></p>
+                <p>Amount: <span class="color-gradient" id="deposit-plan-amount"> </span></p>
+                <p>Duration: <span class="color-gradient" id="deposit-plan-duration"> </span></p>
+                <p>Referral Bonus: <span class="color-gradient" id="deposit-plan-referral-bonus"> </span></p>
+                <p>Deposit Date: <span class="color-gradient" id="deposit-plan-date"></span></p>
 
                 <p>Status:<span class="time-counter status" id="detail-status"></span></p>
                 <p>Transaction Receipt:
@@ -81,7 +79,7 @@
                 </p>
                 <p><span class="duration-count-down time-counter" data-deposit-id="{{_id}}" data-end-date="{{endDate}}"
                         data-status="{{status}}"></span></p>
-                <p>Total Balance: <span id="total-balance"></span></p>
+                <p>Total Balance: <span id="total-balance" class="color-gradient"></span></p>
             </div>
             <div class="my-plan-buttons">
                 <b class="confirm-deposit plan-button" data-deposit-id="{{_id}}"> {{#if (eq status "confirmed")}}

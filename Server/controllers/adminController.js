@@ -68,16 +68,6 @@ exports.adminLogin = async (req, res) => {
     }
 };
 
-exports.getTransactionHistory = async (req, res) => {
-    try {
-        const transactions = await Transaction.find(); // Fetch transactions from the database
-        res.render('admin/userHistory', { transactions });
-    } catch (error) {
-        console.error('Error fetching transactions:', error);
-        res.status(500).send('An error occurred while fetching transactions.');
-    }
-};
-
 // Get all investment plans
 exports.getInvestmentPlans = async (req, res) => {
     try {

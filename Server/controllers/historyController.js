@@ -1,6 +1,7 @@
 const Deposit = require('../models/depositModel');
 const Withdrawal = require('../models/withdrawalModel');
 const WalletAdress = require('../models/walletModel');
+const User = require('../models/userModel');
 
 // Helper to filter by month/year
 function filterByDate(items, month, year) {
@@ -12,7 +13,6 @@ function filterByDate(items, month, year) {
         return (!month || itemMonth === month) && (!year || itemYear === year);
     });
 }
-
 
 exports.getTransactionHistory = async (req, res) => {
     try {
@@ -92,3 +92,89 @@ exports.getTransactionHistory = async (req, res) => {
         res.status(500).send('Error loading transaction history.');
     }
 };
+
+exports.adminGetTransactionHistory = async (req, res) => {
+    try {
+        const { userId, type = 'all', currency = 'all', month = '', year = '' } = req.query;
+        const wallets = await WalletAdress.find().lean();
+        const users = await User.find({}, '_id userName').lean();
+
+        // Build query objects
+        let depositQuery = {};
+        let withdrawalQuery = {};
+
+        if (userId && userId !== 'all') {
+            depositQuery.user = userId;
+            withdrawalQuery.user = userId;
+        }
+        if (currency !== 'all') {
+            depositQuery.coinType = currency;
+            // For withdrawals, currency could be method or walletName
+            // We'll filter in-memory after fetching
+        }
+
+        // Fetch from DB
+        let deposits = await Deposit.find(depositQuery).lean();
+        let withdrawals = await Withdrawal.find(withdrawalQuery).lean();
+
+        // Filter withdrawals by currency if needed
+        if (currency !== 'all') {
+            withdrawals = withdrawals.filter(w => w.method === currency || w.walletName === currency);
+        }
+
+        // Normalize transactions
+        let transactions = [
+            ...deposits.map(tx => ({
+                date: tx.date,
+                type: 'deposit',
+                amount: tx.amount,
+                status: tx.status,
+                reference: tx._id,
+                currency: tx.coinType,
+                transactionReceipt: tx.transactionReceipt,
+                name: tx.name,
+                dailyProfit: tx.dailyProfit,
+                duration: tx.duration,
+                totalProfit: tx.totalProfit,
+                endDate: tx.endDate
+            })),
+            ...withdrawals.map(tx => ({
+                date: tx.requestedAt,
+                type: 'withdrawal',
+                amount: tx.amount,
+                method: tx.method,
+                walletName: tx.walletName,
+                walletAddress: tx.walletAddress,
+                acountNumber: tx.acountNumber,
+                acountName: tx.acountName,
+                bankName: tx.bankName,
+                status: tx.status,
+                reference: tx._id,
+                processedAt: tx.processedAt,
+                transactionReceipt: tx.transactionReceipt,
+                endDate: tx.processedAt
+            })),
+        ];
+
+        // Filter by type
+        if (type !== 'all') {
+            transactions = transactions.filter(tx => tx.type === type);
+        }
+
+        // Filter by date (month/year)
+        transactions = filterByDate(transactions, month, year);
+
+        // Sort by date (newest first)
+        transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        res.render('admin/userHistory', {
+            transactions,
+            wallets,
+            users,
+            selected: { type, currency, month, year, userId }
+        });
+    } catch (error) {
+        console.error('Error fetching transaction history:', error);
+        res.status(500).send('Error loading transaction history.');
+    }
+}
