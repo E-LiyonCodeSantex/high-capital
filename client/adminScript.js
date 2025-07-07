@@ -1145,6 +1145,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+  const disabled = document.querySelectorAll('.disabled');
+  disabled.forEach(element => {
+    element.addEventListener('click', function (e) {
+      //console.log('Disabled element clicked:', element);
+      e.preventDefault();
+      alert('This feature is currently disabled.');
+    });
+  });
+});
+
 
 
 

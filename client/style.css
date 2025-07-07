@@ -45,9 +45,12 @@
     position: sticky;
     top: 0;
 }
+#google_translate_element .goog-te-gadget span {
+  display: none;
+}
 
 .color-gradient {
-    background: linear-gradient(to right, #0000FF, #800080);
+    background: linear-gradient(to right, #0000FF, #775cf0, #e225e2);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -170,13 +173,12 @@ p {
     color: #fff;
     display: flex;
     font-family: "Irish Grover";
-    width: 200px;
     font-weight: 400;
     font-style: normal;
     font-size: large;
     text-transform: uppercase;
     letter-spacing: 1px;
-    background: linear-gradient(to left, #0000FF, #800080, #FFFF00);
+      background: linear-gradient(to right, #0000FF, #775cf0, #e225e2);
     /* Blue, Purple, Yellow gradient */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -315,6 +317,14 @@ nav {
     position: fixed;
     width: 100%;
     z-index: 1000;
+    gap: 10px;
+}
+
+.logo-translator {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
 }
 
@@ -1326,18 +1336,11 @@ nav .company-drop_down li a:hover {
 /*Footer style rules are here*/
 .simpli_nestle {
     display: flex;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
-    padding: 40px 0 40px 40px;
+    padding: 30px 0;
     width: 100%;
-    background-color: #e7d4d4;
-}
-
-.simpli_nestle img {
-    background-color: rgb(18, 3, 83);
-    padding: 5px;
-    border: 1px solid #000;
-    border-radius: 5px;
+    background-color: #181818 !important;
 }
 
 .all-footer {
@@ -1952,7 +1955,7 @@ a {
 
 .sign-up-nav {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     width: 100%;

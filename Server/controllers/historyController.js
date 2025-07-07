@@ -97,7 +97,7 @@ exports.adminGetTransactionHistory = async (req, res) => {
     try {
         const { userId, type = 'all', currency = 'all', month = '', year = '' } = req.query;
         const wallets = await WalletAdress.find().lean();
-        const users = await User.find({}, '_id userName').lean();
+        const users = await User.find().lean();
 
         // Build query objects
         let depositQuery = {};

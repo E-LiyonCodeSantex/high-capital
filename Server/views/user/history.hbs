@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Transaction History | simplinestle.org</title>
+    <title>Transaction History | highcapital.com</title>
     <noscript> Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
     <script src="https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/loggedInStyle.css">
@@ -58,6 +58,7 @@
                         <select name="year" class="all-transaction" id="year" title="Year">
                             <option value="">All Years</option>
                             {{!-- You can generate year options dynamically if needed --}}
+                            <option value="2026" {{#if (eq selected.year "2026" )}}selected{{/if}}>2026</option>
                             <option value="2025" {{#if (eq selected.year "2025" )}}selected{{/if}}>2025</option>
                             <option value="2024" {{#if (eq selected.year "2024" )}}selected{{/if}}>2024</option>
                         </select>

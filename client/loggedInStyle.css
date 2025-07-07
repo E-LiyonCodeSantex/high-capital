@@ -60,9 +60,10 @@ body>* {
     padding: 10px 0;
 }
 
-.hide{
+.hide {
     display: none;
 }
+
 /* for all text waining and prompt*/
 .status-unconfirmed {
     color: #F44336 !important;
@@ -75,7 +76,7 @@ body>* {
 }
 
 .color-gradient {
-    background: linear-gradient(to right, #0000FF, #800080);
+    background: linear-gradient(to right, #0000FF, #775cf0, #e225e2);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -139,6 +140,7 @@ body>* {
     font-size: large;
     cursor: pointer;
 }
+
 .submit-button:hover {
     background-color: #6200ff;
     color: #fff;
@@ -160,6 +162,9 @@ body>* {
     position: sticky;
     top: 0;
     z-index: 100;
+}
+#google_translate_element .goog-te-gadget span {
+  display: none;
 }
 
 /*style rules for general containers*/
@@ -950,6 +955,7 @@ main {
     position: sticky;
     top: 140px;
 }
+
 .transaction {
     display: flex;
     justify-content: center;
@@ -961,6 +967,7 @@ main {
     font-weight: 500;
     background-color: none;
 }
+
 .select-currency {
     display: flex;
     flex-direction: column;
@@ -968,6 +975,7 @@ main {
     align-items: center;
     gap: 7px;
 }
+
 .all-transaction {
     display: flex;
     width: fit-content;
@@ -981,9 +989,11 @@ main {
     border: 1.5px solid #ffffff;
     border-radius: 8px 0 8px 0;
 }
+
 .all-transaction:hover {
     background: #ffffff;
 }
+
 .date-format {
     display: flex;
     flex-direction: column;
@@ -1014,6 +1024,7 @@ main {
     border: 1.5px solid #ffffff;
     border-radius: 25px 0 25px 0;
 }
+
 .history {
     display: flex;
     width: 100%;
@@ -1030,6 +1041,7 @@ main {
     border-radius: 10px 0 10px 0;
     cursor: pointer;
 }
+
 .history-content {
     display: flex;
     flex-direction: column;

@@ -44,12 +44,10 @@
 </head>
 
 <body>
-    
+
     <div class="sign-up-nav">
-        <div class="sign-up-header">
-            <h3 class="color-gradient">High Capital</h3>
-            <div id="google_translate_element"></div>
-        </div>
+        <h3 class="color-gradient">High Capital</h3>
+        <div id="google_translate_element"></div>
     </div>
 
     <div class="signing">
@@ -67,8 +65,8 @@
                 <div class="formDetails">
                     <div class="input-icon">
                         <i class="fa-regular fa-envelope sign-up-icon"></i>
-                        <input type="email" name="email" id="email" placeholder="Email Address" writingsuggestions="true"
-                            value="{{email}}">
+                        <input type="email" name="email" id="email" placeholder="Email Address"
+                            writingsuggestions="true" value="{{email}}">
                     </div>
                     <span class="error-message" id="email-error">{{#if
                         emailError}}{{emailError}}{{else}}&nbsp;{{/if}}</span>
@@ -85,27 +83,28 @@
                     <span class="error-message">{{#if
                         passwordError}}{{passwordError}}{{else}}&nbsp;{{/if}}</span>
                 </div>
-                <p class='text-warning'><a href="/user/passwordReset" style="color: #6608FE; text-decoration:none;">Forgot Password?</a></p>
+                <p class='text-warning'><a href="/user/passwordReset"
+                        style="color: #6608FE; text-decoration:none;">Forgot Password?</a></p>
                 <button type="submit" class="purple--button" id="sign-up">SIGN IN <i class="fa fa-sign-in"></i></button>
             </form>
 
             <p class="footer-text">Copyright © High Capital All rights reserved.</p>
 
-    </div>
+        </div>
 
 
-    <script src="/script.js"></script>
+        <script src="/script.js"></script>
 
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement(
-                { pageLanguage: 'en' },
-                'google_translate_element'
-            );
-        } 
-    </script>
-    <!-- Google tranlator -->
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                    { pageLanguage: 'en' },
+                    'google_translate_element'
+                );
+            } 
+        </script>
+        <!-- Google tranlator -->
+        <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>
