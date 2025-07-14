@@ -54,7 +54,8 @@ exports.adminLogin = async (req, res) => {
 
         return res.redirect('/admin');
     } catch (error) {
-        res.redirect('/admin/login?error=LoginFailed');
+        console.error('Login Error:', error);
+        return res.status(500).render('errorPage', { errorMessage: 'An unexpected error occurred. Please try again.' });
     }
 };
 
