@@ -8,6 +8,8 @@ const adminSchema = new mongoose.Schema(
         email: { type: String, required: true, unique: true },
         password: { type: String, required: true },
         role: { type: String, default: 'admin' }, // Default role is 'admin'
+        resetPasswordCode: { type: String, default: null }, // Code for password reset
+        resetPasswordExpires: { type: Date, default: null },
     },
     {
         timestamps: true, // Automatically add createdAt and updatedAt fields

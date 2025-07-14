@@ -4,9 +4,10 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 const InvestmentPlan = require('../models/investmentPlanModel');
+const nodemailer = require('nodemailer');
 
 const createAdmin = async () => {
-    const existingAdmin = await Admin.findOne({ email: 'admin@example.com' });
+    const existingAdmin = await Admin.findOne({ email: 'bosssantexdlyon@gmail.com' });
     if (existingAdmin) {
         //console.log('Admin account already exists');
         return;
@@ -17,7 +18,7 @@ const createAdmin = async () => {
 
     const admin = new Admin({
         name: 'Admin',
-        email: 'admin@example.com',
+        email: 'bosssantexdlyon@gmail.com',
         password: hashedPassword,
     });
 
@@ -28,29 +29,19 @@ const createAdmin = async () => {
 // Admin login function
 exports.adminLogin = async (req, res) => {
     try {
-        //console.log('Login request received:', req.body); // Debug log
-
         const { email, password } = req.body;
-
-        //console.log('Email used for login:', email); // Debug log
-        //console.log('Password used for login:', password); // Debug log
 
         const admin = await Admin.findOne({ email });
         console.log('Admin document retrieved:', admin);
         if (!admin) {
             //console.log('Admin not found'); // Debug log
-            return res.status(401).render('admin/login', { errorMessage: 'Invalid email', email });
+            return res.status(401).render('admin/login', { errorMessage: 'Invalid email', email, layout: false });
         }
 
-        // Compare passwords directly in the adminLogin function
-        //console.log('Entered password:', password); // Debug log
-        //console.log('Stored hashed password:', admin.password); // Debug log
         const isPasswordMatch = await bcrypt.compare(password, admin.password);
-        //console.log('Password comparison result:', isPasswordMatch); // Debug log
 
         if (!isPasswordMatch) {
-            //console.log('Password mismatch'); // Debug log
-            return res.status(401).render('admin/login', { errorMessage: 'Invalid password' });
+            return res.status(401).render('admin/login', { errorMessage: 'Invalid password', layout: false });
         }
 
         const token = jwt.sign({ id: admin._id, role: admin.role }, process.env.JWT_SECRET, { expiresIn: '30d' });
@@ -63,10 +54,85 @@ exports.adminLogin = async (req, res) => {
 
         return res.redirect('/admin');
     } catch (error) {
-        //console.error('Error during admin login:', error);
         return res.status(500).render('errorPage', { errorMessage: 'An unexpected error occurred. Please try again.' });
     }
 };
+
+exports.adminResetPassword = async (req, res, next) => {
+    const email = req.body.passwordReset;
+    if (!email) {
+        return res.render('admin/adminPasswordReset', { error: 'Email is required', layout: false });
+    }
+
+    // 1. Check if user exists
+    const admin = await Admin.findOne({ email });
+    if (!admin) {
+        return res.render('admin/adminPasswordReset', { error: 'No account with that email.', layout: false });
+    }
+
+    // 2. Generate a reset code (6-digit)
+    const resetCode = Math.floor(100000 + Math.random() * 900000).toString();
+
+    // 3. Save code and expiry to user (optional, for real implementation)
+    admin.resetPasswordCode = resetCode;
+    admin.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+    await admin.save();
+    //console.log('Saved user after reset:', user);
+
+    // 4. Send email with code (using nodemailer)
+    // Configure your transporter (use your real email credentials)
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.EMAIL_USER, // set in your .env
+            pass: process.env.EMAIL_PASS  // set in your .env
+        }
+    });
+
+    const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: email,
+        subject: 'Your High Capital Password Reset Code',
+        text: `Your High Capital password reset code is: ${resetCode}`
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+        return res.render('admin/adminVerifyResetCode', { email, layout: false });
+    } catch (err) {
+        console.error('Nodemailer error:', err);
+        return res.render('user/passwordReset', { error: 'Failed to send email. Please try again.', layout: false });
+    }
+};
+
+exports.verifyResetCode = async (req, res, next) => {
+    const { email, resetCode, newPassword, confirmPassword } = req.body;
+    if (!email || !resetCode || !newPassword || !confirmPassword) {
+        return res.render('admin/adminVerifyResetCode', { email, error: 'All fields are required', layout: false });
+    }
+    if (newPassword !== confirmPassword) {
+        return res.render('admin/adminVerifyResetCode', { email, error: 'Passwords do not match', layout: false });
+    }
+    //console.log('Submitted:', email, resetCode);
+    const admins = await Admin.find({ email: email.toLowerCase() });
+    //console.log('admin with this email:', admins);
+    const admin = await Admin.findOne({ email: email.toLowerCase(), resetPasswordCode: resetCode.trim() });
+    //console.log('admin found:', admin);
+    if (!admin || admin.resetPasswordExpires < Date.now()) {
+        return res.render('admin/adminVerifyResetCode', { email, error: 'Admin not found ', layout: false });
+    }
+    if (admin) {
+        console.log('Code in DB:', admin.resetPasswordCode, 'Expires:', admin.resetPasswordExpires, 'Now:', Date.now());
+    }
+    admin.password = await bcrypt.hash(newPassword, 10);
+    admin.resetPasswordCode = undefined;
+    admin.resetPasswordExpires = undefined;
+    await admin.save();
+    return res.redirect('/admin/login');
+};
+
+
+
 
 exports.getTransactionHistory = async (req, res) => {
     try {

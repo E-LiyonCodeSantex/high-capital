@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="logo-and-searchBar">
+    <div class="login-logo">
         <h3 class="color-gradient">High Capital</h3>
     </div>
     <main>
@@ -29,6 +29,7 @@
             {{#if errorMessage}}
             <p class="error">{{errorMessage}}</p>
             {{/if}}
+            <a href="/admin/adminPasswordReset" class="a orange-color cp" style="padding: 8px;">Reset Password</a>
             <button type="submit">Login</button>
         </form>
     </main>

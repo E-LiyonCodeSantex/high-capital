@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zxx" dir="ltr">
+<style>
+    .goog-logo-link {
+        display: none !important;
+    }
+
+    .goog-te-gadget {
+        color: transparent !important;
+    }
+
+    .goog-te-gadget .goog-te-combo {
+        color: black !important;
+    }
+</style>
+
+<head>
+    <!-- Standard Meta -->
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#181818">
+    <!-- Site Properties -->
+    <title>HIGH CAPITAL | Admin Verify Code </title>
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="/message.js">
+    <!-- UIkit JavaScript -->
+    <script src="Uikit/js/uikit.min.js"></script>
+    <script src="Uikit/js/uikit-icons.min.js"></script>
+    <!--forawesome-->
+    <script src="https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
+
+    <!-- Favicon and apple icon -->
+    <link rel="shortcut icon" href="/static/app/images/favicon.54f7c0a8907c.png" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" href="/static/app/images/favicon.54f7c0a8907c.png">
+    <!-- css -->
+
+    <!--for google translator-->
+    <script src="https://www.gstatic.com/translate/translate_tts.js"></script>
+
+    <link rel="stylesheet" href="/adminStyle.css">
+</head>
+
+<body>
+    <div class="login-logo">
+        <h3 class="color-gradient">High Capital</h3>
+    </div>
+
+    <main>
+
+        <form class="admin-login" action="/admin/adminVerifyResetCode" method="POST">
+            <h2>Enter the code sent to your email</h2>
+            <input type="hidden" name="email" value="{{email}}">
+
+            <div class="input-icon">
+                <label for="resetCode">Enter code:</label>
+                <input type="number" name="resetCode" placeholder="Enter code" class="input-field" required>
+            </div>
+
+            <div class="input-icon">
+                <label for="newPassword">New password:</label>
+                <input type="password" name="newPassword" placeholder="New password" class="input-field" required>
+                <i class="fa-solid fa-eye toggle-password"></i>
+            </div>
+            <div class="input-icon">
+                <label for="confirmPassword">Confirm new password:</label>
+                <input type="password" name="confirmPassword" placeholder="Confirm new password" class="input-field"
+                    required>
+                <i class="fa-solid fa-eye toggle-password"></i>
+            </div>
+            <p class="error-message">{{#if error}}{{error}}{{else}}&nbsp;{{/if}}</p>
+            <button type="submit">Reset Password</button>
+        </form>
+
+    </main>
+
+    </div>
+
+
+
+    <script src="/adminScript.js"></script>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                { pageLanguage: 'en' },
+                'google_translate_element'
+            );
+        } 
+    </script>
+    <!-- Google tranlator -->
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>

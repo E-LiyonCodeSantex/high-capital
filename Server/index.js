@@ -18,7 +18,10 @@ app.use(session({
     secret: 'yourSecretKey', // use a strong secret in production!
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false } // set to true if using HTTPS
+    cookie: { secure: false }, // set to true if using HTTPS
+    store: MongoStore.create({
+    mongoUrl: process.env.MONGO_URI
+  })
 }));
 
 dotenv.config(); // Load environment variables

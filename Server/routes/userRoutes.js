@@ -12,7 +12,7 @@ const { requireSettingsConfirmation, setUserLocals } = require('../middleware/us
 const User = require('../models/userModel'); // Import the User model
 const updateLastActive = require('../middleware/updateLastActive');
 const withdrawalController = require('../controllers/withdrawalController');
-const deposit = require('../models/depositModel');
+const Deposit = require('../models/depositModel');
 const { getTransactionHistory } = require('../controllers/historyController');
 const nodemailer = require('nodemailer');
 

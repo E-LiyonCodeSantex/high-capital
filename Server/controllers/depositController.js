@@ -4,12 +4,44 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 const InvestmentPlan = require('../models/investmentPlanModel');
-const deposit = require('../models/depositModel'); // Import the Deposit model
+const Deposit = require('../models/depositModel'); // Import the Deposit model
 const WalletAdress = mongoose.models.WalletAdress; // Use the existing WalletAdress model from mongoose.models
 const { authenticateUser } = require('../middleware/authMiddleware');
 const { upload, normalizeFilePath } = require('../middleware/upload');
 
 
+// Create a deposit
+exports.createDeposit = async (req, res) => {
+  try {
+    const {planId, name, amount, asset } = req.body;
+
+    const planExists = await InvestmentPlan.findById(planId);
+
+    // Simulate deposit address
+    const fakeAddress = '0x' + Math.random().toString(36).substr(2, 38);
+
+    const deposit = await Deposit.create({
+      user: req.user._id,
+      amount,
+      asset,
+      depositAddress: fakeAddress,
+    });
+
+    res.render('user/depositSuccess', { deposit });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Deposit failed');
+  }
+};
+
+// Show user's deposit page
+exports.getDepositPage = async (req, res) => {
+  const deposits = await Deposit.find({ user: req.user._id }).sort({ createdAt: -1 });
+  res.render('user/deposit', { deposits });
+};
+
+
+/*
 // Handle deposit confirmation
 exports.makeDeposit = async (req, res) => {
     try {
@@ -133,12 +165,13 @@ exports.activateDeposit = async (req, res) => {
         res.status(500).json({ error: 'Failed to activate deposit' });
     }
 };
+*/
 
 //function to get all users
 exports.getAllDeposit = async (req, res) => {
     try {
         // Fetch all deposits and populate the user field
-        const deposits = await deposit.find().populate('user', 'name email profilePhoto');
+        const deposits = await Deposit.find().populate('user', 'name email profilePhoto');
 
         //console.log('Fetched deposits:', deposits);
 
@@ -154,36 +187,3 @@ exports.getAllDeposit = async (req, res) => {
 };
 
 
-
-
-/*
-exports.activateDeposit = async (req, res) => {
-    try {
-        const depositId = req.params.id;
-        const depositRecord = await deposit.findById(depositId);
-
-        if (!depositRecord) {
-            return res.status(404).json({ error: 'Deposit not found' });
-        }
-        console.log('Deposit duration:', depositRecord.duration);
-
-        // Calculate the end date based on the duration
-        const duration = depositRecord.duration;
-        if (typeof duration !== 'number' || isNaN(duration)) {
-            return res.status(400).json({ error: 'Invalid duration value' });
-        }
-
-        const endDate = new Date();
-        endDate.setDate(endDate.getDate() + duration);
-
-        // Update the deposit status and end date
-        depositRecord.status = 'confirmed';
-        depositRecord.endDate = endDate;
-        await depositRecord.save();
-
-        res.json({ message: 'Deposit activated successfully', endDate });
-    } catch (error) {
-        console.error('Error activating deposit:', error);
-        res.status(500).json({ error: 'Failed to activate deposit' });
-    }
-};*/

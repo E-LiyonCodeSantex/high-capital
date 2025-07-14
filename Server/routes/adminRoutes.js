@@ -3,11 +3,12 @@ const router = express.Router();
 const { authenticateAdmin } = require('../middleware/authMiddleware'); // Import both middlewares
 const adminController = require('../controllers/adminController');
 const adminUserController = require('../controllers/adminUserController');
+const { adminResetPassword, verifyResetCode } = require('../controllers/adminController');
 const { getAllDeposit, activateDeposit } = require('../controllers/depositController');
 const { getAllWithdrawal, activateWithdrawal } = require('../controllers/withdrawalController');
 const walletController = require('../controllers/walletController');
 const { adminGetTransactionHistory } = require('../controllers/historyController');
-const deposit = require('../models/depositModel');
+const Deposit = require('../models/depositModel');
 const withdrawal = require('../models/withdrawalModel'); 
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/receipts/' });
@@ -23,6 +24,24 @@ router.use((req, res, next) => {
 router.get('/login', (req, res) => res.render('admin/login', { layout: false })); // Render the login page without layout
 
 router.post('/login', adminController.adminLogin);
+
+router.get('/adminPasswordReset', (req, res) => {
+    res.render('admin/adminPasswordReset', { layout: false });
+});
+router.post('/adminPasswordReset', async (req, res, next) => {
+    try {
+        await adminResetPassword(req, res, next); // Call the resetPassword function
+    } catch (err) {
+        next(err); // Pass errors to the error-handling middleware
+    }
+});
+router.post('/adminVerifyResetCode', async (req, res, next) => {
+    try {
+        await verifyResetCode(req, res, next); // Call the resetPassword function
+    } catch (err) {
+        next(err); // Pass errors to the error-handling middleware
+    }
+});
 
 router.get('/', authenticateAdmin, adminUserController.getDashboardStats);
 

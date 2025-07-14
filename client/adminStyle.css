@@ -212,6 +212,16 @@ nav {
   align-items: center;
   color: #ffffff;
 }
+.login-logo{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+}
 
 .menu-and-header {
   display: none;
