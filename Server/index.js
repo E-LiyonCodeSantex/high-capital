@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo');
 const express = require('express');
 const exphbs = require('express-handlebars');
 const cookieParser = require('cookie-parser');
@@ -12,6 +13,8 @@ const webRoutes = require('./routes/webRoutes');
 const session = require('express-session');
 const { createAdmin } = require('./controllers/adminController');
 
+dotenv.config(); // Load environment variables
+
 
 
 app.use(session({
@@ -23,8 +26,6 @@ app.use(session({
     mongoUrl: process.env.MONGO_URI
   })
 }));
-
-dotenv.config(); // Load environment variables
 
 // Use cookie-parser middleware
 app.use(cookieParser());
