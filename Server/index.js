@@ -47,6 +47,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Use userRoutes for all routes
 app.use('/user', userRoutes);
+app.get('/user', (req, res) => {
+    res.redirect('/user/login');
+});
 app.use('/admin', adminRoutes);
 app.use('/web', webRoutes);
 app.get('/', (req, res) => {

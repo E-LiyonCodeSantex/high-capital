@@ -1,25 +1,19 @@
 const mongoose = require('mongoose');
 
 const depositSchema = new mongoose.Schema({
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'userData', required: true }, // Reference to the User model
-    name: { type: String, required: true },
-    dailyProfit: { type: String, required: true },
-    amount: { type: Number, required: true },
-    asset: { type: String, required: true }, // e.g., USDT, BTC
-    depositAddress: { type: String, required: true }, // Simulated or static address
-    duration: { type: Number, required: true },
-    referralBonus: { type: String, required: true },
-    totalProfit: { type: Number, required: true },
-    transactionReceipt: { type: String, required: true },
-    status: { type: String, enum: ['pending', 'confirmed'], default: 'pending' }, // Default status is 'pending'
-    txId: { type: String }, // Optional for tracking on explorer
-    startDate: { type: Date }, // <-- Add this line
-    endDate: { type: Date, required: true }, // End date of the investment
-    createdAt: { type: Date, default: Date.now }
-}, {
-    timestamps: true, // Automatically add createdAt and updatedAt fields
+        user: { type: mongoose.Schema.Types.ObjectId, ref: 'userData', required: true },
+        amount: { type: Number, required: true },
+        method: { type: String, required: true }, // e.g., 'bank', 'crypto'
+        bankName:{ type: String }, // e.g., Bank of America
+        bankAccount: { type: String }, // e.g., 123456789
+        bankAccountName: { type: String }, // e.g., John Doe
+        asset: { type: String}, // e.g., USDT, BTC
+        depositAddress: { type: String }, // Simulated or static address
+        transactionReceipt: { type: String, required: true },
+        status: { type: String, enum: ['failed', 'pending', 'successful'], default: 'pending' },
+        txId: { type: String }, // Optional for tracking on explorer
+        date: { type: Date, default: Date.now }, // Automatically set to current date
+        confrimedDate: { type: Date }, // Date when the deposit is confirmed
 });
 
 module.exports = mongoose.model('Deposit', depositSchema);
-
-

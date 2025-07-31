@@ -3,7 +3,7 @@ const Admin = require('../models/adminModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
-const Deposit = require('../models/depositModel');
+const Deposit = require('../models/investmentModel');
 const Withdrawal = require('../models/withdrawalModel');
 
 

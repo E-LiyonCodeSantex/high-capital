@@ -24,10 +24,10 @@
         class="deposit-form gap-and-padding margin-bottom color-black">
         <h4 class="header">Please confirm your deposit</h4>
         <span class="error-message-for-coin">You are about to invest in {{name}} with the deposit of
-            ${{amount}} worth of {{coinType }} to your account.</span>
+            ${{amount}} worth of {{asset }} to your account.</span>
         <span class="error-message-for-coin">This plan comes with {{dailyProfit}}% daily profit and
             {{referralBonus}}% referral bonus (if your your referree invest on thesame plan). It will last for
-            {{duration}} days and Your total profit wiil be ${{totalProfit}}. Investment duration will begin count upon
+            {{duration}} days. Investment duration will begin count upon
             admin confirmation</span>
 
         <div class="form-group">
@@ -38,13 +38,12 @@
                 onclick="this.select(); document.execCommand('copy'); alert('Address copied to clipboard!');">
 
             <input type="hidden" name="name" value="{{name}}">
-            <input type="hidden" name="coinType" value="{{coinType}}">
+            <input type="hidden" name="asset" value="{{asset}}">
             <input type="hidden" name="dailyProfit" value="{{dailyProfit}}">
             <input type="hidden" name="amount" value="{{amount}}">
             <input type="hidden" name="duration" value="{{duration}}">
             <input type="hidden" name="referralBonus" value="{{referralBonus}}">
             <input type="hidden" name="depositId" value="{{depositId}}">
-            <input type="hidden" name="totalProfit" value="{{totalProfit}}">
             <!-- Ensure the depositId is passed to the server -->
 
             <label for="receipt-upload" class="form-control-label">Upload your deposit receipt here (PDF or

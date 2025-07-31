@@ -5,14 +5,14 @@ const { registerUser, loginUser, resetPassword, verifyResetCode, verifyPassword,
 const InvestmentPlan = require('../models/investmentPlanModel');
 const { authenticateUser } = require('../middleware/authMiddleware');
 const WalletAdress = require('../models/walletModel'); // Correct the casing of the file name
-const { makeDeposit, updateDeposit } = require('../controllers/depositController');
+const { placeInvestment, updateinvestment } = require('../controllers/investmentController'); // Import the investment controller
 const { getUserDashboard } = require('../controllers/userDashboardController'); // Import the user dashboard controller
 const { upload } = require('../middleware/upload'); // Import the upload middleware
 const { requireSettingsConfirmation, setUserLocals } = require('../middleware/userSettingsMiddleware');
 const User = require('../models/userModel'); // Import the User model
 const updateLastActive = require('../middleware/updateLastActive');
 const withdrawalController = require('../controllers/withdrawalController');
-const Deposit = require('../models/depositModel');
+const depositController = require('../controllers/depositController'); // Import the deposit controller
 const { getTransactionHistory } = require('../controllers/historyController');
 const nodemailer = require('nodemailer');
 
@@ -102,40 +102,54 @@ router.post('/settings', authenticateUser, setUserLocals, updateLastActive, uplo
     }
 });
 
-router.get('/makeDeposit', authenticateUser, setUserLocals, updateLastActive, async (req, res) => {
+//Route to get make deposit page
+router.get(
+  '/deposit', authenticateUser, setUserLocals, updateLastActive, depositController.getDepositPage
+);
+
+
+// Route to handle deposit creation
+router.post('/deposit', authenticateUser, setUserLocals, updateLastActive, upload.single('transaction_receipt'),
+    depositController.makeDeposit
+);
+
+// Route to handle investment page
+// This route will render the investment page with plans and wallets
+/*router.get('/invest', authenticateUser, setUserLocals, updateLastActive, async (req, res) => {
     try {
+        let selectedPlan = null;
         const plans = await InvestmentPlan.find(); // Fetch all investment plans
         const wallets = await WalletAdress.find(); // Fetch all wallet addresses
         const userId = req.user._id;
-        const deposits = await deposit.find({ user: userId }).sort({ date: -1 });
-        let selectedPlan = null;
+        const deposits = await Deposit.find({ user: userId }).sort({ date: -1 });
         if (req.query.planId) {
             selectedPlan = await InvestmentPlan.findById(req.query.planId);
         }
-        res.render('user/deposit', { plans, wallets, selectedPlan, deposits, user: req.user }); // Pass plans and wallets to the template
+        res.render('user/invest', { plans, wallets, selectedPlan, deposits, user: req.user }); // Pass plans and wallets to the template
+        //console.log('Selected Plan:', selectedPlan); // Debug
     } catch (error) {
-        console.log('Selected Plan:', selectedPlan); // Debug
-        res.status(500).send('Error loading deposit page.');
+        console.error('Error loading investment page:', error.message);
+        res.status(500).render('user/errorLayout', { errorMessage: 'Sorry, something went wrong. Please try again.', layout: false });
     }
-});
-
-// Use makeDeposit for creating a deposit
-router.get('/confirmDeposit', authenticateUser, setUserLocals, updateLastActive, async (req, res) => {
+}); */
+// Route to handle invesment confirmation
+// This route will render the confirmation page with wallet address and investment details
+router.get('/confirmInvest', authenticateUser, setUserLocals, updateLastActive, async (req, res) => {
     try {
-        await makeDeposit(req, res); // Call the makeDeposit function
+        await placeInvestment(req, res); // Call the placeInvestment function
     } catch (err) {
-        console.error('Error in makeDeposit route:', err);
+        console.error('Error in makeDeposit route:', err.message);
         res.status(500).json({ error: 'An unexpected error occurred.' });
     }
 });
 
 // Use updateDeposit for updating a deposit with a transaction receipt
-router.post('/deposit', authenticateUser, setUserLocals, updateLastActive, upload.single('deposit_receipt'), async (req, res) => {
+router.post('/invest', authenticateUser, setUserLocals, updateLastActive, upload.single('deposit_receipt'), async (req, res) => {
     try {
-        await updateDeposit(req, res);
+        await updateinvestment(req, res);
     } catch (error) {
         if (error.code === 'LIMIT_FILE_SIZE') {
-            return res.render('user/deposit', { fileSizeError: 'File size exceeds the limit of 2MB.' });
+            return res.render('user/invest', { fileSizeError: 'File size exceeds the limit of 2MB.' });
         }
         console.error('Error in deposit route:', error);
         res.status(500).render('errorPage', { errorMessage: 'An unexpected error occurred. Please try again.' });
@@ -156,8 +170,9 @@ router.get('/investmentPlans', authenticateUser, setUserLocals, updateLastActive
     }
 });
 
-//router.get('/history', authenticateUser, setUserLocals, updateLastActive, getTransactionHistory);
+
 router.get('/history', authenticateUser, setUserLocals, updateLastActive, getTransactionHistory);
+
 router.get('/logout', async (req, res, next) => {
     try {
         await logoutUser(req, res, next);
@@ -166,6 +181,7 @@ router.get('/logout', async (req, res, next) => {
     }
 });
 router.get('/support', authenticateUser, setUserLocals, updateLastActive, (req, res) => res.render('user/support'));
+router.get('/errorLayout', authenticateUser, setUserLocals, updateLastActive, (req, res) => res.render('user/errorLayout', { layout: false }));
 // POST contact form
 router.post('/support', authenticateUser, setUserLocals, updateLastActive, async (req, res) => {
     const { name, email, message } = req.body;

@@ -41,7 +41,7 @@ exports.adminLogin = async (req, res) => {
         const isPasswordMatch = await bcrypt.compare(password, admin.password);
 
         if (!isPasswordMatch) {
-            return res.status(401).render('admin/login', { errorMessage: 'Invalid password', layout: false });
+            return res.status(401).render('admin/login', { errorMessage: 'Invalid password', email, layout: false });
         }
 
         const token = jwt.sign({ id: admin._id, role: admin.role }, process.env.JWT_SECRET, { expiresIn: '30d' });

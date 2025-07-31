@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- GetButton.io widget -->
-<script type="text/javascript">
-    (function () {
-        var options = {
-            whatsapp: "+61485972443", // WhatsApp number
-            call_to_action: "Message us", // Call to action
-            button_color: "#FF6550", // Color of button
-            position: "left", // Position may be 'right' or 'left'
-            pre_filled_message: "How do I get started with your company?", // WhatsApp pre-filled message
-        };
-        var proto = 'https:', host = "getbutton.io", url = proto + '//static.' + host;
-        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
-        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
-        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
-    })();
-</script>
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/66c7afbeea492f34bc092681/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
+
+<head>
+    <!-- GetButton.io widget -->
+    <script type="text/javascript">
+        (function () {
+            var options = {
+                whatsapp: "+61485972443", // WhatsApp number
+                call_to_action: "Message us", // Call to action
+                button_color: "#FF6550", // Color of button
+                position: "left", // Position may be 'right' or 'left'
+                pre_filled_message: "How do I get started with your company?", // WhatsApp pre-filled message
+            };
+            var proto = 'https:', host = "getbutton.io", url = proto + '//static.' + host;
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        })();
+    </script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/66c7afbeea492f34bc092681/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
     <!-- Standard Meta -->
     <meta charset="utf-8">
     <meta name="description" content="">
@@ -37,7 +38,7 @@ s0.parentNode.insertBefore(s1,s0);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#181818">
     <!-- Site Properties -->
-    <title>highcapital.com |  Home </title>
+    <title>highcapital.com | Home </title>
 
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="/Uikit/css/uikit.min.css">
@@ -57,6 +58,7 @@ s0.parentNode.insertBefore(s1,s0);
 
     <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
     <div class="all-body body">
         <div class="header">
@@ -65,10 +67,10 @@ s0.parentNode.insertBefore(s1,s0);
             </div>
         </div>
         <div class="log-out">
-            <span class="error-message" id="email-error">An unexpected error occurred.</span>
-            <a class="register" href="/user/signUp">Please try again</a>
+            <p class="error-message">{{errorMessage}}</p>
+            <a class="register" href="javascript:history.back()">Go Back</a>
         </div>
-        
+
     </div>
 
 

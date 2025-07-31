@@ -379,103 +379,235 @@ document.addEventListener('DOMContentLoaded', () => {
 //function for creating, editing and deleting wallet adresses
 // This function handles the addition, editing and deletion of wallet adresses
 document.addEventListener('DOMContentLoaded', () => {
-  const addWalletButton = document.querySelector('.wallet-adress');
-  const editWalletButtons = document.querySelectorAll('.edit-wallet');
-  const walletModal = document.getElementById('wallet-modal');
-  /*const walletContainer = document.querySelector('.my-plan')*/
-  const closeWalletModalButton = document.querySelector('.close-wallet-modal');
-  const walletForm = document.getElementById('Wallet-form');
-  const walletModalTitle = document.getElementById('wallet-modal-title');
-  const WalletIdInput = document.getElementById('Wallet-id');
+  // 🔁 Section toggle elements
+  const walletHeader = document.getElementById('wallet-header');
+  const accountHeader = document.getElementById('account-header');
+  const walletSection = document.getElementById('wallet-section');
+  const accountSection = document.getElementById('account-section');
 
-  // Open walletModal for adding a new wallet adress
-  addWalletButton.addEventListener('click', () => {
-    walletModalTitle.textContent = 'Add New Plan';
+  // ⏳ Remember last opened section
+  const lastSection = localStorage.getItem('activeSection') || 'wallet';
+
+  if (lastSection === 'wallet') {
+    walletSection.style.display = 'flex';
+    accountSection.style.display = 'none';
+    walletHeader.style.backgroundColor = '#ffffff';
+    walletHeader.style.color = '#711afd';
+    accountHeader.style.backgroundColor = '#711afd';
+    accountHeader.style.color = '#ffffff';
+  } else {
+    accountSection.style.display = 'flex';
+    walletSection.style.display = 'none';
+    accountHeader.style.backgroundColor = '#ffffff';
+    accountHeader.style.color = '#711afd';
+    walletHeader.style.backgroundColor = '#711afd';
+    walletHeader.style.color = '#ffffff';
+  }
+
+  // 🔁 On tab click, update stored section
+  walletHeader.addEventListener('click', () => {
+    localStorage.setItem('activeSection', 'wallet');
+    walletSection.style.display = 'flex';
+    accountSection.style.display = 'none';
+    walletHeader.style.backgroundColor = '#ffffff';
+    walletHeader.style.color = '#711afd';
+    accountHeader.style.backgroundColor = '#711afd';
+    accountHeader.style.color = '#ffffff';
+  });
+
+  accountHeader.addEventListener('click', () => {
+    localStorage.setItem('activeSection', 'account');
+    accountSection.style.display = 'flex';
+    walletSection.style.display = 'none';
+    accountHeader.style.backgroundColor = '#ffffff';
+    accountHeader.style.color = '#711afd';
+    walletHeader.style.backgroundColor = '#711afd';
+    walletHeader.style.color = '#ffffff';
+  });
+
+  // 🚀 Initialize all modal logic
+  initWalletModal();
+  initAccountModal();
+});
+
+// ✅ Wallet Modal Control
+function initWalletModal() {
+  const addWalletBtn = document.querySelector('.wallet-address');
+  const editBtns = document.querySelectorAll('.edit-wallet');
+  const deleteBtns = document.querySelectorAll('.delete-wallet');
+  const walletModal = document.getElementById('wallet-modal');
+  const closeModal = document.querySelector('#wallet-modal .close-wallet-modal');
+  const walletForm = document.getElementById('Wallet-form');
+  const walletTitle = document.getElementById('wallet-modal-title');
+  const walletIdInput = document.getElementById('Wallet-id');
+
+  addWalletBtn?.addEventListener('click', () => {
+    walletTitle.textContent = 'Add New Wallet';
     walletForm.reset();
-    WalletIdInput.value = ''; // Clear the hidden input for plan ID
+    walletIdInput.value = '';
     walletModal.classList.remove('hidden');
   });
 
-  // Open walletModal for editing a wallet adress
-  editWalletButtons.forEach(walletButton => {
-    walletButton.addEventListener('click', async () => {
-      const walletId = walletButton.getAttribute('data-id');
-      walletModalTitle.textContent = 'Edit Wallet';
-
+  editBtns.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const id = btn.dataset.id;
+      walletTitle.textContent = 'Edit Wallet';
       try {
-        const response = await fetch(`/admin/WalletManagement/${walletId}`);
-        const wallet = await response.json();
-
-        // Populate the form with the wallet adress data
-        WalletIdInput.value = wallet._id;
-        document.getElementById('wallet-name').value = wallet.name;
-        document.getElementById('wallet-adress').value = wallet.adress;
-
+        const res = await fetch(`/admin/WalletManagement/${id}`);
+        const data = await res.json();
+        walletIdInput.value = data._id;
+        document.getElementById('wallet-name').value = data.name || '';
+        document.getElementById('wallet-address').value = data.address || '';
         walletModal.classList.remove('hidden');
-      } catch (error) {
-        console.error('Error fetching Wallet adress:', error);
+      } catch (err) {
+        console.error('Error fetching wallet:', err);
       }
     });
   });
 
-  // Close walletModal
-  closeWalletModalButton.addEventListener('click', () => {
-    walletModal.classList.add('hidden');
-  });
-
-  // Handle form submission
-  walletForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const walletFormData = new FormData(walletForm);
-    const walletData = Object.fromEntries(walletFormData.entries());
-    const walletId = WalletIdInput.value;
+  walletForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const formData = new FormData(walletForm);
+    const payload = Object.fromEntries(formData.entries());
+    const method = payload['Wallet-id'] ? 'PUT' : 'POST';
+    const url = payload['Wallet-id']
+      ? `/admin/WalletManagement/${payload['Wallet-id']}`
+      : '/admin/WalletManagement';
 
     try {
-      const response = await fetch(walletId ? `/admin/WalletManagement/${walletId}` : '/admin/WalletManagement', {
-        method: walletId ? 'PUT' : 'POST',
+      const res = await fetch(url, {
+        method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(walletData),
+        body: JSON.stringify(payload),
       });
 
-      if (response.ok) {
-        alert(walletId ? 'Wallet updated successfully!' : 'Wallet created successfully!');
-        location.reload(); // Refresh the page to show updated plans
+      if (res.ok) {
+        const accountModal = document.getElementById('account-modal');
+
+        accountModal.classList.add('hidden');
+        alert(method === 'POST' ? 'Wallet created successfully!' : 'Wallet updated successfully!');
+        window.location.reload();
       } else {
-        const error = await response.json();
-        alert(`Error: ${error.message}`);
+        const err = await res.json();
+        alert(`Error: ${err.message}`);
       }
-    } catch (error) {
-      console.error('Error submitting plan form:', error);
+    } catch (err) {
+      console.error('Form submit error:', err);
     }
   });
 
-  //delete wallet
-  const deleteWalletButtons = document.querySelectorAll('.delete-wallet');
-  deleteWalletButtons.forEach(button => {
-    button.addEventListener('click', async () => {
-      const walletId = button.getAttribute('data-id');
-
-      if (confirm('Are you sure you want to delete this wallet?')) {
+  deleteBtns.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const id = btn.dataset.id;
+      if (confirm('Delete this wallet?')) {
         try {
-          const response = await fetch(`/admin/WalletManagement/${walletId}`, {
-            method: 'DELETE',
-          });
-
-          if (response.ok) {
+          const res = await fetch(`/admin/WalletManagement/${id}`, { method: 'DELETE' });
+          if (res.ok) {
             alert('Wallet deleted successfully!');
-            location.reload(); // Refresh the page to show updated plans
+            window.location.reload();
           } else {
-            const error = await response.json();
-            alert(`Error: ${error.message}`);
+            const err = await res.json();
+            alert(`Error: ${err.message}`);
           }
-        } catch (error) {
-          console.error('Error deleting wallet:', error);
+        } catch (err) {
+          console.error('Delete error:', err);
         }
       }
     });
   });
-});
+
+  closeModal?.addEventListener('click', () => walletModal.classList.add('hidden'));
+}
+
+// ✅ Account Modal Control
+function initAccountModal() {
+  const addAccountBtn = document.querySelector('.account-detail');
+  const editBtns = document.querySelectorAll('.edit-account');
+  const deleteBtns = document.querySelectorAll('.delete-account');
+  const accountModal = document.getElementById('account-modal');
+  const closeModal = document.querySelector('#account-modal .close-wallet-modal');
+  const accountForm = document.getElementById('account-form');
+  const accountTitle = document.getElementById('account-modal-title');
+  const accountIdInput = document.getElementById('account-id');
+
+  addAccountBtn?.addEventListener('click', () => {
+    accountTitle.textContent = 'Add New Account';
+    accountForm.reset();
+    accountIdInput.value = '';
+    accountModal.classList.remove('hidden');
+  });
+
+  editBtns.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const id = btn.dataset.id;
+      accountTitle.textContent = 'Edit Account';
+      try {
+        const res = await fetch(`/admin/WalletManagement/${id}`);
+        const data = await res.json();
+        accountIdInput.value = data._id;
+        document.getElementById('bank-name').value = data.bankName || '';
+        document.getElementById('account-name').value = data.account || '';
+        document.getElementById('account-number').value = data.number || '';
+        accountModal.classList.remove('hidden');
+      } catch (err) {
+        console.error('Error fetching account:', err);
+      }
+    });
+  });
+
+  accountForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const formData = new FormData(accountForm);
+    const payload = Object.fromEntries(formData.entries());
+    const method = payload['account-id'] ? 'PUT' : 'POST';
+    const url = payload['account-id']
+      ? `/admin/WalletManagement/${payload['account-id']}`
+      : '/admin/WalletManagement';
+
+    try {
+      const res = await fetch(url, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.ok) {
+        const walletModal = document.getElementById('wallet-modal');
+        walletModal.classList.add('hidden');
+        alert(method === 'POST' ? 'Account created successfully!' : 'Account updated successfully!');
+        window.location.reload();
+      } else {
+        const err = await res.json();
+        alert(`Error: ${err.message}`);
+      }
+    } catch (err) {
+      console.error('Form submit error:', err);
+    }
+  });
+
+  deleteBtns.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const id = btn.dataset.id;
+      if (confirm('Delete this account?')) {
+        try {
+          const res = await fetch(`/admin/WalletManagement/${id}`, { method: 'DELETE' });
+          if (res.ok) {
+            alert('Account deleted successfully!');
+            window.location.reload();
+          } else {
+            const err = await res.json();
+            alert(`Error: ${err.message}`);
+          }
+        } catch (err) {
+          console.error('Delete error:', err);
+        }
+      }
+    });
+  });
+
+  closeModal?.addEventListener('click', () => accountModal.classList.add('hidden'));
+}
+
 
 //function for displaying the daily profit of the selected plan
 document.addEventListener('DOMContentLoaded', function () {

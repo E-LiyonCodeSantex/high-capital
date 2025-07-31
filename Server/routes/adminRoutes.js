@@ -4,11 +4,11 @@ const { authenticateAdmin } = require('../middleware/authMiddleware'); // Import
 const adminController = require('../controllers/adminController');
 const adminUserController = require('../controllers/adminUserController');
 const { adminResetPassword, verifyResetCode } = require('../controllers/adminController');
-const { getAllDeposit, activateDeposit } = require('../controllers/depositController');
+const investmentController = require('../controllers/investmentController');
 const { getAllWithdrawal, activateWithdrawal } = require('../controllers/withdrawalController');
 const walletController = require('../controllers/walletController');
 const { adminGetTransactionHistory } = require('../controllers/historyController');
-const Deposit = require('../models/depositModel');
+const Investment = require('../models/investmentModel'); // Import the Investment model
 const withdrawal = require('../models/withdrawalModel'); 
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/receipts/' });
@@ -19,6 +19,8 @@ router.use((req, res, next) => {
   res.locals.layout = 'adminLayout'; // Set default layout to adminLayout
   next();
 });
+
+router.get('/errorPage', authenticateAdmin, (req, res) => res.render('admin/errorPage', { layout: false }));
 
 // Override layout for login route
 router.get('/login', (req, res) => res.render('admin/login', { layout: false })); // Render the login page without layout
@@ -50,32 +52,18 @@ router.get('/user', authenticateAdmin, adminUserController.getAllUsers);
 router.get('/user/:userId/transactions', authenticateAdmin, async (req, res) => {
   try {
     const userId = req.params.userId;
-    const deposits = await deposit.find({ user: userId }).sort({ createdAt: -1 });
+    const investments = await Investment.find({ user: userId }).sort({ createdAt: -1 });
     const withdrawals = await withdrawal.find({ user: userId }).sort({ createdAt: -1 });
-    res.json({ deposits, withdrawals });
+    res.json({ investments, withdrawals });
   } catch (err) {
     console.error('Error fetching transactions:', err);
     res.status(500).json({ error: 'Error fetching transactions' });
   }
 });
 
-router.get('/userDeposit', authenticateAdmin, async (req, res) => {
-  try {
-    await getAllDeposit(req, res); // Call the makeDeposit function
-  } catch (err) {
-    console.error('Error in getAllDeposit route:', err);
-    res.status(500).json({ error: 'An unexpected error occurred.' });
-  }
-});
+router.get('/userInvestment', authenticateAdmin, investmentController.getAllInvestment);
+router.post('/activateinvestment/:id', authenticateAdmin, investmentController.getAllInvestment);
 
-router.post('/activateDeposit/:id', async (req, res) => {
-  try {
-    await activateDeposit(req, res); // Call the activateDeposit function
-  } catch (err) {
-    console.error('Error activating deposit:', err);
-    res.status(500).json({ error: 'Failed to activate deposit' });
-  }
-});
 
 router.delete('/deleteDeposit/:id', async (req, res) => {
   try {
@@ -133,11 +121,14 @@ router.put('/investment-plans/:id', authenticateAdmin, adminController.updateInv
 router.delete('/investment-plans/:id', authenticateAdmin, adminController.deleteInvestmentPlan);
 
 //routes for admin wallets
-router.get('/walletAdresses', authenticateAdmin, walletController.getWalletAdresses);
-router.get('/WalletManagement', authenticateAdmin, walletController.getWalletAdresses);
-router.get('/WalletManagement/:id', authenticateAdmin, walletController.getWalletAdressById);
-router.post('/WalletManagement', authenticateAdmin, walletController.createWalletAdress);
-router.delete('/WalletManagement/:id', authenticateAdmin, walletController.deleteWalletAdress);
-router.put('/WalletManagement/:id', authenticateAdmin, walletController.updateWalletAdress);
+router.get('/walletAdresses', authenticateAdmin, walletController.getWalletAndAccontAddresses);
+router.get('/WalletManagement', authenticateAdmin, walletController.getWalletAndAccontAddresses);
+router.get('/WalletManagement/:id', authenticateAdmin, walletController.getWalletAndAccountAddressById);
+router.post('/WalletManagement', authenticateAdmin, walletController.createWalletAndAccountAddress); 
+router.delete('/WalletManagement/:id', authenticateAdmin, walletController.deleteWalletAddress);
+router.put('/WalletManagement/:id', authenticateAdmin, walletController.updateWalletAddress);
+
+//routes for admin auto investment
+router.get('/adminAutoInvest', authenticateAdmin, (req, res) => res.render('admin/adminAutoInvest'));
 
 module.exports = router;

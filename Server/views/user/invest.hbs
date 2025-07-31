@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>highcapital.com | Make Deposit </title>
+    <meta name="theme-color" content="#181818">
+
+    <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
+    <!--forawesome-->
+    <script src="/https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/loggedInStyle.css">
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+
+<body>
+    <section>
+        <div class="header">
+            <p class="color-gradient">Investment</p>
+        </div>
+
+        <form id="deposit-form" class="deposit-form gap-and-padding margin-bottom" action="/user/confirmDeposit"
+            method="get">
+            <input type="hidden" class="white-color select-input" id="plan-id" name="planId">
+            <p class="" style="color: #000000;">Select Plans, Cryptocurrency and Amount to Deposit</p>
+
+            <span class="no-deposit-twice-prompt"></span>
+            <div class="form-group">
+                <label for="name" class="form-control-label">Choose Plan To Invest In:</label>
+                <select name="planId" class="white-color select-input" id="plan-type" required>
+                    <option value="" id="select-coin-option" disabled {{#unless selectedPlan}}selected{{/unless}}>
+                        Select a Plan</option>
+                    {{#each plans}}
+                    <option value="{{this._id}}" {{#if ../selectedPlan}}{{#if (eq this._id
+                        ../selectedPlan._id)}}selected{{/if}}{{/if}}>{{this.name}}</option>
+                    {{/each}}
+                </select>
+                <a href="/user/investmentPlans" class="submit-button">View Invesment Plans</a>
+                <span class="error-message-for-coin status-Unconfirmed">{{#if
+                    planErrorMessage}}{{planErrorMessage}}{{else}}&nbsp;{{/if}}</span>
+            </div>
+
+            <div class="form-group">
+                <label for="asset" class="form-control-label">Asset to invest in: </label>
+                <select name="asset" class="white-color select-input" id="coins">
+                    <option value="">Select Asset</option>
+                    {{#each wallets}}
+                    <option value="{{this.name}}">{{this.name}}</option>
+                    {{/each}}
+                </select>
+                <span class="error-message-for-coin status-unconfirmed">{{#if
+                    walletErrorMessage}}{{walletErrorMessage}}{{else}}&nbsp;{{/if}}</span>
+            </div>
+
+            <div class="form-group">
+                <label for="amount" class="">Amount :</label>
+                <input type="number" class="white-color select-input" name="amount" id="plan-amount"
+                    value="{{#if selectedPlan}}{{selectedPlan.minDeposit}}{{/if}}">
+                <span class="error-message-for-amount status-unconfirmed"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="risk" class="form-control-label">Risk Profile: </label>
+                <select id="risk" name="risk" class="white-color select-input">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="opacity: 0.7;">
+                <label for="dailyProfit" class="form-control-label">Profit: (%) </label>
+                <input type="number" class="white-color select-input" id="percentage-earning" disabled
+                    value="{{#if selectedPlan}}{{selectedPlan.dailyProfit}}{{/if}}">
+            </div>
+
+            <div class="form-group" style="opacity: 0.7;">
+                <label for="duration" class="">Investement Duration <span class="tx-danger"> </span></label>
+                <input type="number" class="white-color select-input" id="investment-duration" disabled
+                    value="{{#if selectedPlan}}{{selectedPlan.duration}}{{/if}}">
+            </div>
+
+            <div class="form-group" style="opacity: 0.7;">
+                <label for="referralBonus" class="">Referal Bonus ($) <span class="tx-danger">*</span></label>
+                <input type="number" class="white-color select-input" id="referal-bonus" disabled
+                    value="{{#if selectedPlan}}{{selectedPlan.referralBonus}}{{/if}}">
+            </div>
+
+            <div class="form-group-checker">
+                <label for="auto-invest-checker" class="">Enable Auto-Invest:</label>
+                <input type="checkbox" id="auto-invest-checker" name="auto-invest-checker"
+                    class="white-color select-input">
+            </div>
+
+            <div id="auto-invest" class="deposit-form gap-and-padding margin-bottom" style="display: none;">
+                <div class="form-group">
+                    <label for="asset" class="form-control-label">Frequency: </label>
+                    <select id="frequency" name="frequency" class="white-color select-input">
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                    </select>
+                </div>
+            </div>
+
+            <input type="hidden" name="name" id="nameHidden" value="{{#if selectedPlan}}{{selectedPlan.name}}{{/if}}">
+            <input type="hidden" name="dailyProfit" id="dailyProfitHidden"
+                value="{{#if selectedPlan}}{{selectedPlan.dailyProfit}}{{/if}}">
+            <input type="hidden" name="duration" id="durationHidden"
+                value="{{#if selectedPlan}}{{selectedPlan.duration}}{{/if}}">
+            <input type="hidden" name="referralBonus" id="referralBonusHidden"
+                value="{{#if selectedPlan}}{{selectedPlan.referralBonus}}{{/if}}">
+
+
+            <div class="form-group">
+                <button type="submit" class="submit-button"> PROCEED <i class="fa fa-sign-in"></i></button>
+            </div>
+        </form>
+
+        {{#if deposits.length}}
+        <h3 class="header">Your deposits</h3>
+        <div class="withdrawal-request">
+            {{#each deposits}}
+            <!-- ...your deposit cards... -->
+            <div class="history deposit-cards" id="deposit-{{_id}}" data-status="{{status}}" data-index="{{@index}}">
+                <div class="history-content">
+                    <h3 class="color-gradient">{{capitalize asset}}</h3>
+                    <p class="color-gradient">${{amount}}</p>
+                </div>
+                <div class="history-content">
+                    <p>
+                        {{#if (eq status "completed")}}
+                        <span class="status-completed">{{capitalize status}}</span>
+                        {{else if (eq status "running")}}
+                        <span class="status-confirmed">{{capitalize status}}</span>
+                        {{else}}
+                        <span class="status-unconfirmed">pending</span>
+                        {{/if}}
+                    </p>
+                    <p class=" mainDate color-gradient" data-date="{{date}}"></p>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        {{else}}
+        <p class="no-withdrawal-request color-white">No deposits found.</p>
+        {{/if}}
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const hash = window.location.hash;
+                if (hash) {
+                    const target = document.querySelector(hash);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        </script>
+
+        <a href="/user/history" class="submit-button"> View History</a>
+
+
+        <div class="detail-deposit-table " id="deposit-details">
+            <div class="detail-deposit-table-header">
+                <h3>Deposit</h3>
+                <i class="fa-solid fa-xmark text-danger button-one-five-size-no-padding" id="close-deposit-details"></i>
+            </div>
+            <div class="for-image">
+                <span class="">Transaction Receipt:</span>
+                <img src="" class="image" id="detail-deposit-receipt" alt="" width="100%" height="100px">
+            </div>
+            <p>
+                <span class="">Plan name:</span>
+                <span class="color-gradient" id="detail-plan-name"></span>
+            </p>
+
+            <p>
+                <span class="">Asset Deposited:</span>
+                <span class="color-gradient" id="detail-coin-type"></span>
+            </p>
+
+            <p>
+                <span class="">Amount:</span>
+                <span class="color-gradient" id="detail-amount"></span>
+            </p>
+
+            <p>
+                <span class="">Profit:</span>
+                <span class="color-gradient" id="detail-daily-profit"></span>
+            </p>
+
+            <p>
+                <span class="">Duration:</span>
+                <span class="color-gradient" id="detail-duration"></span>
+            </p>
+
+            <p>
+                <span class="">Status:</span>
+                <span id="detail-status"></span>
+            </p>
+
+            <p>
+                <span class="">Date:</span>
+                <span class="color-gradient mainDate" id="detail-date"></span>
+            </p>
+            <p>
+                <span class="">End Date</span>
+                <span class="color-gradient" id="detail-end-date"></span>
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- Image Zoom Modal -->
+    <!-- Image Zoom Modal -->
+    <div id="image-zoom-modal" class="image-zoom-modal" style="display:none; z-index: 2000; backgroud-color: #000000;">
+        <span id="close-zoom" class="close-zoom status-unconfirmed">&times;</span>
+        <img id="zoomed-image" class="zoomed-image" src="" alt="Zoomed Receipt" />
+    </div>
+
+
+
+    <script src="/script.js"></script>
+    <script src="/deposit.js"></script>
+    <script id="plans-data" type="application/json">{{{json plans}}}</script>
+    <script id="deposits-data" type="application/json">{{{json deposits}}}</script>
+</body>
+
+</html>

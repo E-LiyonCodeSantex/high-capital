@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //for nav company drawer for web layout
 // This script handles the dropdown functionality for the company section in the navigation bar
-document.addEventListener('DOMContentLoaded', () =>{
+document.addEventListener('DOMContentLoaded', () => {
     const companyHeader = document.querySelector('.company-header');
     const companyDropDown = document.querySelector('.company-drop_down');
 
-    companyHeader.addEventListener('click', () =>{
+    companyHeader.addEventListener('click', () => {
         companyDropDown.classList.toggle('show');
     })
 })
@@ -49,26 +49,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-//fuction for left-nav bar in logged in pages
-document.addEventListener('DOMContentLoaded', function () {
-    const bugger = document.querySelectorAll('.bugger');
-    const leftMenu = document.querySelector('.menu-left');
-    const logo = document.querySelector('.logo');
-    const nav = document.querySelector('.nav-bar');
-    const menuIcons = document.querySelector('.menu-icons');
+// Function to highlight the active navigation link based on the current page
+document.addEventListener('DOMContentLoaded', () => {
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-bar li a');
 
-    bugger.forEach(each => {
-        each.removeEventListener('click', () => { }); // Clear existing listeners
-        each.addEventListener('click', () => {
-            //console.log('left menu is clicked');
-            console.log('left menu is clicked at:', new Date().toISOString());
-            leftMenu.classList.toggle('left-menu-active');
-            logo.classList.toggle('logo-active');
-            nav.classList.toggle('nav-active');
-            menuIcons.classList.toggle('menu-icons-active');
-        });
+    navLinks.forEach(link => {
+        const li = link.parentElement;
+        if (link.getAttribute('href') === currentPath) {
+            li.classList.add('active');
+        } else {
+            li.classList.remove('active');
+        }
     });
 });
+
 
 //check password strenght
 document.addEventListener('DOMContentLoaded', function () {
@@ -279,6 +274,18 @@ document.addEventListener('DOMContentLoaded', function () {
     if (planTypeSelect.value) {
         autofillPlan(planTypeSelect.value);
     }
+    //let the auto-invest section display when the checkbox is checked
+    const checkbox = document.getElementById('auto-invest-checker');
+    const container = document.getElementById('auto-invest');
+
+    checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+            container.style.display = 'block';
+        } else {
+            container.style.display = 'none';
+        }
+    });
+
 
     const depositTable = document.querySelectorAll('.deposit-cards')
     const depositDetails = document.getElementById('deposit-details');
@@ -290,7 +297,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const detailDuration = document.getElementById('detail-duration');
     const detailStatus = document.getElementById('detail-status');
     const detailDate = document.getElementById('detail-date');
-    const detailTotalProfit = document.getElementById('detail-total-profit');
     const detailEndDate = document.getElementById('detail-end-date');
     //const withdrawalRequest = document.getElementById('withdrawal-request');
 
@@ -328,7 +334,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             detailDuration.textContent = `${deposit.duration} days`;
             detailDate.textContent = new Date(deposit.date).toLocaleDateString();
-            detailTotalProfit.textContent = `$${deposit.totalProfit}`;
 
             console.log('Deposit card clicked:', index);
             depositDetails.style.display = 'block';

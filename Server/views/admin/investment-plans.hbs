@@ -22,9 +22,9 @@
                     <h4>{{this.name}}</h4>
                 </div>
                 <ul>
-                    <li>Minimum: <b class="color-gradient">${{this.minDeposit}}</b></li>
-                    <li>Maximum: <b class="color-gradient">${{this.maxDeposit}}</b></li>
-                    <li>Daily Profit: <b class="color-gradient">{{this.dailyProfit}}%</b></li>
+                    <li>Min invest: <b class="color-gradient">${{this.minDeposit}}</b></li>
+                    <li>Max invest: <b class="color-gradient">${{this.maxDeposit}}</b></li>
+                    <li>Profit: <b class="color-gradient">{{this.dailyProfit}}%</b></li>
                     <li>Duration: <b class="color-gradient">{{this.duration}} Day(s)</b></li>
                     <li>Referral Bonus: <b class="color-gradient">{{this.referralBonus}}%</b></li>
                 </ul>
@@ -55,20 +55,20 @@
                     <input type="text" id="plan-name" name="name" required>
                 </div>
                 <div>
-                    <label for="min-deposit">Minimum Deposit:</label>
+                    <label for="min-deposit">Min invest:</label>
                     <input type="number" id="min-deposit" name="minDeposit" required>
                 </div>
                 <div>
-                    <label for="max-deposit">Maximum Deposit:</label>
-                    <input type="number" id="max-deposit" name="maxDeposit" required>
+                    <label for="max-deposit">Max invest:</label>
+                    <input type="text" id="max-deposit" name="maxDeposit" required>
                 </div>
                 <div>
-                    <label for="daily-profit">Daily Profit (%):</label>
+                    <label for="daily-profit">Profit (%):</label>
                     <input type="number" id="daily-profit" name="dailyProfit" required>
                 </div>
                 <div>
                     <label for="duration">Duration (Days):</label>
-                    <input type="number" id="duration" name="duration" required>
+                    <input type="text" id="duration" name="duration" required>
                 </div>
                 <div>
                     <label for="referral-bonus">Referral Bonus (%):</label>

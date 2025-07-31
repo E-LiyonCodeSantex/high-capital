@@ -178,7 +178,7 @@ p {
     font-size: large;
     text-transform: uppercase;
     letter-spacing: 1px;
-      background: linear-gradient(to right, #0000FF, #775cf0, #e225e2);
+    background: linear-gradient(to right, #9292f5ff, #FFFF00, #800080);
     /* Blue, Purple, Yellow gradient */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -345,6 +345,7 @@ nav .nav-bar li a:hover {
     color: #fff;
     text-decoration: none;
 }
+
 
 .company-header a {
     display: flex;

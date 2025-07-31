@@ -2,326 +2,204 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>highcapital.com | Make Deposit </title>
-    <meta name="theme-color" content="#181818">
-
-    <noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User | Deposit</title>
     <!--forawesome-->
-    <script src="/https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="/loggedInStyle.css">
-    <script type="text/javascript"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 
 <body>
     <section>
         <div class="header">
-            <p class="color-gradient">Make Deposit</p>
+            <a href="/user/Dashboard" class="a color-gradient"> Access Your Dashboard</a>
+            <p class="header">Deposit</p>
         </div>
 
-        <form id="deposit-form" class="deposit-form gap-and-padding margin-bottom" action="/user/confirmDeposit"
-            method="get">
-            <input type="hidden" class="white-color select-input" id="plan-id" name="planId">
-            <p class="" style="color: #000000;">Select Plans, Cryptocurrency and Amount to Deposit</p>
+        <form action="/user/deposit" class="deposit-form gap-and-padding dark-color margin-bottom" method="POST"
+            enctype="multipart/form-data">
 
-            <span class="no-deposit-twice-prompt"></span>
+
+            {{#if errorMessage}}
+            <div class="status-unconfirmed">{{errorMessage}}</div>
+            {{/if}}
             <div class="form-group">
-                <label for="name" class="form-control-label">Choose Plan To Invest In:</label>
-                <select name="planId" class="white-color select-input" id="plan-type" required>
-                    <option value="" id="select-coin-option" disabled {{#unless selectedPlan}}selected{{/unless}}>
-                        Select a Plan</option>
-                    {{#each plans}}
-                    <option value="{{this._id}}" {{#if ../selectedPlan}}{{#if (eq this._id
-                        ../selectedPlan._id)}}selected{{/if}}{{/if}}>{{this.name}}</option>
-                    {{/each}}
+                <label>Amount:</label>
+                <input type="number" name="amount" class="darker-color select-input" required min="1" step="any">
+            </div>
+
+            <div class="form-group">
+                <label>Method:</label>
+                <select name="method" class="darker-color select-input" required>
+                    <option value="select">Select withdrawal method</option>
+                    <option value="bank">Bank</option>
+                    <option value="crypto" id="wallet-to-withdarw">Crypto</option>
                 </select>
-                <a href="/user/investmentPlans" class="submit-button">View Invesment Plans</a>
-                <span class="error-message-for-coin status-Unconfirmed">{{#if
-                    planErrorMessage}}{{planErrorMessage}}{{else}}&nbsp;{{/if}}</span>
             </div>
 
-            <div class="form-group">
-                <label for="amount" class="">Amount to Spend ($) </label>
-                <input type="number" class="white-color select-input" name="amount" id="plan-amount"
-                    value="{{#if selectedPlan}}{{selectedPlan.minDeposit}}{{/if}}">
-                <span class="error-message-for-amount status-unconfirmed"></span>
+            <div id="crypto-fields" class=" select-input withdrawal-adress-field" style="display:none;">
+                <div class="form-group">
+                    <label>Select wallet to deposit into:</label>
+                    <select id="select-wallet" name="asset" class="select-input" required>
+                        <option value="" disabled selected>Select Wallet</option>
+
+                        {{#each wallets}}
+                        <option value="{{this.name}}" data-address="{{address}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Click to copy wallet Address:</label>
+                    <input type="text" value="" name="" id="wallet-address" readonly onclick="copyToClipboard('wallet-address')"
+                        style="border: 1px solid #ffffff !important;">
+                    <input type="hidden" value="" name="depositAddress" id="wallet-address-hidden">
+                </div>
+                <div class="form-group">
+                    <label>Upload Receipt:</label>
+                    <input type="file" name="transaction_receipt" id="receipt-upload-crypto" accept=".jpg,.jpeg,.png,.pdf"
+                        required style="border: 1px solid #ffffff !important;">
+                    <small>Accepted formats: JPG, PNG, PDF</small>
+                </div>
+
+
+            </div>
+            <div id="bank-fields" class="darker-color select-input withdrawal-adress-field" style="display:none;">
+                <div class="form-group">
+                    <label>Select wallet to deposit into:</label>
+                    <select name="bankName" class="select-input" required id="bank-select">
+                        <option value="">Select Bank</option>
+                        {{#each bankNames}}
+                        <option value="{{bankName}}" data-account="{{number}}" data-name="{{account}}">
+                            {{bankName}}
+                        </option>
+                        {{/each}}
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <label>click to copy acount number:</label>
+                    <input type="number" name="acountNumber" id="bank-account-number" readonly
+                        onclick="copyToClipboard('bank-account-number')">
+                </div>
+                <div class="form-group">
+                    <label>Acount Name:</label>
+                    <input type="text" name="acountName" id="bank-account-name" readonly>
+                </div>
+                 <div class="form-group">
+                    <label>Upload Receipt:</label>
+                    <input type="file" name="transaction_receipt" id="receipt-upload-bank" accept=".jpg,.jpeg,.png,.pdf"
+                        required style="border: 1px solid #ffffff !important;">
+                    <small>Accepted formats: JPG, PNG, PDF</small>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="coinType" class="form-control-label">Investment Payment Method: </label>
-                <select name="coinType" class="white-color select-input" id="coins">
-                    <option value="">Select Coin Type</option>
-                    {{#each wallets}}
-                    <option value="{{this.name}}">{{this.name}}</option>
-                    {{/each}}
-                </select>
-                <span class="error-message-for-coin status-unconfirmed">{{#if
-                    walletErrorMessage}}{{walletErrorMessage}}{{else}}&nbsp;{{/if}}</span>
-            </div>
-
-            <div class="form-group">
-                <label for="dailyProfit" class="form-control-label">Daily Profit: (%) </label>
-                <input type="number" class="white-color select-input" id="percentage-earning" disabled
-                    value="{{#if selectedPlan}}{{selectedPlan.dailyProfit}}{{/if}}">
-            </div>
-
-            <div class="form-group">
-                <label for="duration" class="">Investement Duration <span class="tx-danger"> </span></label>
-                <input type="number" class="white-color select-input" id="investment-duration" disabled
-                    value="{{#if selectedPlan}}{{selectedPlan.duration}}{{/if}}">
-            </div>
-
-            <div class="form-group">
-                <label for="referralBonus" class="">Referal Bonus ($) <span class="tx-danger">*</span></label>
-                <input type="number" class="white-color select-input" id="referal-bonus" disabled
-                    value="{{#if selectedPlan}}{{selectedPlan.referralBonus}}{{/if}}">
-            </div>
-
-            <div class="form-group">
-                <label for="totalProfit" class="">Total Profit ($) <span class="tx-danger">*</span></label>
-                <input type="number" class="white-color select-input" id="total-profit" disabled>
-            </div>
-
-            <input type="hidden" name="name" id="nameHidden" value="{{#if selectedPlan}}{{selectedPlan.name}}{{/if}}">
-            <input type="hidden" name="dailyProfit" id="dailyProfitHidden"
-                value="{{#if selectedPlan}}{{selectedPlan.dailyProfit}}{{/if}}">
-            <input type="hidden" name="duration" id="durationHidden"
-                value="{{#if selectedPlan}}{{selectedPlan.duration}}{{/if}}">
-            <input type="hidden" name="referralBonus" id="referralBonusHidden"
-                value="{{#if selectedPlan}}{{selectedPlan.referralBonus}}{{/if}}">
-            <input type="hidden" name="totalProfit" id="totalProfitHidden"
-                value="{{#if selectedPlan}}{{selectedPlan.totalProfit}}{{/if}}">
-
-
-            <div class="form-group">
-                <button type="submit" class="submit-button"> PROCEED <i class="fa fa-sign-in"></i></button>
-            </div>
+            <button type="submit" class="submit-button"> Deposit into your acount <i class="fa fa-sign-in"></i></button>
         </form>
 
-        {{#if deposits.length}}
-        <h3 class="header">Your deposits</h3>
+        <a href="/user/history" class="submit-button"> View History</a>
+
+          {{#if deposits.length}}
+        <h3 class="header">Your Deposits</h3>
         <div class="withdrawal-request">
             {{#each deposits}}
-            <!-- ...your deposit cards... -->
-            <div class="withdrawal-table deposit-cards" data-status="{{status}}" data-index="{{@index}}">
+            <!-- ...your withdrawal card... -->
+            <div class="withdrawal-table">
                 <p>
-                    <span>Plan name:</span>
-                    <span class="color-gradient">{{capitalize name}}</span>
-                </p>
-                <p>
-                    <span>Coin Deposited:</span>
-                    <span class="color-gradient">{{capitalize coinType}}</span>
-                </p>
-                <p>
-                    <span>Amount:</span>
+                    <span class="">Amount:</span>
                     <span class="color-gradient">${{amount}}</span>
                 </p>
 
                 <p>
-                    <span>Date:</span>
-                    <span class=" mainDate color-gradient" data-date="{{date}}"></span>
+                    <span class="">Method:</span>
+                    <span class="color-gradient">{{capitalize method}}</span>
                 </p>
+
                 <p>
-                    <span>Status:</span>
-                    {{#if (eq status "completed")}}
-                    <span class="status-completed">{{capitalize status}}</span>
-                    {{else if (eq status "confirmed")}}
-                    <span class="status-confirmed">{{capitalize status}}</span>
-                    {{else}}
-                    <span class="status-unconfirmed">Unconfirmed</span>
+                    <span class="">Wallet/Bank:</span>
+                    <span class="color-gradient">
+                        {{#if walletName}}{{capitalize walletName}}{{/if}}
+                        {{#if bankName}}{{capitalize bankName}}{{/if}}
+                    </span>
+                </p>
+
+                <p>
+                    <span class="">Adress/Ac Number:</span>
+                    <span class="color-gradient">
+                        {{#if acountNumber}}{{acountNumber}}{{/if}}
+                        {{#if walletAddress}}{{walletAddress}}{{/if}}
+                    </span>
+                </p>
+
+                <p>
+                    <span class="">Status:</span>
+                    {{#if (eq status "pending")}}
+                    <span class="status-unconfirmed">Pending</span>
+                    {{else if (eq status "Successful")}}
+                    <span class="status-completed">Successful</span>
                     {{/if}}
                 </p>
+
+                <p>
+                    <span class="">Requested At:</span>
+                    <span class="color-gradient requested-at" data-date="{{requestedAt}}"></span>
+                </p>
+
+                <p>
+                    <span class="">Approved At:</span>
+                    <span class="color-gradient requested-at" data-date="{{processedAt}}"></span>
+                </p>
+
             </div>
             {{/each}}
         </div>
         {{else}}
-        <p class="no-withdrawal-request color-white">No deposits found.</p>
+        <p class="no-withdrawal-request">No withdrawal requests found.</p>
         {{/if}}
 
-        <a href="/user/history" class="submit-button"> View History</a>
+        <!-- JavaScript to handle image zoom -->
+        <script>
+            // Show/hide fields based on method
+            document.querySelector('select[name="method"]').addEventListener('change', function () {
+                document.getElementById('crypto-fields').style.display = this.value === 'crypto' ? '' : 'none';
+                document.getElementById('bank-fields').style.display = this.value === 'bank' ? '' : 'none';
+            });
+        </script>
 
+        <!-- Format requestedAt and processedAt dates -->
+        <script>
+            document.querySelectorAll('.requested-at').forEach(function (el) {
+                const raw = el.getAttribute('data-date');
+                if (!raw || raw === "null") {
+                    el.textContent = "Pending";
+                } else {
+                    const date = new Date(raw);
+                    if (isNaN(date.getTime())) {
+                        el.textContent = "Pending";
+                    } else {
+                        el.textContent = date.toString().split(' GMT')[0];
+                    }
+                }
+            });
+        </script>
 
-        <div class="detail-deposit-table " id="deposit-details">
-            <div class="detail-deposit-table-header">
-                <h3>Deposit</h3>
-                <i class="fa-solid fa-xmark text-danger button-one-five-size-no-padding" id="close-deposit-details"></i>
-            </div>
-            <div class="for-image">
-                <span class="">Transaction Receipt:</span>
-                <img src="" class="image" id="detail-deposit-receipt" alt="" width="100%" height="100px">
-            </div>
-            <p>
-                <span class="">Plan name:</span>
-                <span class="color-gradient" id="detail-plan-name"></span>
-            </p>
-
-            <p>
-                <span class="">Coin Deposited:</span>
-                <span class="color-gradient" id="detail-coin-type"></span>
-            </p>
-
-            <p>
-                <span class="">Amount:</span>
-                <span class="color-gradient" id="detail-amount"></span>
-            </p>
-
-            <p>
-                <span class="">Daily Profit:</span>
-                <span class="color-gradient" id="detail-daily-profit"></span>
-            </p>
-
-            <p>
-                <span class="">Duration:</span>
-                <span class="color-gradient" id="detail-duration"></span>
-            </p>
-
-            <p>
-                <span class="">Status:</span>
-                <span id="detail-status"></span>
-            </p>
-
-            <p>
-                <span class="">Date:</span>
-                <span class="color-gradient mainDate" id="detail-date"></span>
-            </p>
-
-            <p>
-                <span class="">Total Profit:</span>
-                <span class="color-gradient" id="detail-total-profit"></span>
-            </p>
-
-            <p>
-                <span class="">End Date</span>
-                <span class="color-gradient" id="detail-end-date"></span>
-            </p>
-
-        </div>
-
-
-        <div class="detail-deposit-table " id="deposit-details">
-            <div class="detail-deposit-table-header">
-                <h3>Deposit</h3>
-                <i class="fa-solid fa-xmark text-danger button-one-five-size-no-padding" id="close-deposit-details"></i>
-            </div>
-            <div class="for-image">
-                <span class="">Transaction Receipt:</span>
-                <img src="" class="image" id="detail-deposit-receipt" alt="" width="100%" height="100px">
-            </div>
-            <p>
-                <span class="">Plan name:</span>
-                <span class="color-gradient" id="detail-plan-name"></span>
-            </p>
-
-            <p>
-                <span class="">Coin Deposited:</span>
-                <span class="color-gradient" id="detail-coin-type"></span>
-            </p>
-
-            <p>
-                <span class="">Amount:</span>
-                <span class="color-gradient" id="detail-amount"></span>
-            </p>
-
-            <p>
-                <span class="">Daily Profit:</span>
-                <span class="color-gradient" id="detail-daily-profit"></span>
-            </p>
-
-            <p>
-                <span class="">Duration:</span>
-                <span class="color-gradient" id="detail-duration"></span>
-            </p>
-
-            <p>
-                <span class="">Status:</span>
-                <span id="detail-status"></span>
-            </p>
-
-            <p>
-                <span class="">Date:</span>
-                <span class="color-gradient mainDate" id="detail-date"></span>
-            </p>
-
-            <p>
-                <span class="">Total Profit:</span>
-                <span class="color-gradient" id="detail-total-profit"></span>
-            </p>
-
-            <p>
-                <span class="">End Date</span>
-                <span class="color-gradient" id="detail-end-date"></span>
-            </p>
-
-        </div>
 
     </section>
 
-    <!-- Image Zoom Modal -->
+
     <!-- Image Zoom Modal -->
     <div id="image-zoom-modal" class="image-zoom-modal" style="display:none;">
         <span id="close-zoom" class="close-zoom">&times;</span>
         <img id="zoomed-image" class="zoomed-image" src="" alt="Zoomed Receipt" />
     </div>
 
-    <!-- JavaScript to handle image zoom -->
-    <script>
-        const receiptImg = document.querySelectorAll('.image');
-        const zoomModal = document.getElementById('image-zoom-modal');
-        const zoomedImage = document.getElementById('zoomed-image');
-        const closeZoom = document.getElementById('close-zoom');
-        if (receiptImg && zoomModal && zoomedImage && closeZoom) {
-            receiptImg.forEach(img => {
-                img.addEventListener('click', () => {
-                    console.log('Image clicked:', img.src);
-                    zoomedImage.src = img.src;
-                    zoomModal.style.display = 'flex';
-                });
-            });
-            closeZoom.addEventListener('click', () => {
-                zoomModal.style.display = 'none';
-                zoomedImage.src = '';
-            });
-            zoomModal.addEventListener('click', (e) => {
-                if (e.target === zoomModal) {
-                    zoomModal.style.display = 'none';
-                    zoomedImage.src = '';
-                }
-                zoomModal.style.display = 'none';
-                zoomedImage.src = '';
-            });
-        }
-    </script>
 
-    <!-- Format for dates -->
-    <script>
-        document.querySelectorAll('.mainDate').forEach(function (el) {
-            const raw = el.getAttribute('data-date');
-            if (!raw || raw === "null") {
-                el.textContent = "";
-            } else {
-                const date = new Date(raw);
-                el.textContent = isNaN(date.getTime()) ? "" : date.toString().split(' GMT')[0];
-            }
-        });
-
-        document.querySelectorAll('.endDate').forEach(function (el) {
-            const raw = el.getAttribute('data-date');
-            if (!raw || raw === "null") {
-                el.textContent = "completed";
-            } else {
-                const date = new Date(raw);
-                el.textContent = isNaN(date.getTime()) ? "completed" : date.toString().split(' GMT')[0];
-            }
-        });
-    </script>
-
-
+    <script src="/deposit.js"></script>
     <script src="/script.js"></script>
-    <script id="plans-data" type="application/json">{{{json plans}}}</script>
-    <script id="deposits-data" type="application/json">{{{json deposits}}}</script>
+    <script id="deposit-data" type="application/json">{{{ depositsJSON }}}</script>
+    <script id="wallet-data" type="application/json">{{{ walletJSON }}}</script>
+    <script id="bank-data" type="application/json">{{{ bankNamesJSON }}}</script>
 </body>
 
 </html>

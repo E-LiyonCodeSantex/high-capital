@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN - User Auto investment</title>
+    <!--forawesome-->
+    <script src="https://kit.fontawesome.com/d5a2a27062.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/adminStyle.css">
+</head>
+
+<body>
+    <section>
+        <h2>Admin: Auto-Invest Control Panel</h2>
+
+        <div class="deposit-container deposit-withdrawal-container">
+            <div class="deposit-card deposit-withdrawal-card">
+                <div class="depositor-short-details depositor-withdrawal-short-details">
+                    <img src="upload/1750674030499-89789725_2618839965028776_1472185484783386624_n.jpg " alt="User"
+                        width="50px" class="user-img image" />
+                    <div class="depositor-name-and-email">
+                        <span class=" user-name-email small-size"> chinedu</span>
+                        <span class="user-name-email small-size"> eelyondesign@gmail.com</span>
+                    </div>
+                </div>
+                <div class="history">
+                    <div class="history-content">
+                        <p class="color-gradient">$400</p>
+                        <h3 class="color-gradient">Asset</h3>
+                        <p class="color-gradient">weekly</p>
+                        <p class="color-gradient">on ✅ or off ❌</p>
+                    </div>
+                    <div class="history-content">
+                        <p class="color-gradient mainDate" data-date="{{date}}">28/07/2025</p>
+                        <p>
+                            {{#if (eq status "active")}}
+                            <span class="status-completed">{{capitalize status}}</span>
+                            {{else if (eq status "paused")}}
+                            <span class="status-confirmed">{{capitalize status}}</span>
+                            {{else}}
+                            <span class="status-unconfirmed">pending</span>
+                            {{/if}}
+                        </p>
+                        <p class="color-gradient">Risk</p>
+                        <p class="color-gradient">Aproved or Pause</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

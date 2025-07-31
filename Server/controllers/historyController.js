@@ -1,4 +1,4 @@
-const Deposit = require('../models/depositModel');
+const Deposit = require('../models/investmentModel');
 const Withdrawal = require('../models/withdrawalModel');
 const WalletAdress = require('../models/walletModel');
 const User = require('../models/userModel');

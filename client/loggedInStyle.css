@@ -363,6 +363,15 @@ nav {
     text-decoration: underline;
     cursor: pointer;
 }
+.nav-bar li.active {
+  background: none;
+  -webkit-background-clip: border-box;
+  -webkit-text-fill-color: #BAB520;
+  background-clip: border-box;
+  color: #BAB520;
+  text-decoration: underline;
+}
+
 
 .logo {
     color: #fff;
@@ -374,7 +383,7 @@ nav {
     font-size: large;
     text-transform: uppercase;
     letter-spacing: 1px;
-    background: linear-gradient(to left, #0000FF, #800080, #FFFF00);
+    background: linear-gradient(to right, #9292f5ff, #FFFF00, #800080);
     /* Blue, Purple, Yellow gradient */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -547,6 +556,12 @@ main {
     border-radius: 10px 0 10px 0;
     gap: 8px;
 }
+.coin-card p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
 
 .coin-card span {
     color: #184977;
@@ -688,6 +703,16 @@ main {
     width: 95%;
     gap: 8px;
     padding: 0;
+    color: #000000 !important;
+}
+.form-group-checker{
+    display: flex;
+    justify-content: start;
+    align-items:center;
+    flex-direction: row;
+    width: 95%;
+    gap: 8px;
+    padding: 8px;
     color: #000000 !important;
 }
 

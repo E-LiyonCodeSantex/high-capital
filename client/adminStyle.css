@@ -44,6 +44,14 @@ a {
   background-clip: text;
 }
 
+.logo {
+  background: linear-gradient(to right, #9292f5ff, #FFFF00, #800080);
+  /* Blue, Purple, Yellow gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .status-unconfirmed {
   color: #D32F2F !important;
   font-weight: bold;
@@ -212,7 +220,8 @@ nav {
   align-items: center;
   color: #ffffff;
 }
-.login-logo{
+
+.login-logo {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -1182,6 +1191,12 @@ section h2 {
 
 
 /*investment-plan.hbs and walletManagement.hbs style rules are here*/
+.wallet-and-account-header {
+  position: sticky;
+  top: 116px;
+  z-index: 1000;
+}
+
 .total-plan-container {
   display: flex;
   justify-content: center;
@@ -1476,6 +1491,15 @@ section h2 {
 
   .deposit-withdrawal-details {
     position: fixed;
+  }
+
+}
+
+@media(max-width: 306px) {
+  .wallet-and-account-header {
+    position: sticky;
+    top: 145px;
+    z-index: 1000;
   }
 
 }

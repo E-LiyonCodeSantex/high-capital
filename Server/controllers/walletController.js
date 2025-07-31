@@ -1,51 +1,59 @@
 const mongoose = require('mongoose');
-const Admin = require('../models/adminModel');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
-const WalletAdress = require('../models/walletModel');
+const WalletAndAccountDetails = require('../models/walletModel');
 
 
 // Get all investment plans
-exports.getWalletAdresses = async (req, res) => {
-    try {
-        const wallets = await WalletAdress.find(); // Fetch all wallet adresses from the database
-        res.render('admin/WalletManagement', { wallets }); // Pass the wallet adresses to the template
-    } catch (error) {
-        console.error('Error fetching wallet adresses:', error);
-        res.status(500).send('An error occurred while fetching wallet adresses.');
-    }
+exports.getWalletAndAccontAddresses = async (req, res) => {
+  try {
+    const allRecords = await WalletAndAccountDetails.find();
+
+    const wallets = allRecords.filter(record => record.name && record.address);
+    const accounts = allRecords.filter(record => record.bankName && record.account && record.number);
+
+    res.render('admin/WalletManagement', {
+      wallets,
+      accounts
+    });
+  } catch (error) {
+    console.error('Error fetching wallet and account details:', error);
+    res.status(500).send('An error occurred while fetching wallet and account details.');
+  }
 };
 
+
 // Get a single investment plan by ID
-exports.getWalletAdressById = async (req, res) => {
+exports.getWalletAndAccountAddressById = async (req, res) => {
     try {
         const { id } = req.params;
-        const wallet = await WalletAdress.findById(id);
+        const walletAndAccount = await WalletAndAccountDetails.findById(id);
 
-        if (!wallet) {
-            return res.status(404).json({ error: 'Investment wallet adress not found.' });
+        if (!walletAndAccount) {
+            return res.status(404).json({ error: 'Investment wallet adress and account not found.' });
         }
 
-        res.json(wallet);
+        res.json(walletAndAccount);
     } catch (error) {
-        console.error('Error fetching wallet adress:', error);
-        res.status(500).json({ error: 'An error occurred while fetching the wallet adress.' });
+        console.error('Error fetching wallet adress or account detail:', error);
+        res.status(500).json({ error: 'An error occurred while fetching the wallet adress or account detail.' });
     }
 };
 
 // Create a new investment plan
-exports.createWalletAdress = async (req, res) => {
+exports.createWalletAndAccountAddress = async (req, res) => {
     try {
-        const { name, adress } = req.body;
+        const { name, address, bankName, account, number } = req.body;
 
-        const newAdress = new WalletAdress({
+        const newAddress = new WalletAndAccountDetails({
             name,
-            adress
+            address,
+            bankName,
+            account,
+            number
         });
 
-        await newAdress.save();
-        res.status(201).json({ message: 'Wallet adress created successfully', wallet: newAdress });
+        await newAddress.save();
+        res.status(201).json({ message: 'Wallet adress created successfully', walletAndAccount: newAddress });
     } catch (error) {
         console.error('Error uploading wallet:', error);
         res.status(500).json({ error: 'An error occurred while uploading wallet.' });
@@ -53,22 +61,22 @@ exports.createWalletAdress = async (req, res) => {
 };
 
 // Edit an existing wallet adress
-exports.editWalletAdress = async (req, res) => {
+exports.editWalletAddress = async (req, res) => {
     try {
         const { id } = req.params;
-        const { name, adress } = req.body;
+        const { name, address, bankName, account, number } = req.body;
 
-        const updatedWallet = await WalletAdress.findByIdAndUpdate(
+        const updatedWalletAndAccount = await WalletAndAccountDetails.findByIdAndUpdate(
             id,
-            { name, adress },
+            { name, address, bankName, account, number },
             { new: true, runValidators: true }
         );
 
-        if (!updatedWallet) {
+        if (!updatedWalletAndAccount) {
             return res.status(404).json({ error: 'Wallet not found.' });
         }
 
-        res.status(200).json({ message: 'Wallet updated successfully', wallet: updatedWallet });
+        res.status(200).json({ message: 'Wallet updated successfully', walletAndAccount: updatedWalletAndAccount });
     } catch (error) {
         console.error('Error editing wallet:', error);
         res.status(500).json({ error: 'An error occurred while editing the wallet.' });
@@ -76,13 +84,13 @@ exports.editWalletAdress = async (req, res) => {
 };
 
 //delete existing investment plan
-exports.deleteWalletAdress = async (req, res) => {
+exports.deleteWalletAddress = async (req, res) => {
     try {
         const { id } = req.params;
-        const deletedWallet = await WalletAdress.findByIdAndDelete(id);
+        const deletedWalletAndAccount = await WalletAndAccountDetails.findByIdAndDelete(id);
 
-        if (!deletedWallet) {
-            return res.status(404).json({ error: 'Wallet not found.' });
+        if (!deletedWalletAndAccount) {
+            return res.status(404).json({ error: 'Wallet or account not found.' });
         }
 
         res.status(200).json({ message: 'Wallet deleted successfully.' });
@@ -93,8 +101,8 @@ exports.deleteWalletAdress = async (req, res) => {
 };
 
 // Update an existing investment plan
-exports.updateWalletAdress = async (req, res) => {
-    const { name, adress } = req.body;
-    await WalletAdress.findByIdAndUpdate(req.params.id, { name, adress });
-    res.status(200).send('Wallet updated successfully');
+exports.updateWalletAddress = async (req, res) => {
+    const { name, address, bankName, account, number } = req.body;
+    await WalletAndAccountDetails.findByIdAndUpdate(req.params.id, { name, address, bankName, account, number });
+    res.status(200).send('Wallet or account updated successfully');
 };
